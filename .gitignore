@@ -1,0 +1,41 @@
+# Claude Code
+.claude/settings.local.json
+
+compose.override.yaml
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+.cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Strapi
+.strapi-updater.json
+strapi/license.txt
+
+# TypeScript
+*.tsbuildinfo
