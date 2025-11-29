@@ -35,11 +35,11 @@ services:
             DATABASE_USERNAME: postgres
             DATABASE_PASSWORD: postgres
             DATABASE_SSL: false
-            APP_KEYS: ${APP_KEYS}
-            API_TOKEN_SALT: ${API_TOKEN_SALT}
-            ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-            TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
-            JWT_SECRET: ${JWT_SECRET}
+            APP_KEYS: local-dev-key-1,local-dev-key-2,local-dev-key-3,local-dev-key-4
+            API_TOKEN_SALT: local-api-token-salt-dev-12345
+            ADMIN_JWT_SECRET: local-admin-jwt-secret-dev-67890
+            TRANSFER_TOKEN_SALT: local-transfer-token-salt-dev-abcde
+            JWT_SECRET: local-jwt-secret-dev-fghij
         volumes:
             - ./strapi:/app
         depends_on:
@@ -54,14 +54,14 @@ services:
             - "3000:3000"
         environment:
             PUBLIC_UPLOADS_URL: http://localhost:8080
-            STRAPI_WEBHOOK_SECRET: ${STRAPI_WEBHOOK_SECRET}
+            STRAPI_WEBHOOK_SECRET: local-webhook-secret-dev-klmno
             # Server-side URL (SSR build time) - uses Docker service name
             STRAPI_URL: http://strapi:1337
             # Client-side URL (browser) - uses localhost
             NEXT_PUBLIC_STRAPI_URL: http://localhost:1337
         volumes:
             - ./frontend:/app
-        command: sh -c "npm ci && npm run dev"
+        command: sh -c "(npm ci || npm install) && npm run dev"
         depends_on:
             - strapi
 
