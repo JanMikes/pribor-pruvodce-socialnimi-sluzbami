@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="cs">
-      <body className={`${inter.className} min-h-screen flex flex-col bg-gray-50`}>
+      <body className={`${inter.className} min-h-screen flex flex-col`}>
         <EmergencyBar />
         <Header />
         <main className="flex-1">

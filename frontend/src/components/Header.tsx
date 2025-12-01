@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 const navigation = [
@@ -13,15 +14,20 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    return pathname === href || pathname.startsWith(href + '/');
+  };
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+    <header className="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm shadow-soft border-b border-stone-100">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-glow-primary group-hover:shadow-lg transition-all">
                 <svg
                   className="w-5 h-5 text-white"
                   fill="none"
@@ -36,30 +42,42 @@ export default function Header() {
                   />
                 </svg>
               </div>
-              <span className="text-lg font-semibold text-gray-900 hidden sm:block">
-                Průvodce službami Příbor
-              </span>
+              <div className="hidden sm:block">
+                <span className="text-lg font-bold text-stone-800 tracking-tight">
+                  Průvodce službami
+                </span>
+                <span className="block text-xs text-primary-600 font-medium -mt-0.5">
+                  Příbor
+                </span>
+              </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:gap-x-6">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
+          <div className="hidden md:flex md:items-center md:gap-x-1">
+            {navigation.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                    active
+                      ? 'bg-primary-100 text-primary-700 font-semibold'
+                      : 'text-stone-600 hover:text-primary-600 hover:bg-primary-50'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+              className="inline-flex items-center justify-center rounded-xl p-2.5 text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <span className="sr-only">Otevřít menu</span>
@@ -98,18 +116,25 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-100 py-4">
-            <div className="flex flex-col space-y-3">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-base font-medium text-gray-600 hover:text-primary-600 transition-colors px-2 py-1"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+          <div className="md:hidden border-t border-stone-100 py-4">
+            <div className="flex flex-col space-y-1">
+              {navigation.map((item) => {
+                const active = isActive(item.href);
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`text-base font-medium transition-all px-4 py-3 rounded-xl ${
+                      active
+                        ? 'bg-primary-100 text-primary-700 font-semibold'
+                        : 'text-stone-600 hover:text-primary-600 hover:bg-primary-50'
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}
