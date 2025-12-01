@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_staff_members",
+  "info": {
+    "displayName": "Zaměstnanec",
+    "description": "Zaměstnanec zdravotnického zařízení",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "specialty": {
+      "type": "string"
+    }
+  }
+}

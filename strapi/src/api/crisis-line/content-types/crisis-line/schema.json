@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "crisis_lines",
+  "info": {
+    "singularName": "crisis-line",
+    "pluralName": "crisis-lines",
+    "displayName": "Krizová linka",
+    "description": "Krizové a tísňové linky"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lineId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "availability": {
+      "type": "string"
+    },
+    "free": {
+      "type": "boolean",
+      "default": false
+    },
+    "email": {
+      "type": "email"
+    },
+    "website": {
+      "type": "string"
+    },
+    "targetGroup": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

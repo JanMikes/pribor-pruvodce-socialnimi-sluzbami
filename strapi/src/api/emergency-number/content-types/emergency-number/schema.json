@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emergency_numbers",
+  "info": {
+    "singularName": "emergency-number",
+    "pluralName": "emergency-numbers",
+    "displayName": "Tísňové číslo",
+    "description": "Základní tísňová telefonní čísla"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "phones": {
+      "type": "json"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_department_contacts",
+  "info": {
+    "displayName": "Kontakt oddělení",
+    "description": "Kontaktní osoba v rámci oddělení",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "role": {
+      "type": "text",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

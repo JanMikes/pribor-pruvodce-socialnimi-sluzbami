@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "life_situations",
+  "info": {
+    "singularName": "life-situation",
+    "pluralName": "life-situations",
+    "displayName": "Životní situace",
+    "description": "Kategorie pro vyhledávání poskytovatelů"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "situationId": {
+      "type": "uid",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "providerRefs": {
+      "type": "json"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}

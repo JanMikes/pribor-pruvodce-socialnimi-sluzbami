@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "authorities",
+  "info": {
+    "singularName": "authority",
+    "pluralName": "authorities",
+    "displayName": "Úřad",
+    "description": "Státní úřady a instituce"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "authorityId": {
+      "type": "uid",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "text"
+    },
+    "website": {
+      "type": "string"
+    },
+    "departments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.department"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_shared_departments",
+  "info": {
+    "displayName": "Oddělení",
+    "description": "Oddělení v rámci úřadu",
+    "icon": "building"
+  },
+  "options": {},
+  "attributes": {
+    "departmentId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "contacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.department-contact"
+    }
+  }
+}

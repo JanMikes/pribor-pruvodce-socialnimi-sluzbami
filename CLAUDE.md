@@ -5,16 +5,16 @@
 This is a monorepo for "Průvodce sociálními službami Příbor" (Social Services Guide for Příbor city). The goal is to transform a static PDF guide into a fully functional web application with CMS capabilities.
 
 **Source PDF**: `Pruvodce_Socialnimi_Sluzbami.pdf` - contains social services information for citizens of Příbor
-**Parsed data**: `services.json` - structured JSON extracted from the PDF (see `docs/structure.md` for schema)
+**Parsed data**: `strapi/services.json` - structured JSON extracted from the PDF (see `docs/structure.md` for schema)
 
 ## Architecture
 
 ```
 ├── frontend/          # Next.js 15 (TypeScript, Tailwind CSS)
 ├── strapi/            # Strapi 5 CMS (TypeScript)
+│   └── services.json  # Parsed PDF data (source for CMS seeding)
 ├── nginx/             # Reverse proxy for uploads
 ├── docs/              # Documentation
-├── services.json      # Parsed PDF data (source for CMS seeding)
 └── compose.yaml       # Docker Compose orchestration
 ```
 
@@ -135,7 +135,7 @@ Based on `services.json` structure, create these content types:
 ## Key Files
 
 - `compose.yaml` - Docker services configuration
-- `services.json` - Source data from PDF
+- `strapi/services.json` - Source data from PDF
 - `docs/structure.md` - JSON schema documentation
 - `strapi/config/` - Strapi configuration (database, server, etc.)
 - `frontend/src/` - Next.js application source

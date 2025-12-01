@@ -833,7 +833,7 @@
       "services": [
         {
           "id": "materske-centrum-zvonecek",
-          "name": "Mateřské centrum „Zvoneček"",
+          "name": "Mateřské centrum Zvoneček",
           "description": "Setkávání, vzdělávání a zábava pro rodiče a jejich děti. Zajištěno hlídání dětí."
         }
       ],
@@ -846,7 +846,7 @@
     },
     {
       "id": "mas-cas",
-      "name": "„Máš čas?", z. s.",
+      "name": "Máš čas?, z. s.",
       "description": "Provozuje nízkoprahové denní centrum pro osoby bez přístřeší.",
       "services": [
         {

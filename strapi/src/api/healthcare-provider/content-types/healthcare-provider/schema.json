@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "healthcare_providers",
+  "info": {
+    "singularName": "healthcare-provider",
+    "pluralName": "healthcare-providers",
+    "displayName": "Zdravotnické zařízení",
+    "description": "Lékaři, zubaři, lékárny a další zdravotnická zařízení"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "providerId": {
+      "type": "uid",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "pediatrician",
+        "generalPractitioner",
+        "gynecology",
+        "surgery",
+        "cardiology",
+        "ophthalmology",
+        "pulmonary",
+        "allergology",
+        "rehabilitation",
+        "ent",
+        "dentist",
+        "dentalHygiene",
+        "physiotherapy",
+        "optician",
+        "pharmacy"
+      ],
+      "required": true
+    },
+    "address": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "phones": {
+      "type": "json"
+    },
+    "website": {
+      "type": "string"
+    },
+    "staff": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.staff-member"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}

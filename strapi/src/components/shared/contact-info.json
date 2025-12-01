@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_contact_infos",
+  "info": {
+    "displayName": "Kontaktní údaje",
+    "description": "Kontaktní údaje včetně adresy, telefonu, e-mailu a webu",
+    "icon": "phone"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "phones": {
+      "type": "json"
+    },
+    "email": {
+      "type": "email"
+    },
+    "website": {
+      "type": "string"
+    }
+  }
+}

@@ -430,6 +430,270 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAuthorityAuthority extends Struct.CollectionTypeSchema {
+  collectionName: 'authorities';
+  info: {
+    description: 'St\u00E1tn\u00ED \u00FA\u0159ady a instituce';
+    displayName: '\u00DA\u0159ad';
+    pluralName: 'authorities';
+    singularName: 'authority';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    address: Schema.Attribute.Text;
+    authorityId: Schema.Attribute.UID & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    departments: Schema.Attribute.Component<'shared.department', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::authority.authority'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
+  };
+}
+
+export interface ApiCrisisLineCrisisLine extends Struct.CollectionTypeSchema {
+  collectionName: 'crisis_lines';
+  info: {
+    description: 'Krizov\u00E9 a t\u00EDs\u0148ov\u00E9 linky';
+    displayName: 'Krizov\u00E1 linka';
+    pluralName: 'crisis-lines';
+    singularName: 'crisis-line';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    availability: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    email: Schema.Attribute.Email;
+    free: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    lineId: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::crisis-line.crisis-line'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    targetGroup: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
+  };
+}
+
+export interface ApiEmergencyNumberEmergencyNumber
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'emergency_numbers';
+  info: {
+    description: 'Z\u00E1kladn\u00ED t\u00EDs\u0148ov\u00E1 telefonn\u00ED \u010D\u00EDsla';
+    displayName: 'T\u00EDs\u0148ov\u00E9 \u010D\u00EDslo';
+    pluralName: 'emergency-numbers';
+    singularName: 'emergency-number';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::emergency-number.emergency-number'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    phone: Schema.Attribute.String;
+    phones: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHealthcareProviderHealthcareProvider
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'healthcare_providers';
+  info: {
+    description: 'L\u00E9ka\u0159i, zuba\u0159i, l\u00E9k\u00E1rny a dal\u0161\u00ED zdravotnick\u00E1 za\u0159\u00EDzen\u00ED';
+    displayName: 'Zdravotnick\u00E9 za\u0159\u00EDzen\u00ED';
+    pluralName: 'healthcare-providers';
+    singularName: 'healthcare-provider';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    address: Schema.Attribute.Text;
+    category: Schema.Attribute.Enumeration<
+      [
+        'pediatrician',
+        'generalPractitioner',
+        'gynecology',
+        'surgery',
+        'cardiology',
+        'ophthalmology',
+        'pulmonary',
+        'allergology',
+        'rehabilitation',
+        'ent',
+        'dentist',
+        'dentalHygiene',
+        'physiotherapy',
+        'optician',
+        'pharmacy',
+      ]
+    > &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::healthcare-provider.healthcare-provider'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    phone: Schema.Attribute.String;
+    phones: Schema.Attribute.JSON;
+    providerId: Schema.Attribute.UID & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    staff: Schema.Attribute.Component<'shared.staff-member', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
+  };
+}
+
+export interface ApiLifeSituationLifeSituation
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'life_situations';
+  info: {
+    description: 'Kategorie pro vyhled\u00E1v\u00E1n\u00ED poskytovatel\u016F';
+    displayName: '\u017Divotn\u00ED situace';
+    pluralName: 'life-situations';
+    singularName: 'life-situation';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::life-situation.life-situation'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    providerRefs: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    situationId: Schema.Attribute.UID & Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
+  collectionName: 'providers';
+  info: {
+    description: 'Poskytovatel\u00E9 soci\u00E1ln\u00EDch slu\u017Eeb';
+    displayName: 'Poskytovatel';
+    pluralName: 'providers';
+    singularName: 'provider';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    contact: Schema.Attribute.Component<'shared.contact-info', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::provider.provider'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    providerId: Schema.Attribute.UID & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    services: Schema.Attribute.Component<'shared.service', true>;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSiteMetadataSiteMetadata extends Struct.SingleTypeSchema {
+  collectionName: 'site_metadatas';
+  info: {
+    description: 'Metadata a informace o webu';
+    displayName: 'Metadata webu';
+    pluralName: 'site-metadatas';
+    singularName: 'site-metadata';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    city: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    language: Schema.Attribute.String & Schema.Attribute.DefaultTo<'cs'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::site-metadata.site-metadata'
+    > &
+      Schema.Attribute.Private;
+    publishDate: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    publisher: Schema.Attribute.String;
+    region: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -940,6 +1204,13 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::authority.authority': ApiAuthorityAuthority;
+      'api::crisis-line.crisis-line': ApiCrisisLineCrisisLine;
+      'api::emergency-number.emergency-number': ApiEmergencyNumberEmergencyNumber;
+      'api::healthcare-provider.healthcare-provider': ApiHealthcareProviderHealthcareProvider;
+      'api::life-situation.life-situation': ApiLifeSituationLifeSituation;
+      'api::provider.provider': ApiProviderProvider;
+      'api::site-metadata.site-metadata': ApiSiteMetadataSiteMetadata;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
