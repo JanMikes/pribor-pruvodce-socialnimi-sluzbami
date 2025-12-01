@@ -42,8 +42,8 @@ export default function Header() {
                   />
                 </svg>
               </div>
-              <div className="hidden sm:block">
-                <span className="text-lg font-bold text-stone-800 tracking-tight">
+              <div>
+                <span className="text-base sm:text-lg font-bold text-stone-800 tracking-tight">
                   Průvodce službami
                 </span>
                 <span className="block text-xs text-primary-600 font-medium -mt-0.5">
