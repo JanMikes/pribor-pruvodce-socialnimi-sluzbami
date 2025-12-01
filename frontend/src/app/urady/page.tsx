@@ -1,5 +1,7 @@
 import { getAuthorities } from '@/lib/strapi';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Úřady | Průvodce sociálními službami Příbor',
   description: 'Kontakty na městský úřad, úřad práce a další státní instituce v Příboře.',

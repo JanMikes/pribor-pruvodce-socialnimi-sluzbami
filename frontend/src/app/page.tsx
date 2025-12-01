@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getLifeSituationsWithProviderCounts, getCrisisLines } from '@/lib/strapi';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const [lifeSituations, crisisLines] = await Promise.all([
     getLifeSituationsWithProviderCounts(),

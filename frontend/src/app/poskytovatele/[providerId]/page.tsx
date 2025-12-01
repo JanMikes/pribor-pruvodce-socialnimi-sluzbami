@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { getProviderById } from '@/lib/strapi';
 import type { ContactInfo as ContactInfoType } from '@/lib/types';
 
+export const dynamic = 'force-dynamic';
+
 interface PageProps {
   params: Promise<{ providerId: string }>;
 }

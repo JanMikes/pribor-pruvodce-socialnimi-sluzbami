@@ -1,5 +1,7 @@
 import { getCrisisLines } from '@/lib/strapi';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Krizové linky | Průvodce sociálními službami Příbor',
   description: 'Seznam krizových linek a telefonických poraden pro občany v nouzi.',

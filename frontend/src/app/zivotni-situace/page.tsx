@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getLifeSituationsWithProviderCounts } from '@/lib/strapi';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Životní situace | Průvodce sociálními službami Příbor',
   description: 'Vyberte svou životní situaci a najdete pomoc a podporu v Příboře.',

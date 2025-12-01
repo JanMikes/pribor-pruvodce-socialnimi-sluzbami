@@ -35,5 +35,4 @@ Thumbs.db
 
 # Docker files (not needed inside image)
 Dockerfile
-docker-entrypoint.sh
 .dockerignore

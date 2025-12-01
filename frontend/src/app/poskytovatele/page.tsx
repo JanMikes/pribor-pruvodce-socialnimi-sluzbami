@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getProviders } from '@/lib/strapi';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Poskytovatelé služeb | Průvodce sociálními službami Příbor',
   description: 'Kompletní seznam poskytovatelů sociálních služeb v Příboře.',

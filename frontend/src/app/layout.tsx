@@ -7,6 +7,8 @@ import EmergencyBar from '@/components/EmergencyBar'
 
 const inter = Inter({ subsets: ['latin', 'latin-ext'] })
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Průvodce sociálními službami Příbor',
   description: 'Informační portál sociálních služeb pro občany města Příbor',

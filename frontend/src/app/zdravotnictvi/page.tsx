@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { getHealthcareProviders } from '@/lib/strapi';
 import { healthcareCategoryLabels, type HealthcareCategory } from '@/lib/types';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Zdravotnictví | Průvodce sociálními službami Příbor',
   description: 'Přehled lékařů, zubních lékařů, lékáren a dalších zdravotnických zařízení v Příboře.',

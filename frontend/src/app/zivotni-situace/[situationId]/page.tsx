@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { getLifeSituationById, getProvidersByIds } from '@/lib/strapi';
 import type { Provider } from '@/lib/types';
 
+export const dynamic = 'force-dynamic';
+
 interface PageProps {
   params: Promise<{ situationId: string }>;
 }
