@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getLifeSituations, getCrisisLines } from '@/lib/strapi';
+import { getLifeSituationsWithProviderCounts, getCrisisLines } from '@/lib/strapi';
 
 // Icons for life situations (based on common categories)
 const situationIcons: Record<string, React.ReactNode> = {
@@ -12,7 +12,7 @@ const situationIcons: Record<string, React.ReactNode> = {
 
 export default async function Home() {
   const [lifeSituations, crisisLines] = await Promise.all([
-    getLifeSituations(),
+    getLifeSituationsWithProviderCounts(),
     getCrisisLines(),
   ]);
 
@@ -81,7 +81,7 @@ export default async function Home() {
                       {situation.name}
                     </h3>
                     <p className="text-sm text-gray-500 mt-1">
-                      {situation.providerRefs.length} poskytovatel{situation.providerRefs.length === 1 ? '' : situation.providerRefs.length < 5 ? 'e' : 'u'}
+                      {situation.actualProviderCount} poskytovatel{situation.actualProviderCount === 1 ? '' : situation.actualProviderCount < 5 ? 'é' : 'ů'}
                     </p>
                   </div>
                   <svg

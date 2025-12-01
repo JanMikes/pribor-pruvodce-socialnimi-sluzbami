@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getLifeSituations } from '@/lib/strapi';
+import { getLifeSituationsWithProviderCounts } from '@/lib/strapi';
 
 export const metadata = {
   title: 'Životní situace | Průvodce sociálními službami Příbor',
@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 export default async function LifeSituationsPage() {
-  const lifeSituations = await getLifeSituations();
+  const lifeSituations = await getLifeSituationsWithProviderCounts();
 
   return (
     <div className="bg-gray-50 py-12">
@@ -41,7 +41,7 @@ export default async function LifeSituationsPage() {
                     {situation.name}
                   </h2>
                   <p className="text-sm text-gray-500">
-                    {situation.providerRefs.length} poskytovatel{situation.providerRefs.length === 1 ? '' : situation.providerRefs.length < 5 ? 'e' : 'u'}
+                    {situation.actualProviderCount} poskytovatel{situation.actualProviderCount === 1 ? '' : situation.actualProviderCount < 5 ? 'é' : 'ů'}
                   </p>
                 </div>
                 <svg

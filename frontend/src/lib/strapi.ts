@@ -180,6 +180,27 @@ export async function getLifeSituationById(situationId: string): Promise<LifeSit
   return response.data[0] || null;
 }
 
+export type LifeSituationWithCount = LifeSituation & { actualProviderCount: number };
+
+export async function getLifeSituationsWithProviderCounts(): Promise<LifeSituationWithCount[]> {
+  const situations = await getLifeSituations();
+
+  // Get all unique provider IDs across all situations
+  const allProviderIds = [...new Set(situations.flatMap(s => s.providerRefs || []))];
+
+  // Fetch all providers in one query
+  const existingProviders = await getProvidersByIds(allProviderIds);
+  const existingProviderIds = new Set(existingProviders.map(p => p.providerId));
+
+  // Calculate actual counts and filter out situations with 0 providers
+  return situations
+    .map(situation => ({
+      ...situation,
+      actualProviderCount: (situation.providerRefs || []).filter(id => existingProviderIds.has(id)).length
+    }))
+    .filter(situation => situation.actualProviderCount > 0);
+}
+
 // Crisis Lines
 export async function getCrisisLines(): Promise<CrisisLine[]> {
   const response = await fetchStrapi<StrapiResponse<CrisisLine[]>>('/crisis-lines', {
