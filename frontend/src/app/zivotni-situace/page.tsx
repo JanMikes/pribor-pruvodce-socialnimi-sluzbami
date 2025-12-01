@@ -44,12 +44,9 @@ export default async function LifeSituationsPage() {
                   </svg>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-lg font-bold text-stone-900 group-hover:text-primary-700 transition-colors mb-1">
-                    {situation.name}
+                  <h2 className="text-lg font-bold text-stone-900 group-hover:text-primary-700 transition-colors">
+                    {situation.name} <span className="text-stone-400 font-normal">({situation.actualProviderCount})</span>
                   </h2>
-                  <p className="text-sm text-stone-500">
-                    {situation.actualProviderCount} poskytovatel{situation.actualProviderCount === 1 ? '' : situation.actualProviderCount < 5 ? 'é' : 'ů'}
-                  </p>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center group-hover:bg-primary-100 transition-colors flex-shrink-0">
                   <svg

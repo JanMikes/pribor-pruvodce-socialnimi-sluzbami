@@ -9,19 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary - warm indigo (help, navigation, trust)
+        // Primary - Příbor navy blue (help, navigation, trust)
         primary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
-          950: '#1e1b4b',
+          50: '#eef0ff',
+          100: '#e0e3ff',
+          200: '#c7cbfe',
+          300: '#a5abfc',
+          400: '#8287f5',
+          500: '#5f65ea',
+          600: '#4a4fd9',
+          700: '#3c41b8',
+          800: '#282e67',
+          900: '#1e2352',
+          950: '#12153a',
         },
         // Secondary - coral/rose (emergency, crisis, urgent)
         secondary: {
@@ -95,7 +95,7 @@ const config: Config = {
       boxShadow: {
         'soft': '0 4px 20px rgba(0, 0, 0, 0.06)',
         'soft-lg': '0 8px 30px rgba(0, 0, 0, 0.1)',
-        'glow-primary': '0 4px 14px rgba(99, 102, 241, 0.25)',
+        'glow-primary': '0 4px 14px rgba(40, 46, 103, 0.25)',
         'glow-secondary': '0 4px 14px rgba(244, 63, 94, 0.25)',
       },
       borderRadius: {

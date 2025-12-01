@@ -11,9 +11,6 @@ export default async function EmergencyBar() {
     <div className="bg-gradient-to-r from-secondary-600 to-secondary-500 text-white shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center gap-4 sm:gap-8 py-2.5 text-sm overflow-x-auto">
-          <span className="font-semibold whitespace-nowrap hidden sm:inline tracking-wide uppercase text-xs text-secondary-100">
-            Tísňová čísla:
-          </span>
           {emergencyNumbers.slice(0, 4).map((emergency) => (
             <a
               key={emergency.id}
