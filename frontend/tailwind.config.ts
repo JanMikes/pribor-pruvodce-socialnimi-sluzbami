@@ -11,17 +11,17 @@ const config: Config = {
       colors: {
         // Primary - Příbor navy blue (help, navigation, trust)
         primary: {
-          50: '#eef0ff',
-          100: '#e0e3ff',
-          200: '#c7cbfe',
-          300: '#a5abfc',
-          400: '#8287f5',
-          500: '#5f65ea',
-          600: '#4a4fd9',
-          700: '#3c41b8',
-          800: '#282e67',
-          900: '#1e2352',
-          950: '#12153a',
+          50: '#eceef8',
+          100: '#d9ddf1',
+          200: '#b3bbe3',
+          300: '#8d99d5',
+          400: '#6777c7',
+          500: '#4155b9',
+          600: '#3444a0',
+          700: '#282e67',
+          800: '#1e2350',
+          900: '#141839',
+          950: '#0a0c1d',
         },
         // Secondary - coral/rose (emergency, crisis, urgent)
         secondary: {
