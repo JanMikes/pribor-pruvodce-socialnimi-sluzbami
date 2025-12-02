@@ -54,7 +54,7 @@ export default async function ProvidersPage() {
                   )}
                   {provider.services && provider.services.length > 0 && (
                     <p className="text-xs text-stone-500">
-                      {provider.services.length} sluzb{provider.services.length === 1 ? 'a' : provider.services.length < 5 ? 'y' : ''}
+                      {provider.services.length} služb{provider.services.length === 1 ? 'a' : provider.services.length < 5 ? 'y' : ''}
                     </p>
                   )}
                 </div>
