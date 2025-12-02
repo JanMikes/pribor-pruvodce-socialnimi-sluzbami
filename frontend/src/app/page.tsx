@@ -78,7 +78,7 @@ export default async function Home() {
                 href={`/zivotni-situace/${situation.situationId}`}
                 className="group card-interactive"
               >
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div className="icon-box group-hover:scale-110 group-hover:shadow-glow-primary">
                     <span className="text-lg font-bold">{index + 1}</span>
                   </div>
