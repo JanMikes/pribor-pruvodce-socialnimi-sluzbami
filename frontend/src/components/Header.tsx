@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -26,30 +27,15 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-glow-primary group-hover:shadow-lg transition-all">
-                <svg
-                  className="w-5 h-5 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <span className="text-base sm:text-lg font-bold text-stone-800 tracking-tight">
-                  Průvodce službami
-                </span>
-                <span className="block text-xs text-primary-600 font-medium -mt-0.5">
-                  Příbor
-                </span>
-              </div>
+            <Link href="/" className="block">
+              <Image
+                src="/logo-pribor.svg"
+                alt="Město Příbor - Průvodce sociálními službami"
+                width={180}
+                height={30}
+                className="h-8 w-auto"
+                priority
+              />
             </Link>
           </div>
 
