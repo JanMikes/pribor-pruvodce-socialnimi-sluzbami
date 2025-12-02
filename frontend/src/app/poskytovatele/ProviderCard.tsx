@@ -50,7 +50,7 @@ function ContactInfo({ contact }: { contact: ContactInfoType }) {
   );
 }
 
-export default function ProviderCard({ provider }: { provider: Provider }) {
+export default function ProviderCard({ provider, letter }: { provider: Provider; letter: string | null }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const hasContact = provider.contact && (
@@ -62,17 +62,19 @@ export default function ProviderCard({ provider }: { provider: Provider }) {
   );
 
   return (
-    <div className="card">
+    <div id={letter ? `letter-${letter}` : undefined} className="card scroll-mt-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full text-left"
       >
         <div className="flex items-start gap-4">
-          <div className={`icon-box transition-all ${isOpen ? 'bg-primary-100 text-primary-600' : ''}`}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-          </div>
+          {letter ? (
+            <div className={`icon-box transition-all ${isOpen ? 'bg-primary-100 text-primary-600' : ''}`}>
+              <span className="text-lg font-bold">{letter}</span>
+            </div>
+          ) : (
+            <div className="w-12 h-12 flex-shrink-0" />
+          )}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
               <h2 className={`text-lg font-bold transition-colors ${isOpen ? 'text-primary-700' : 'text-stone-900'}`}>
@@ -90,9 +92,9 @@ export default function ProviderCard({ provider }: { provider: Provider }) {
               </p>
             )}
           </div>
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${isOpen ? 'bg-primary-100' : 'bg-stone-100'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${isOpen ? 'bg-primary-100' : 'bg-primary-50'}`}>
             <svg
-              className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180 text-primary-600' : 'text-stone-400'}`}
+              className={`w-4 h-4 transition-transform text-primary-600 ${isOpen ? 'rotate-180' : ''}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

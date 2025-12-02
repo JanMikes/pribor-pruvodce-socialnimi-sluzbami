@@ -15,8 +15,8 @@ export default async function LifeSituationsPage() {
     <div className="section">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="icon-box icon-box-lg mx-auto mb-6">
+        <div className="mb-12">
+          <div className="icon-box icon-box-lg mb-6">
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -24,7 +24,7 @@ export default async function LifeSituationsPage() {
           <h1 className="text-heading text-stone-900 mb-4">
             Životní situace
           </h1>
-          <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+          <p className="text-lg text-stone-600 max-w-2xl">
             Vyberte situaci, která Vás momentálně trápí, a my Vám ukážeme dostupné služby a pomoc.
           </p>
         </div>

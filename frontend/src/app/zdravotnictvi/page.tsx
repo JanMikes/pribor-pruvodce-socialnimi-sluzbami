@@ -47,8 +47,8 @@ export default async function HealthcarePage() {
     <div className="section">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="icon-box icon-box-success icon-box-lg mx-auto mb-6">
+        <div className="mb-12">
+          <div className="icon-box icon-box-success icon-box-lg mb-6">
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
@@ -56,13 +56,13 @@ export default async function HealthcarePage() {
           <h1 className="text-heading text-stone-900 mb-4">
             Zdravotnictví
           </h1>
-          <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+          <p className="text-lg text-stone-600 max-w-2xl">
             Přehled zdravotnických zařízení, lékařů a lékáren v Příboře.
           </p>
         </div>
 
         {/* Category Navigation */}
-        <div className="mb-12 flex flex-wrap justify-center gap-2">
+        <div className="mb-12 flex flex-wrap gap-2">
           {sortedCategories.map((category) => (
             <a
               key={category}
