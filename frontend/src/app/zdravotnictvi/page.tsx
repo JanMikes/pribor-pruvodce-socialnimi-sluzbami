@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { getHealthcareProviders } from '@/lib/strapi';
 import { healthcareCategoryLabels, type HealthcareCategory } from '@/lib/types';
+import CategoryNavigation from './CategoryNavigation';
 
 export const dynamic = 'force-dynamic';
 
@@ -48,7 +48,7 @@ export default async function HealthcarePage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12">
-          <div className="icon-box icon-box-success icon-box-lg mb-6">
+          <div className="icon-box icon-box-healthcare icon-box-lg mb-6">
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
@@ -62,24 +62,19 @@ export default async function HealthcarePage() {
         </div>
 
         {/* Category Navigation */}
-        <div className="mb-12 flex flex-wrap gap-2">
-          {sortedCategories.map((category) => (
-            <a
-              key={category}
-              href={`#${category}`}
-              className="px-4 py-2 bg-surface rounded-xl border border-stone-200 text-sm font-medium text-stone-700 hover:bg-success-50 hover:border-success-200 hover:text-success-700 transition-all shadow-sm"
-            >
-              {healthcareCategoryLabels[category]} ({groupedProviders[category].length})
-            </a>
-          ))}
-        </div>
+        <CategoryNavigation
+          categories={sortedCategories}
+          counts={Object.fromEntries(
+            sortedCategories.map(cat => [cat, groupedProviders[cat].length])
+          ) as Record<HealthcareCategory, number>}
+        />
 
         {/* Categories */}
         <div className="space-y-16">
           {sortedCategories.map((category) => (
             <section key={category} id={category}>
               <h2 className="text-xl font-bold text-stone-900 mb-6 flex items-center gap-3">
-                <div className="icon-box icon-box-success">
+                <div className="icon-box icon-box-healthcare">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
@@ -112,7 +107,7 @@ export default async function HealthcarePage() {
                           <svg className="w-4 h-4 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                           </svg>
-                          <a href={`tel:${provider.phone || provider.phones?.[0]}`} className="hover:text-success-600 transition-colors">
+                          <a href={`tel:${provider.phone || provider.phones?.[0]}`} className="hover:text-healthcare-600 transition-colors">
                             {provider.phone || provider.phones?.join(', ')}
                           </a>
                         </div>
@@ -122,7 +117,7 @@ export default async function HealthcarePage() {
                           <svg className="w-4 h-4 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                           </svg>
-                          <a href={provider.website} target="_blank" rel="noopener noreferrer" className="hover:text-success-600 truncate transition-colors">
+                          <a href={provider.website} target="_blank" rel="noopener noreferrer" className="hover:text-healthcare-600 truncate transition-colors">
                             Web
                           </a>
                         </div>

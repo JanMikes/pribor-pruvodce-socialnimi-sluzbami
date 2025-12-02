@@ -56,7 +56,7 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {lifeSituations.map((situation) => (
+            {lifeSituations.map((situation, index) => (
               <Link
                 key={situation.id}
                 href={`/zivotni-situace/${situation.situationId}`}
@@ -64,18 +64,16 @@ export default async function Home() {
               >
                 <div className="flex items-start gap-4">
                   <div className="icon-box group-hover:scale-110 group-hover:shadow-glow-primary">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <span className="text-lg font-bold">{index + 1}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-stone-800 group-hover:text-primary-700 transition-colors">
                       {situation.name} <span className="text-stone-400 font-normal">({situation.actualProviderCount})</span>
                     </h3>
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center group-hover:bg-primary-100 transition-colors flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors flex-shrink-0">
                     <svg
-                      className="w-4 h-4 text-stone-400 group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all"
+                      className="w-4 h-4 text-primary-600 group-hover:translate-x-0.5 transition-all"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -140,9 +138,9 @@ export default async function Home() {
             </div>
 
             {/* Healthcare */}
-            <div className="card-success flex flex-col">
+            <div className="card-healthcare flex flex-col">
               <div className="flex items-center gap-4 mb-5">
-                <div className="icon-box icon-box-success icon-box-lg">
+                <div className="icon-box icon-box-healthcare icon-box-lg">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
@@ -157,7 +155,7 @@ export default async function Home() {
               </p>
               <Link
                 href="/zdravotnictvi"
-                className="btn w-full justify-center text-sm bg-gradient-to-r from-success-500 to-success-600 text-white hover:from-success-600 hover:to-success-700 shadow-lg shadow-success-500/25 mt-auto"
+                className="btn w-full justify-center text-sm bg-gradient-to-r from-healthcare-500 to-healthcare-600 text-white hover:from-healthcare-600 hover:to-healthcare-700 shadow-lg shadow-healthcare-500/25 mt-auto"
               >
                 Zobrazit zdravotnictví
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,9 +165,9 @@ export default async function Home() {
             </div>
 
             {/* Authorities */}
-            <div className="card-accent flex flex-col">
+            <div className="card-authority flex flex-col">
               <div className="flex items-center gap-4 mb-5">
-                <div className="icon-box icon-box-accent icon-box-lg">
+                <div className="icon-box icon-box-authority icon-box-lg">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                   </svg>
@@ -184,7 +182,7 @@ export default async function Home() {
               </p>
               <Link
                 href="/urady"
-                className="btn w-full justify-center text-sm bg-gradient-to-r from-accent-500 to-accent-600 text-white hover:from-accent-600 hover:to-accent-700 shadow-lg shadow-accent-500/25 mt-auto"
+                className="btn w-full justify-center text-sm bg-gradient-to-r from-authority-500 to-authority-600 text-white hover:from-authority-600 hover:to-authority-700 shadow-lg shadow-authority-500/25 mt-auto"
               >
                 Zobrazit úřady
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

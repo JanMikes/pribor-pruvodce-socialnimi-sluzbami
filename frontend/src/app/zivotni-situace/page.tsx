@@ -18,7 +18,7 @@ export default async function LifeSituationsPage() {
         <div className="mb-12">
           <div className="icon-box icon-box-lg mb-6">
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
           </div>
           <h1 className="text-heading text-stone-900 mb-4">
@@ -31,7 +31,7 @@ export default async function LifeSituationsPage() {
 
         {/* Situations Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {lifeSituations.map((situation) => (
+          {lifeSituations.map((situation, index) => (
             <Link
               key={situation.id}
               href={`/zivotni-situace/${situation.situationId}`}
@@ -39,18 +39,16 @@ export default async function LifeSituationsPage() {
             >
               <div className="flex items-start gap-4">
                 <div className="icon-box group-hover:scale-110 group-hover:shadow-glow-primary">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  <span className="text-lg font-bold">{index + 1}</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <h2 className="text-lg font-bold text-stone-900 group-hover:text-primary-700 transition-colors">
                     {situation.name} <span className="text-stone-400 font-normal">({situation.actualProviderCount})</span>
                   </h2>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center group-hover:bg-primary-100 transition-colors flex-shrink-0">
+                <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors flex-shrink-0">
                   <svg
-                    className="w-4 h-4 text-stone-400 group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all"
+                    className="w-4 h-4 text-primary-600 group-hover:translate-x-0.5 transition-all"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

@@ -51,7 +51,7 @@ const config: Config = {
           900: '#78350f',
           950: '#451a03',
         },
-        // Success - teal (healthcare, positive outcomes)
+        // Success - teal (positive outcomes)
         success: {
           50: '#f0fdfa',
           100: '#ccfbf1',
@@ -64,6 +64,34 @@ const config: Config = {
           800: '#115e59',
           900: '#134e4a',
           950: '#042f2e',
+        },
+        // Healthcare - sky blue #51aee2 (doctors, medical)
+        healthcare: {
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#51aee2',
+          500: '#38a3d8',
+          600: '#1a8cc5',
+          700: '#0d76ab',
+          800: '#075f8a',
+          900: '#054a6e',
+          950: '#022d44',
+        },
+        // Authority - lime green #8ec156 (government offices)
+        authority: {
+          50: '#f5fce8',
+          100: '#e8f7d0',
+          200: '#d0efa0',
+          300: '#b0dc6f',
+          400: '#8ec156',
+          500: '#6fa82f',
+          600: '#5a8f24',
+          700: '#47721c',
+          800: '#385b15',
+          900: '#2a4510',
+          950: '#162608',
         },
         // Warm neutrals (stone)
         stone: {
@@ -97,6 +125,7 @@ const config: Config = {
         'soft-lg': '0 8px 30px rgba(0, 0, 0, 0.1)',
         'glow-primary': '0 4px 14px rgba(40, 46, 103, 0.25)',
         'glow-secondary': '0 4px 14px rgba(244, 63, 94, 0.25)',
+        'glow-authority': '0 4px 14px rgba(142, 193, 86, 0.35)',
       },
       borderRadius: {
         '2xl': '1rem',

@@ -35,6 +35,14 @@
     @apply card bg-gradient-to-br from-accent-50 to-surface border-accent-100;
   }
 
+  .card-healthcare {
+    @apply card bg-gradient-to-br from-healthcare-50 to-surface border-healthcare-100;
+  }
+
+  .card-authority {
+    @apply card bg-gradient-to-br from-authority-50 to-surface border-authority-100;
+  }
+
   /* Icon containers */
   .icon-box {
     @apply w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0;
@@ -53,6 +61,14 @@
 
   .icon-box-accent {
     @apply bg-gradient-to-br from-accent-100 to-accent-50 text-accent-600;
+  }
+
+  .icon-box-healthcare {
+    @apply bg-gradient-to-br from-healthcare-100 to-healthcare-50 text-healthcare-600;
+  }
+
+  .icon-box-authority {
+    @apply bg-gradient-to-br from-authority-100 to-authority-50 text-authority-600;
   }
 
   .icon-box-lg {
