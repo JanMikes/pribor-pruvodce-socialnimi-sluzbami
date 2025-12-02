@@ -62,7 +62,7 @@ export default function ProviderCard({ provider, letter }: { provider: Provider;
   );
 
   return (
-    <div id={letter ? `letter-${letter}` : undefined} className="card scroll-mt-4">
+    <div id={letter ? `letter-${letter}` : undefined} className="card scroll-mt-24">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full text-left"

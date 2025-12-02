@@ -138,25 +138,35 @@ export default async function ProviderDetailPage({ params }: PageProps) {
               Služby
             </h2>
             <div className="space-y-5">
-              {provider.services.map((service) => (
-                <div
-                  key={service.id}
-                  className="card"
-                >
-                  <h3 className="text-lg font-bold text-stone-900 mb-2">
-                    {service.name}
-                  </h3>
-                  {service.description && (
-                    <p className="text-stone-600 mb-4 leading-relaxed">{service.description}</p>
-                  )}
-                  {service.contact && (
-                    <div className="pt-4 border-t border-stone-100">
-                      <h4 className="text-sm font-semibold text-stone-700 mb-3">Kontakt na službu:</h4>
-                      <ContactInfo contact={service.contact} />
-                    </div>
-                  )}
-                </div>
-              ))}
+              {provider.services.map((service) => {
+                const hasServiceContact = service.contact && (
+                  service.contact.address ||
+                  service.contact.phone ||
+                  service.contact.phones?.length ||
+                  service.contact.email ||
+                  service.contact.website
+                );
+
+                return (
+                  <div
+                    key={service.id}
+                    className="card"
+                  >
+                    <h3 className="text-lg font-bold text-stone-900 mb-2">
+                      {service.name}
+                    </h3>
+                    {service.description && (
+                      <p className="text-stone-600 mb-4 leading-relaxed">{service.description}</p>
+                    )}
+                    {hasServiceContact && (
+                      <div className="pt-4 border-t border-stone-100">
+                        <h4 className="text-sm font-semibold text-stone-700 mb-3">Kontakt na službu:</h4>
+                        <ContactInfo contact={service.contact!} />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}

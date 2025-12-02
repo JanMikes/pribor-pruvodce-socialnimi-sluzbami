@@ -34,7 +34,12 @@ function buildQueryString(options: FetchOptions): string {
       // Handle deep population
       const flattenPopulate = (obj: Record<string, unknown>, prefix = 'populate'): void => {
         for (const [key, value] of Object.entries(obj)) {
-          if (typeof value === 'object' && value !== null) {
+          if (Array.isArray(value)) {
+            // Handle arrays: populate[field][populate][0]=nestedField
+            value.forEach((item, index) => {
+              params.set(`${prefix}[${key}][${index}]`, String(item));
+            });
+          } else if (typeof value === 'object' && value !== null) {
             flattenPopulate(value as Record<string, unknown>, `${prefix}[${key}]`);
           } else {
             params.set(`${prefix}[${key}]`, String(value));
@@ -104,9 +109,7 @@ export async function getProviders(): Promise<Provider[]> {
   const response = await fetchStrapi<StrapiResponse<Provider[]>>('/providers', {
     populate: {
       services: {
-        populate: {
-          contact: '*',
-        },
+        populate: ['contact'],
       },
       contact: '*',
     },
@@ -121,9 +124,7 @@ export async function getProviderBySlug(slug: string): Promise<Provider | null> 
     filters: { slug: { $eq: slug } },
     populate: {
       services: {
-        populate: {
-          contact: '*',
-        },
+        populate: ['contact'],
       },
       contact: '*',
     },
@@ -136,9 +137,7 @@ export async function getProviderById(providerId: string): Promise<Provider | nu
     filters: { providerId: { $eq: providerId } },
     populate: {
       services: {
-        populate: {
-          contact: '*',
-        },
+        populate: ['contact'],
       },
       contact: '*',
     },
@@ -153,9 +152,7 @@ export async function getProvidersByIds(providerIds: string[]): Promise<Provider
     filters: { providerId: { $in: providerIds } },
     populate: {
       services: {
-        populate: {
-          contact: '*',
-        },
+        populate: ['contact'],
       },
       contact: '*',
     },
