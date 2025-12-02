@@ -20,7 +20,7 @@ export default async function Home() {
         <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-secondary-500/10 rounded-full blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-20 sm:pb-28">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-8">
             {/* Text content - left side */}
             <div className="max-w-4xl lg:max-w-2xl">
               {/* City Logo */}
@@ -29,7 +29,7 @@ export default async function Home() {
                 alt="Město Příbor"
                 className="h-8 sm:h-10 mb-12 brightness-0 invert"
               />
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+              <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-balance tracking-tight">
                   Průvodce sociálními službami a navazujícími aktivitami
               </h1>
               <p className="text-lg sm:text-xl text-primary-100 max-w-2xl mb-10 leading-relaxed">
