@@ -18,16 +18,18 @@ export default async function Home() {
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary-400/20 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
         <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-secondary-500/10 rounded-full blur-3xl" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <span className="w-2 h-2 bg-secondary-400 rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-primary-100">Město Příbor</span>
-            </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-20 sm:pb-28">
+          <div className="max-w-3xl">
+            {/* City Logo */}
+            <img
+              src="/logo-pribor.svg"
+              alt="Město Příbor"
+              className="h-8 sm:h-10 mb-8 brightness-0 invert"
+            />
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
                 Průvodce sociálními službami a navazujícími aktivitami
             </h1>
-            <p className="text-lg sm:text-xl text-primary-100 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-lg sm:text-xl text-primary-100 max-w-2xl mb-10 leading-relaxed">
                 ve městě příbor a jeho přilehlém okolí pro pomoc a podporu v různých životních situacích.
             </p>
           </div>
@@ -44,11 +46,11 @@ export default async function Home() {
       {/* Life Situations Grid */}
       <section className="section">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="mb-12">
             <h2 className="text-heading text-stone-900 mb-4">
               Kdo mi pomůže?
             </h2>
-            <p className="text-stone-600 max-w-2xl mx-auto text-lg">
+            <p className="text-stone-600 max-w-2xl text-lg">
               Vyberte životní situaci, která Vás trápí, a my Vám ukážeme dostupnou pomoc.
             </p>
           </div>
@@ -91,11 +93,11 @@ export default async function Home() {
       {/* Quick Links Section */}
       <section className="section-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="mb-12">
             <h2 className="text-heading text-stone-900 mb-4">
               Další důležité informace
             </h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">
+            <p className="text-stone-600 max-w-2xl">
               Rychlý přístup ke krizovým linkám, zdravotnickým službám a úřadům.
             </p>
           </div>
