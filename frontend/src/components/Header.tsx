@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { useSearchContext } from './search/SearchProvider';
 
 const navigation = [
   { name: 'Životní situace', href: '/zivotni-situace' },
@@ -15,6 +16,7 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { openSearch } = useSearchContext();
 
   const isActive = (href: string) => {
     return pathname === href || pathname.startsWith(href + '/');
@@ -71,10 +73,34 @@ export default function Header() {
                 </Link>
               );
             })}
+            {/* Search button */}
+            <button
+              type="button"
+              onClick={openSearch}
+              className="ml-2 inline-flex items-center gap-2 px-3 py-2 text-sm text-stone-500 hover:text-stone-700 bg-stone-100 hover:bg-stone-200 rounded-lg transition-colors"
+              aria-label="Vyhledávání"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <span className="hidden lg:inline">Hledat</span>
+            </button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
+          {/* Mobile: search + hamburger */}
+          <div className="flex md:hidden items-center gap-1">
+            {/* Mobile search button */}
+            <button
+              type="button"
+              onClick={openSearch}
+              className="inline-flex items-center justify-center rounded-xl p-2.5 text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors"
+              aria-label="Vyhledávání"
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+            {/* Hamburger menu button */}
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-xl p-2.5 text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors"

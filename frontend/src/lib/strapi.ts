@@ -9,6 +9,7 @@ import type {
   EmergencyNumber,
   SiteMetadata,
   HealthcareCategory,
+  SearchableContent,
 } from './types';
 
 // Use Docker service name for SSR, localhost for client-side
@@ -277,4 +278,32 @@ export async function getSiteMetadata(): Promise<SiteMetadata | null> {
   } catch {
     return null;
   }
+}
+
+// Search - Get all searchable content in parallel
+export async function getAllSearchableContent(): Promise<SearchableContent> {
+  const [
+    providers,
+    lifeSituations,
+    crisisLines,
+    authorities,
+    healthcareProviders,
+    emergencyNumbers,
+  ] = await Promise.all([
+    getProviders(),
+    getLifeSituations(),
+    getCrisisLines(),
+    getAuthorities(),
+    getHealthcareProviders(),
+    getEmergencyNumbers(),
+  ]);
+
+  return {
+    providers,
+    lifeSituations,
+    crisisLines,
+    authorities,
+    healthcareProviders,
+    emergencyNumbers,
+  };
 }

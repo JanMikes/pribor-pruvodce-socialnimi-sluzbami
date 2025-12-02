@@ -170,3 +170,34 @@ export const healthcareCategoryLabels: Record<HealthcareCategory, string> = {
   optician: 'Optika',
   pharmacy: 'Lékárny',
 };
+
+// Search types
+export interface SearchableContent {
+  providers: Provider[];
+  lifeSituations: LifeSituation[];
+  crisisLines: CrisisLine[];
+  authorities: Authority[];
+  healthcareProviders: HealthcareProvider[];
+  emergencyNumbers: EmergencyNumber[];
+}
+
+export type SearchResultType =
+  | 'provider'
+  | 'lifeSituation'
+  | 'crisisLine'
+  | 'authority'
+  | 'healthcare'
+  | 'emergency';
+
+export interface SearchResult {
+  id: string;
+  type: SearchResultType;
+  title: string;
+  subtitle?: string;
+  description?: string;
+  href: string;
+  phone?: string;
+  address?: string;
+  availability?: string;
+  score: number;
+}
