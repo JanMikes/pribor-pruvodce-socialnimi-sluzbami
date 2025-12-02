@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getLifeSituationsWithProviderCounts, getCrisisLines } from '@/lib/strapi';
 
 export const dynamic = 'force-dynamic';
@@ -19,19 +20,34 @@ export default async function Home() {
         <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-secondary-500/10 rounded-full blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-20 sm:pb-28">
-          <div className="max-w-4xl">
-            {/* City Logo */}
-            <img
-              src="/logo-pribor.svg"
-              alt="Město Příbor"
-              className="h-8 sm:h-10 mb-12 brightness-0 invert"
-            />
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
-                Průvodce sociálními službami a navazujícími aktivitami
-            </h1>
-            <p className="text-lg sm:text-xl text-primary-100 max-w-2xl mb-10 leading-relaxed">
-                ve městě příbor a jeho přilehlém okolí pro pomoc a podporu v různých životních situacích.
-            </p>
+          <div className="flex items-center justify-between">
+            {/* Text content - left side */}
+            <div className="max-w-4xl lg:max-w-2xl">
+              {/* City Logo */}
+              <img
+                src="/logo-pribor.svg"
+                alt="Město Příbor"
+                className="h-8 sm:h-10 mb-12 brightness-0 invert"
+              />
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-balance tracking-tight">
+                  Průvodce sociálními službami a navazujícími aktivitami
+              </h1>
+              <p className="text-lg sm:text-xl text-primary-100 max-w-2xl mb-10 leading-relaxed">
+                  ve městě příbor a jeho přilehlém okolí pro pomoc a podporu v různých životních situacích.
+              </p>
+            </div>
+
+            {/* Hero image - right side, hidden on mobile/tablet */}
+            <div className="hidden lg:block flex-shrink-0">
+              <Image
+                src="/header.png"
+                alt="Letecký pohled na město Příbor"
+                width={500}
+                height={500}
+                className="w-auto h-auto max-h-[400px]"
+                priority
+              />
+            </div>
           </div>
         </div>
 
