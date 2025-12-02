@@ -106,7 +106,7 @@ export default function ProviderCard({ provider, letter }: { provider: Provider;
       </button>
 
       {isOpen && (
-        <div className="mt-4 pt-4 border-t border-stone-100">
+        <div className="mt-4 pt-4 border-t border-stone-100 ml-16">
           {hasContact && (
             <div className="mb-4">
               <h3 className="text-sm font-semibold text-stone-700 mb-2">Kontakt</h3>
