@@ -74,18 +74,20 @@ export default function ProviderCard({ provider }: { provider: Provider }) {
             </svg>
           </div>
           <div className="flex-1 min-w-0">
-            <h2 className={`text-lg font-bold transition-colors ${isOpen ? 'text-primary-700' : 'text-stone-900'}`}>
-              {provider.name}
-            </h2>
+            <div className="flex items-center gap-2 flex-wrap">
+              <h2 className={`text-lg font-bold transition-colors ${isOpen ? 'text-primary-700' : 'text-stone-900'}`}>
+                {provider.name}
+              </h2>
+              {provider.services && provider.services.length > 0 && (
+                <span className="text-xs text-stone-600 bg-stone-100 px-2 py-0.5 rounded">
+                  {provider.services.length} služb{provider.services.length === 1 ? 'a' : provider.services.length < 5 ? 'y' : ''}
+                </span>
+              )}
+            </div>
             {provider.description && (
               <p className="text-sm text-stone-600 line-clamp-2 mt-1">
                 {provider.description}
               </p>
-            )}
-            {provider.services && provider.services.length > 0 && (
-              <span className="inline-block text-xs text-stone-600 bg-stone-100 px-2 py-0.5 rounded mt-2">
-                {provider.services.length} služb{provider.services.length === 1 ? 'a' : provider.services.length < 5 ? 'y' : ''}
-              </span>
             )}
           </div>
           <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${isOpen ? 'bg-primary-100' : 'bg-stone-100'}`}>
