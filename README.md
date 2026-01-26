@@ -60,6 +60,16 @@ docker compose exec frontend npm install <package>
 docker compose exec strapi npm install <package>
 ```
 
+## PDF parser
+
+Převod zdrojového PDF do `strapi/services.json`:
+
+```bash
+cd scripts
+python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+python3 parse_pdf.py ../Pruvodce_Socialnimi_Sluzbami.pdf ../strapi/services.json
+```
+
 ## Databáze
 
 Přístup přes Adminer: http://localhost:8000

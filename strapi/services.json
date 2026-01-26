@@ -7,155 +7,313 @@
     "publishDate": "2025-11",
     "language": "cs"
   },
-
   "lifeSituations": [
     {
       "id": "dusevni-onemocneni",
       "name": "Duševní onemocnění",
-      "providerRefs": ["rut-novy-jicin", "klub-otevreneneho-srdce", "linka-prvni-psychicke-pomoci", "psychiatricka-nemocnice-opava", "domov-nanovo-studenka", "krizove-centrum-ostrava"]
+      "providerRefs": [
+        "rut-novy-jicin",
+        "klub-otevreneneho-srdce",
+        "linka-prvni-psychicke-pomoci",
+        "sluzby-nasledne-pece",
+        "domov-nanovo-studenka",
+        "krizove-centrum-ostrava"
+      ]
     },
     {
       "id": "autismus",
       "name": "Autismus",
-      "providerRefs": ["mikasa", "rut-novy-jicin", "eden-novy-jicin-odlehcovaci", "effatha-novy-jicin", "karmel-ticha-domov", "karmel-ticha-stacionar", "matana", "kopretina"]
+      "providerRefs": [
+        "mikasa",
+        "rut-novy-jicin",
+        "eden-novy-jicin-odlehcovaci",
+        "karmel-ticha-domov",
+        "karmel-ticha-stacionar",
+        "spolecnost-pro-ranou-peci-ostrava",
+        "kopretina"
+      ]
     },
     {
       "id": "kombinovane-a-mentalni-postizeni",
       "name": "Kombinované a mentální postižení",
-      "providerRefs": ["kopretina", "archa-novy-jicin", "eden-novy-jicin-stacionar", "eden-novy-jicin-odlehcovaci", "effatha-novy-jicin", "effatha-koprivnice", "karmel-ticha-domov", "karmel-ticha-stacionar", "matana", "rut-novy-jicin", "mikasa", "spolecnost-pro-ranou-peci-ostrava", "domov-nanovo-suchdol", "domov-nanovo-studenka", "domov-nanovo-chranene-bydleni"]
+      "providerRefs": [
+        "kopretina",
+        "archa-novy-jicin",
+        "eden-novy-jicin-odlehcovaci",
+        "karmel-ticha-domov",
+        "karmel-ticha-stacionar",
+        "rut-novy-jicin",
+        "spolecnost-pro-ranou-peci-ostrava",
+        "domov-nanovo-suchdol",
+        "domov-nanovo-studenka",
+        "domov-nanovo-chranene-bydleni"
+      ]
     },
     {
       "id": "telesne-postizeni",
       "name": "Tělesné postižení",
-      "providerRefs": ["pecovatelska-sluzba-pribor", "osobni-asistence-novojicisko", "podane-ruce-osobni-asistence", "pecovatelska-sluzba-charita-koprivnice", "spolecnost-pro-ranou-peci-ostrava", "matana", "andele-stromu-zivota-odlehcovaci", "odlehcovaci-sluzba-koprivnice", "odlehcovaci-sluzba-pohoda", "therapon-98-socialni", "domov-nanovo-studenka", "svaz-telesne-postizenych-pribor", "ilco-novojicinska", "euroklic"]
+      "providerRefs": [
+        "pecovatelska-sluzba-pribor",
+        "osobni-asistence-novojicisko",
+        "frydek-mistek",
+        "koprivnice",
+        "ostrava",
+        "andele-stromu-zivota",
+        "odlehcovaci-sluzba-koprivnice",
+        "odlehcovaci-sluzba-pohoda",
+        "therapon-98-socialni",
+        "pribor",
+        "ilco-novojicinska-spolek-stomiku",
+        "euroklic"
+      ]
     },
     {
       "id": "ztrata-sluchu",
       "name": "Ztráta sluchu",
-      "providerRefs": ["centrum-pro-neslysici-nedoslychave", "ceska-unie-neslysicich", "tichy-svet"]
+      "providerRefs": [
+        "centrum-pro-neslysici-a-nedoslychave",
+        "ceska-unie-neslysicich",
+        "tichy-svet"
+      ]
     },
     {
       "id": "ztrata-zraku",
       "name": "Ztráta zraku",
-      "providerRefs": ["sons-pujcovna", "sons-poradenstvi", "sons-aktivizacni", "kafira", "tyflocentrum-ostrava", "spolecnost-pro-ranou-peci-ostrava"]
+      "providerRefs": [
+        "sjednocena-organizace-nevidomych-a-slabozrakych-ceske-republiky-zapsany-spolek-oblastni-pobocka-novy-jicin-pujcovna-kompenzacnich-pomucek",
+        "obcanska-poradna-novy-jicin",
+        "socialni-rehabilitace",
+        "ostrava"
+      ]
     },
     {
       "id": "denni-stacionar",
       "name": "Denní stacionář",
-      "providerRefs": ["eden-novy-jicin-stacionar", "karmel-ticha-stacionar", "kopretina", "domovinka-novy-jicin"]
+      "providerRefs": [
+        "eden-novy-jicin-stacionar",
+        "karmel-ticha-stacionar",
+        "domovinka-novy-jicin"
+      ]
     },
     {
-      "id": "doprava-k-lekari-na-urad",
+      "id": "doprava-k-lekari-na-urad-pro-seniory-65",
       "name": "Doprava k lékaři, na úřad (pro seniory 65+)",
-      "providerRefs": ["diakonacek", "charitacek"]
+      "providerRefs": [
+        "diakonacek",
+        "charitacek"
+      ]
     },
     {
       "id": "dovoz-obedu",
       "name": "Dovoz obědů",
-      "providerRefs": ["skolni-jidelna-komenskeho", "pecovatelska-sluzba-pribor"]
+      "providerRefs": [
+        "skolni-jidelna-komenskeho",
+        "pecovatelska-sluzba-pribor"
+      ]
     },
     {
       "id": "hospicova-pece",
       "name": "Hospicová péče",
-      "providerRefs": ["andele-stromu-zivota-hospic", "mobilni-hospic-ondrasek", "hospic-frydek-mistek"]
+      "providerRefs": [
+        "andele-stromu-zivota",
+        "frydek-mistek"
+      ]
     },
     {
       "id": "chranene-bydleni",
       "name": "Chráněné bydlení",
-      "providerRefs": ["archa-novy-jicin", "domov-nanovo-chranene-bydleni"]
+      "providerRefs": [
+        "archa-novy-jicin",
+        "domov-nanovo-chranene-bydleni"
+      ]
     },
     {
       "id": "kompenzacni-pomucky",
       "name": "Kompenzační pomůcky",
-      "providerRefs": ["centrum-pro-zdravotne-postizene-pujcovna", "pecovatelska-sluzba-pribor", "charita-koprivnice", "sons-pujcovna", "spolecnost-pro-ranou-peci-ostrava"]
+      "providerRefs": [
+        "centrum-pro-zdravotne-postizene-msk",
+        "pecovatelska-sluzba-pribor",
+        "charita-koprivnice",
+        "sjednocena-organizace-nevidomych-a-slabozrakych-ceske-republiky-zapsany-spolek-oblastni-pobocka-novy-jicin",
+        "spolecnost-pro-ranou-peci-ostrava"
+      ]
     },
     {
       "id": "nakoupit",
       "name": "Nakoupit",
-      "providerRefs": ["pecovatelska-sluzba-pribor", "pecovatelska-sluzba-charita-koprivnice", "neziskovka-s-dusi"]
+      "providerRefs": [
+        "pecovatelska-sluzba-pribor",
+        "koprivnice",
+        "neziskovka-s-dusi"
+      ]
     },
     {
       "id": "odlehcovaci-sluzba",
       "name": "Odlehčovací služba",
-      "providerRefs": ["stredisko-socialnich-sluzeb-koprivnice-odlehcovaci", "odlehcovaci-sluzba-pohoda", "andele-stromu-zivota-odlehcovaci", "eden-novy-jicin-odlehcovaci"]
+      "providerRefs": [
+        "stredisko-socialnich-sluzeb-koprivnice",
+        "armada-spasy-sas",
+        "andele-stromu-zivota",
+        "eden-novy-jicin-odlehcovaci"
+      ]
     },
     {
       "id": "osetrovatelska-pece",
       "name": "Ošetřovatelská péče",
-      "providerRefs": ["therapon-98-domaci-pece", "charita-koprivnice-osetrovatelska", "agentura-domaci-pece-oasa", "therapon-98-zdravotni", "andele-stromu-zivota-hospic", "mobilni-hospic-ondrasek"]
+      "providerRefs": [
+        "therapon-98",
+        "charita-koprivnice",
+        "agentura-domaci-pece-oasa",
+        "therapon-98-zdravotni",
+        "andele-stromu-zivota",
+        "mobilni-hospic-ondrasek"
+      ]
     },
     {
       "id": "pobytove-zarizeni",
       "name": "Pobytové zařízení",
-      "providerRefs": ["domov-pribor", "domov-pod-bilou-horou-seniory", "domov-duha-seniory", "alzheimer-home-katerinice", "domov-hortenzie", "seniorcentrum-oasa-domov", "domov-nanovo-studenka", "domov-nanovo-suchdol", "karmel-ticha-domov"]
+      "providerRefs": [
+        "domov-pribor",
+        "domov-pod-bilou-horou",
+        "obcanska-poradna-novy-jicin",
+        "alzheimer-home-katerinice",
+        "domov-hortenzie",
+        "seniorcentrum-oasa",
+        "domov-nanovo-studenka",
+        "karmel-ticha-domov"
+      ]
     },
     {
-      "id": "pomoc-s-hygienou-a-uklidem",
+      "id": "pomoc-s-osobni-hygienou-a-s-uklidem",
       "name": "Pomoc s osobní hygienou a s úklidem",
-      "providerRefs": ["pecovatelska-sluzba-pribor", "osobni-asistence-novojicisko", "pecovatelska-sluzba-charita-koprivnice", "podane-ruce-osobni-asistence"]
+      "providerRefs": [
+        "pecovatelska-sluzba-pribor",
+        "centrum-pro-zdravotne-postizene-msk",
+        "pecovatelska-sluzba-charita-koprivnice",
+        "frydek-mistek"
+      ]
     },
     {
       "id": "tisnova-pece",
       "name": "Tísňová péče",
-      "providerRefs": ["andel-na-drate", "andel-strazny"]
+      "providerRefs": [
+        "andel-na-drate",
+        "andel-strazny"
+      ]
     },
     {
       "id": "zakladni-informace-poradit",
       "name": "Základní informace / poradit",
-      "providerRefs": ["obcanska-poradna-pribor", "obcanska-poradna-novy-jicin", "obcanska-poradna-koprivnice", "mestsky-urad-pribor-socialni", "mestsky-urad-koprivnice-socialni", "andele-stromu-zivota-poradenstvi", "urad-prace-koprivnice"]
+      "providerRefs": [
+        "obcanska-poradna-pribor",
+        "pribor",
+        "koprivnice",
+        "andele-stromu-zivota"
+      ]
     },
     {
       "id": "nahradni-rodinna-pece",
       "name": "Náhradní rodinná péče",
-      "providerRefs": ["academia-via-familia", "centrum-psychologicke-pomoci", "mestsky-urad-koprivnice-spod", "krajsky-urad-msk"]
+      "providerRefs": [
+        "academia-via-familia",
+        "centrum-psychologicke-pomoci",
+        "koprivnice"
+      ]
     },
     {
       "id": "partnerske-manzelske-problemy",
       "name": "Partnerské / manželské problémy",
-      "providerRefs": ["academia-via-familia", "centrum-pro-rodinu-koprivnice", "rodinna-manzelska-poradna-novy-jicin"]
+      "providerRefs": [
+        "academia-via-familia",
+        "rodinna-manzelska-poradna-novy-jicin"
+      ]
     },
     {
       "id": "rozvod",
       "name": "Rozvod",
-      "providerRefs": ["obcanska-poradna-pribor", "obcanska-poradna-koprivnice", "obcanska-poradna-novy-jicin", "centrum-pro-rodinu-koprivnice", "rodinna-manzelska-poradna-novy-jicin"]
+      "providerRefs": [
+        "obcanska-poradna-pribor",
+        "centrum-pro-rodinu-koprivnice",
+        "rodinna-manzelska-poradna-novy-jicin"
+      ]
     },
     {
       "id": "vychova-deti",
       "name": "Výchova dětí",
-      "providerRefs": ["armada-spasy-sas", "rodinna-manzelska-poradna-novy-jicin", "centrum-pro-rodinu-koprivnice", "academia-via-familia", "pedagogicko-psychologicka-poradna-novy-jicin"]
+      "providerRefs": [
+        "armada-spasy-sas",
+        "rodinna-manzelska-poradna-novy-jicin",
+        "centrum-pro-rodinu-koprivnice",
+        "academia-via-familia",
+        "pedagogicko-psychologicka-poradna-novy-jicin"
+      ]
     },
     {
       "id": "dluhy",
       "name": "Dluhy",
-      "providerRefs": ["obcanska-poradna-pribor", "obcanska-poradna-koprivnice", "obcanska-poradna-novy-jicin"]
+      "providerRefs": [
+        "obcanska-poradna-pribor"
+      ]
     },
     {
-      "id": "drogy-alkohol-hracstvi",
+      "id": "drogy-alkohol-patologicke-hracstvi",
       "name": "Drogy, alkohol, patologické hráčství",
-      "providerRefs": ["renarkon-terenni-program", "narodni-linka-pro-odvykani"]
+      "providerRefs": [
+        "renarkon-terenni-program",
+        "narodni-linka-pro-odvykani"
+      ]
     },
     {
       "id": "krizove-bydleni",
       "name": "Krizové bydlení",
-      "providerRefs": ["mestsky-urad-pribor-socialni", "azylovy-dum-koprivnice", "nocleharna-koprivnice", "nizkoprahove-denni-centrum-racek"]
+      "providerRefs": [
+        "pribor",
+        "azylovy-dum-koprivnice",
+        "nocleharna-koprivnice",
+        "nizkoprahove-denni-centrum-racek"
+      ]
     },
     {
       "id": "nahla-krize",
       "name": "Náhlá krize",
-      "providerRefs": ["krizove-centrum-ostrava", "linka-bezpeci", "linka-duvery-ostrava", "linka-pro-rodinu-a-skolu", "linka-prvni-psychicke-pomoci", "linka-senioru-elpida", "linka-pomoci-obetem", "narodni-linka-pro-odvykani", "poradenska-linka-pro-pecujici", "senior-telefon", "opatruj-se"]
+      "providerRefs": [
+        "krizove-centrum-ostrava",
+        "linka-bezpeci",
+        "linka-duvery-ostrava",
+        "linka-pro-rodinu-a-skolu",
+        "linka-prvni-psychicke-pomoci",
+        "linka-pomoci-obetem-kriminality-a-domaciho-nasili",
+        "narodni-linka-pro-odvykani",
+        "poradenska-linka-pro-pecujici",
+        "senior-telefon",
+        "www-opatruj-se"
+      ]
     },
     {
       "id": "domaci-nasili",
       "name": "Domácí násilí",
-      "providerRefs": ["bily-kruh-bezpeci-ostrava", "linka-pomoci-obetem", "armada-spasy-sas", "mestska-policie-pribor", "probacni-mediaci-sluzba-novy-jicin"]
+      "providerRefs": [
+        "bily-kruh-bezpeci",
+        "linka-pomoci-obetem-kriminality-a-domaciho-nasili",
+        "koprivnice",
+        "mestska-policie-pribor",
+        "poradna-pro-obeti-trestnych-cinu"
+      ]
     },
     {
       "id": "volnocasove-aktivity",
       "name": "Volnočasové aktivity",
-      "providerRefs": ["adra-frydek-mistek", "materske-centrum-zvonecek", "klub-duchodcu-hajov", "klub-senioru-pribor", "svaz-letcu-pribor", "svaz-telesne-postizenych-pribor", "academia-via-familia", "senior-pas"]
+      "providerRefs": [
+        "adra-frydek-mistek",
+        "materske-centrum-zvonecek",
+        "klub-duchodcu-hajov",
+        "klub-senioru-pribor",
+        "svaz-letcu-pribor",
+        "academia-via-familia",
+        "slevy-pro-seniory-pribor"
+      ]
     }
   ],
-
   "providers": [
     {
       "id": "academia-via-familia",
@@ -163,1324 +321,1341 @@
       "description": "Academia Via Familia je prorodinný spolek zaměřený na podporu rodin s dětmi. Pořádá akce pro děti a mládež, tematické víkendy zaměřené na finanční gramotnost, kempy a programy s důrazem na rodinné hodnoty.",
       "services": [
         {
+          "id": "oblast-nahradni-rodinne-pece",
           "name": "Oblast náhradní rodinné péče",
-          "description": "Doprovázení pěstounů, poradenství, vzdělávání, společná setkání. Pomoc rodičům při řešení výchovných problémů, odborné poradenství žadatelům o osvojení nebo pěstounskou péči."
+          "description": "V oblasti náhradní rodinné péče je Academia Via Familia z. s. partnerem pěstounů i dětí, které podporuje prostřednictvím doprovázení, poradenství, vzdělávání a společ- ných setkání. Poskytuje pomoc rodičům při řešení výchovných nebo jiných problémů souvisejících s péčí o dítě, pořádá přednášky, kurzy, poskytuje odborné poradenství a pomoc žadatelům o zprostředkování osvojení dítěte nebo svěření dítěte do pěstoun- ské péče.",
+          "contact": {
+            "phones": [
+              "+420 731 510 616",
+              "+420 773 791 182"
+            ],
+            "website": "https://viafamilia.cz",
+            "email": "viafamilia@viafamilia.cz",
+            "address": "Jičínská 881, Příbor, 742 58"
+          }
         }
-      ],
-      "contact": {
-        "address": "Jičínská 881, Příbor, 742 58",
-        "phones": ["+420 731 510 616", "+420 773 791 182"],
-        "email": "viafamilia@viafamilia.cz",
-        "website": "https://viafamilia.cz"
-      }
+      ]
     },
     {
       "id": "alzheimer-home-katerinice",
       "name": "ALZHEIMER HOME Kateřinice",
       "description": "Domov se zvláštním režimem poskytuje komplexní a individuálně zaměřené celoroční pobytové služby osobám s Alzheimerovou chorobou a ostatními typy demence, které již nemohou zůstat ve vlastním domácím prostředí.",
-      "services": [
-        {
-          "name": "Domov se zvláštním režimem",
-          "description": "Celoroční pobytové služby pro osoby s demencí."
-        }
-      ],
       "contact": {
-        "address": "Kateřinice 228, 742 58 Kateřinice",
-        "phones": ["+420 724 383 772", "+420 721 852 503"],
+        "phones": [
+          "+420 724 383 772",
+          "+420 721 852 503"
+        ],
+        "website": "https://alzheimerhome.cz",
         "email": "katerinice@alzheimerhome.cz",
-        "website": "https://alzheimerhome.cz"
+        "address": "Kateřinice 228, 742 58 Kateřinice"
       }
     },
     {
       "id": "andel-na-drate",
       "name": "Anděl na drátě, z. ú.",
-      "description": "Tísňová péče pro seniory a zdravotně postižené, u kterých je v důsledku zhoršování zdravotního stavu zvýšené riziko pádů či ohrožení zdraví a života. Klient zmáčkne SOS tísňové tlačítko a ozve se hlas operátora.",
-      "services": [
-        {
-          "name": "Tísňová péče",
-          "description": "SOS tlačítko formou hodinek nebo přívěšku na krk s možností přivolat pomoc."
-        }
-      ],
+      "description": "Anděl na drátě je tísňová péče pro seniory a zdravotně postižené, u kterých je v dů- sledku zhoršování zdravotního stavu zvýšené riziko pádů či ohrožení zdraví a života. Klient zmáčkne SOS tísňové tlačítko, ze zařízení (hodinky s SOS tlačítkem, SOS tísňové tlačítko na krk) se ozve hlas operátora. Současně jsou aktivovány nouzové kontakty a další pomoc, např. lékařská záchranná služba.",
       "contact": {
-        "address": "Karlovo náměstí 84, 547 01 Náchod",
-        "phones": ["+420 800 555 655", "+420 731 100 122"],
+        "phones": [
+          "+420 800 555 655",
+          "+420 731 100 122"
+        ],
+        "website": "https://andelnadrate.cz",
         "email": "info@andelnadrate.cz",
-        "website": "https://andelnadrate.cz"
+        "address": "Karlovo náměstí 84, 547 01 Náchod"
       }
     },
     {
       "id": "andel-strazny",
       "name": "Anděl Strážný, z. ú.",
-      "description": "Nepřetržitá tísňová péče určená především seniorům, zdravotně postiženým a dlouhodobě nemocným. Pomáhá zachovat kvalitu života v prostředí domova s pocitem jistoty a bezpečí.",
-      "services": [
-        {
-          "name": "Tísňová péče",
-          "description": "SOS tlačítko, připomínání léků, cesty k lékaři, možnost popovídání."
-        }
-      ],
+      "description": "Nepřetržitá tísňová péče je určená především seniorům, zdravotně postiženým a dlouhodobě nemocným. Pomáhá zachovat kvalitu života v prostředí domova, kde si senior může dopřát pocit jistoty a bezpečí. Ve chvílích náhlého zhoršení zdravotního stavu nebo pádu si zavolá pomoc jediným stiskem SOS tlačítka. Skrze zařízení lze také připomínat i léky, cestu k lékaři nebo si s vámi popovídat.",
       "contact": {
-        "address": "5. května 797/20, 470 01 Česká Lípa",
-        "phones": ["+420 770 163 574", "+420 775 684 944"],
+        "phones": [
+          "+420 770 163 574",
+          "+420 775 684 944"
+        ],
+        "website": "https://andelstrazny.eu",
         "email": "poptavka@andelstrazny.eu",
-        "website": "https://andelstrazny.eu"
+        "address": "5. května 797/20, 47001 Česká Lípa"
       }
     },
     {
       "id": "andele-stromu-zivota",
       "name": "Andělé Stromu života p. s.",
-      "description": "Poskytuje odlehčovací služby, zdravotní služby mobilního hospice a odborné sociální poradenství.",
       "services": [
         {
           "id": "andele-stromu-zivota-odlehcovaci",
           "name": "Odlehčovací služby",
-          "description": "Terénní odlehčovací služby pro pečující i pečované, obvykle nevyléčitelně nemocné pacienty, osoby s demencí nebo děti s postižením.",
+          "description": "Terénní odlehčovací služby jsou určené jak pečujícímu, tak také tomu, o koho je pečováno. Obvykle se ve službách jedná o nevyléčitelně nemocné pacienty, kterým poskytují rovněž zdravotní služby. V rámci své kapacity pomáhají také lidem, kteří dlouhodobě pečují o osoby s demencí nebo například o dítě s postižením.",
           "contact": {
             "phone": "+420 553 038 017",
-            "email": "kostalova@zivotastrom.cz"
+            "website": "https://zivotastrom.cz",
+            "email": "kostalova@zivotastrom.cz",
+            "address": "Kostelní 71/37, 741 01 Nový Jičín"
           }
         },
         {
           "id": "andele-stromu-zivota-hospic",
           "name": "Zdravotní služba mobilního hospice Strom života",
-          "description": "Umožňuje nevyléčitelně nemocným pacientům zůstat v domácím prostředí s dostupnou specializovanou paliativní péčí.",
+          "description": "Zdravotní služba Mobilního hospice Stromu života umožňuje nevyléčitelně nemoc- ným pacientům, kteří nechtějí trávit své dny v nemocnici, zůstat v domácím prostředí. Dětští i dospělí pacienti bez omezení věku tak mohou prožít závěr života obklopeni milující rodinou s dostupnou specializovanou paliativní péčí lékařů a zdravotníků hos- pice a netrpět fyzicky, ani psychicky.",
           "contact": {
             "phone": "+420 553 038 016",
-            "email": "wasilova@zivotastrom.cz"
+            "website": "https://zivotastrom.cz",
+            "email": "wasilova@zivotastrom.cz",
+            "address": "Kostelní 71/37, 741 01 Nový Jičín"
           }
         },
         {
           "id": "andele-stromu-zivota-poradenstvi",
           "name": "Odborné sociální poradenství",
-          "description": "Pomoc vážně nemocným, pečujícím a pozůstalým. Poradenství v praktických záležitostech i psychická podpora.",
+          "description": "Poradna Stromu života pomáhá vážně nemocným lidem vyrovnat se s těžkou životní situací, pečujícím zvládat jejich obavy, bezmoc a vysílení a pozůstalým zpracovat ztrátu blízkého člověka. Rovněž nabízí poradenství v praktických záležitostech (jako jsou například žádosti o příspěvek na péči, zajištění kompenzačních pomůcek, při vyřízení dlouhodobého ošetřovného, různých druhů důchodů, pozůstalosti nebo dědického řízení) a také psychickou podporu formou doprovázení.",
           "contact": {
             "phone": "+420 553 038 014",
-            "email": "poradna@zivotastrom.cz"
+            "website": "https://zivotastrom.cz",
+            "email": "poradna@zivotastrom.cz",
+            "address": "Kostelní 71/37, 741 01 Nový Jičín"
           }
         }
-      ],
-      "contact": {
-        "address": "Kostelní 71/37, 741 01 Nový Jičín",
-        "website": "https://zivotastrom.cz"
-      }
+      ]
     },
     {
       "id": "armada-spasy",
       "name": "Armáda spásy v České republice, z. s.",
-      "description": "Poskytuje sociálně aktivizační služby pro rodiny s dětmi.",
       "services": [
         {
           "id": "armada-spasy-sas",
           "name": "Sociálně aktivizační služby pro rodiny s dětmi Kopřivnice, Příbor, Štramberk",
-          "description": "Terénní a ambulantní služby pro rodiny s dětmi, jejichž vývoj je ohrožen dlouhodobou krizovou situací. Konzultace v Příboře každou sudou středu 13.30-15.30."
+          "description": "Sociálně aktivizační služby pro rodiny s dětmi jsou terénní, popřípadě ambulantní služby poskytované rodině s dítětem, u kterého je vývoj ohrožen v důsledku dopadů dlouhodobě krizové sociální situace, kterou rodiče nedokážou sami bez pomoci pře- konat, a u kterého existují další rizika ohrožení jeho vývoje. Sociální pracovníci můžou po domluvě přijít k vám domů nebo je můžete navštívit každou sudou středu od 13.30 do 15.30 hodin v přízemí budovy Městského úřadu Příbor (náměstí Sigmunda Freuda 19).",
+          "contact": {
+            "phones": [
+              "+420 773 770 474",
+              "+420 773 770 471"
+            ],
+            "website": "https://armadaspasy.com",
+            "email": "tomas.fritschka@armadaspasy.cz",
+            "address": "Horní 1112, Kopřivnice 742 21"
+          }
         }
-      ],
-      "contact": {
-        "address": "Horní 1112, Kopřivnice 742 21",
-        "phones": ["+420 773 770 474", "+420 773 770 471"],
-        "email": "tomas.fritschka@armadaspasy.cz",
-        "website": "https://armadaspasy.com"
-      }
+      ]
     },
     {
       "id": "bily-kruh-bezpeci",
       "name": "Bílý kruh bezpečí, z. s.",
-      "description": "Poskytuje odbornou, bezplatnou a diskrétní pomoc obětem trestných činů.",
       "services": [
         {
           "id": "bily-kruh-bezpeci-ostrava",
           "name": "Poradna Bílý kruh bezpečí Ostrava",
-          "description": "Odborná pomoc obětem trestných činů.",
+          "description": "Bílý kruh bezpečí poskytuje odbornou, bezplatnou a diskrétní pomoc obětem trest- ných činů.",
           "contact": {
-            "address": "Jurečkova 643/20, 702 00 Ostrava",
-            "phones": ["+420 732 577 520", "+420 731 306 411"],
-            "email": "bkb.ostrava@bkb.cz"
+            "phones": [
+              "+420 732 577 520",
+              "+420 731 306 411"
+            ],
+            "website": "https://bkb.cz",
+            "email": "bkb.ostrava@bkb.cz",
+            "address": "Jurečkova 643/20, 702 00 Ostrava"
           }
         },
         {
           "id": "intervencni-centrum-ostrava",
           "name": "Intervenční centrum Ostrava",
-          "description": "Pomoc osobám ohroženým domácím násilím. Online kontakt: www.nenech.se",
+          "description": "Intervenční centrum je určeno osobám, které jsou ohroženy domácím násilím a jsou v ochranném režimu „vykázání“. Je určeno osobám ohroženým domácím násilím, které svou situaci chtějí řešit a hledají pomoc, radu a informace. Služby intervenčního centra jsou poskytovány bezplatně. Intervenční centrum Ostrava můžete kontaktovat",
           "contact": {
-            "address": "Jurečkova 643/20, 702 00 Ostrava",
             "phone": "+420 739 449 275",
-            "email": "ic.ostrava@bkb.cz"
+            "website": "https://bkb.cz",
+            "email": "ic.ostrava@bkb.cz",
+            "address": "Jurečkova 643/20, 702 00 Ostrava"
           }
         },
         {
           "id": "bily-kruh-bezpeci-novy-jicin",
           "name": "Kontaktní místo Nový Jičín",
-          "description": "Konzultační hodiny každý lichý čtvrtek 9-15 hodin (nutno se předem objednat).",
+          "description": "Konzultační hodiny jsou každý lichý čtvrtek 9–15 hodin (ke konzultaci je nutno se pře-",
           "contact": {
-            "address": "Sokolovská 617/9, 740 01 Nový Jičín",
             "phone": "+420 739 449 275",
-            "email": "ic.ostrava@bkb.cz"
+            "website": "https://bkb.cz",
+            "email": "ic.ostrava@bkb.cz",
+            "address": "Sokolovská 617/9, 740 01 Nový Jičín"
           }
         }
-      ],
-      "contact": {
-        "website": "https://bkb.cz"
-      }
+      ]
     },
     {
       "id": "centrum-pro-rodinu-koprivnice",
       "name": "Centrum pro rodinu Kopřivnice, z. s.",
-      "description": "Nezisková organizace zaměřená na podporu, vzdělávání a pomoc v oblasti rodiny, manželského života, výchovy dětí a osobního rozvoje. Nabízí konzultace, psychoterapii a mediaci.",
-      "services": [
-        {
-          "name": "Poradenství a psychoterapie",
-          "description": "Individuální, párové či rodinné konzultace pro řešení osobních, partnerských a výchovných problémů."
-        }
-      ],
+      "description": "Centrum pro rodinu je nezisková organizace zaměřená na podporu, vzdělávání a pomoc v oblasti rodiny, manželského života, ve výchově dětí a osobního rozvoje. Nabízí podporu při řešení obtížných situací zejména v oblasti osobních, partnerských, výchovných a mezigeneračních vztahů formou individuální, párové či rodinné kon- zultace, psychoterapie nebo mediace (přicházet mohou jednotlivci, partneři i rodiče s dětmi).",
       "contact": {
-        "address": "Štramberská 378/2, 742 21 Kopřivnice",
         "phone": "+420 605 056 070",
+        "website": "https://cprkoprivnice.org",
         "email": "info@cprkoprivnice.org",
-        "website": "https://cprkoprivnice.org"
+        "address": "Štramberská 378/2, 742 21 Kopřivnice"
       }
     },
     {
       "id": "centrum-psychologicke-pomoci",
       "name": "Centrum psychologické pomoci, p. o.",
-      "description": "Poskytuje rodinné a manželské poradenství a služby v oblasti náhradní rodinné péče.",
       "services": [
         {
           "id": "rodinna-manzelska-poradna-novy-jicin",
           "name": "Rodinná a manželská poradna Nový Jičín",
-          "description": "Odborné sociální poradenství pro lidi v obtížné osobní, partnerské, rodinné či mezilidské situaci."
+          "description": "Pomáhá formou odborného sociálního poradenství lidem, kteří vnímají svou osobní, partnerskou, rodinnou či mezilidskou situaci jako obtížnou a chtějí jí porozumět, změ- nit nebo řešit. Cílem je podpořit a posílit člověka, který se ocitl v obtížné sociální situaci osobní, partnerské, rodinné nebo mezilidské, natolik, aby byl schopen sám nebo s pomocí rodiny či přátel tuto situaci řešit."
         },
         {
+          "id": "nahradni-rodinna-pece",
           "name": "Náhradní rodinná péče",
-          "description": "Doprovázení pěstounských rodin, posuzování a přípravy žadatelů pro přijetí dítěte."
+          "description": "Uvažujete o přijetí dítěte do náhradní rodinné péče, máte spoustu otázek o tom, co vše může role náhradního rodiče obnášet? Podstatnou část klientů tvoří pěstounské rodiny, které jsou doprovázeny při jejich výkonu pěstounské péče. V poradně probíhá také odborné posuzování a přípravy žadatelů pro přijetí dítěte do náhradní rodinné péče.",
+          "contact": {
+            "phones": [
+              "+420 556 702 265",
+              "+420 777 499 633"
+            ],
+            "website": "https://cepp.cz",
+            "email": "nj@cepp.cz",
+            "address": "Štefánikova 7, 741 01 Nový Jičín"
+          }
         }
-      ],
-      "contact": {
-        "address": "Štefánikova 7, 741 01 Nový Jičín",
-        "phones": ["+420 556 702 265", "+420 777 499 633"],
-        "email": "nj@cepp.cz",
-        "website": "https://cepp.cz"
-      }
+      ]
     },
     {
       "id": "centrum-pro-zdravotne-postizene-msk",
       "name": "Centrum pro zdravotně postižené Moravskoslezského kraje o.p.s.",
-      "description": "Poskytuje osobní asistenci, občanské poradenství a půjčovnu kompenzačních pomůcek.",
       "services": [
         {
           "id": "osobni-asistence-novojicisko",
           "name": "Osobní asistence Novojičínsko",
-          "description": "Terénní služba pro osoby se sníženou soběstačností z důvodu věku, chronického onemocnění nebo zdravotního postižení.",
+          "description": "Osobní asistence je terénní služba poskytovaná osobám, které mají sníženou soběstačnost z důvodu věku, chronického onemocnění nebo zdravotního postižení, jejichž situace vyžaduje pomoc jiné fyzické osoby. Služba se poskytuje v přirozeném sociálním prostředí osob a při činnostech, které osoba potřebuje.",
           "contact": {
-            "address": "Sokolovská 9, 741 01 Nový Jičín",
             "phone": "+420 556 709 403",
-            "email": "asistencenj@czp-msk.cz"
+            "website": "https://czp-msk.cz",
+            "email": "asistencenj@czp-msk.cz",
+            "address": "Sokolovská 9, 741 01 Nový Jičín"
           }
         },
         {
           "id": "obcanska-poradna-pribor",
-          "name": "Občanská poradna Příbor",
-          "description": "Bezplatné poradenství v oblastech sociálních dávek, pracovně-právních vztahů, bydlení, dluhů aj. Úterý 9-12 (bez objednání), 13-16 (pro objednané).",
+          "name": "Občanská poradna",
+          "description": "Občanská poradna poskytuje bezplatné poradenství v oblastech sociálních dávek, sociálních služeb, sociálního pojištění, pracovně-právních vztahů a zaměstnanosti, bydlení, rodiny a právních vztahů, občanskoprávních vztahů, v problematice zadlužo- vání, školství a vzdělávání, zdravotního pojištění a zdravotnictví, ochrany spotřebitele, právního systému ČR a EU, občansko-soudního řízení, veřejné správy, trestního práva, ochrany základních práv a svobod."
+        },
+        {
+          "id": "kontaktni-pracoviste",
+          "name": "Kontaktní pracoviště:"
+        },
+        {
+          "id": "pribor",
+          "name": "Příbor",
+          "description": "Návštěvní hodiny jsou v úterý 9.00–12.00 (bez objednání) a 13.00–16.00 (jen pro objednané).",
           "contact": {
-            "address": "nám. Sigmunda Freuda 19, Příbor",
             "phone": "+420 731 028 958",
+            "website": "https://czp-msk.cz",
             "email": "obcanskaporadna@czp-msk.cz"
           }
         },
         {
-          "id": "obcanska-poradna-koprivnice",
-          "name": "Občanská poradna Kopřivnice",
-          "description": "Bezplatné poradenství v oblastech sociálních dávek, pracovně-právních vztahů, bydlení, dluhů aj.",
+          "id": "koprivnice",
+          "name": "Kopřivnice",
           "contact": {
-            "address": "Štefánikova 1163, 742 21 Kopřivnice",
             "phone": "+420 556 879 634",
-            "email": "opnj@czp-msk.cz"
+            "website": "https://czp-msk.cz",
+            "email": "opnj@czp-msk.cz",
+            "address": "Štefánikova 1163, 742 21 Kopřivnice"
           }
         },
         {
           "id": "obcanska-poradna-novy-jicin",
-          "name": "Občanská poradna Nový Jičín",
-          "description": "Bezplatné poradenství v oblastech sociálních dávek, pracovně-právních vztahů, bydlení, dluhů aj.",
+          "name": "Nový Jičín",
           "contact": {
-            "address": "Sokolovská 617/9, 741 01 Nový Jičín",
             "phone": "+420 556 709 403",
-            "email": "obcanskaporadna@czp-msk.cz"
+            "website": "https://czp-msk.cz",
+            "email": "obcanskaporadna@czp-msk.cz",
+            "address": "Sokolovská 617/9, 741 01 Nový Jičín"
+          }
+        },
+        {
+          "id": "online-poradenstvi",
+          "name": "Online poradenství",
+          "description": "Pro objednání online poradenství je nutné se objednat následujícími způsoby:",
+          "contact": {
+            "phones": [
+              "+420 556 709 403",
+              "+420 777 735 555"
+            ],
+            "email": "poradnaopnj@czp-msk.cz"
           }
         },
         {
           "id": "centrum-pro-zdravotne-postizene-pujcovna",
           "name": "Půjčovna kompenzačních pomůcek",
-          "description": "Zapůjčení kompenzačních pomůcek na nezbytně nutnou dobu.",
+          "description": "Půjčovna slouží k zapůjčení kompenzačních pomůcek na nezbytně nutnou dobu, než uživatel získá svou kompenzační pomůcku hrazenou z příspěvku.",
           "contact": {
-            "address": "Sokolovská 9, 741 01 Nový Jičín",
             "phone": "+420 556 709 403",
-            "email": "asistencenj@czp-msk.cz"
+            "website": "https://czp-msk.cz",
+            "email": "asistencenj@czp-msk.cz",
+            "address": "Sokolovská 9, 741 01 Nový Jičín"
           }
         }
-      ],
-      "contact": {
-        "website": "https://czp-msk.cz"
-      }
+      ]
     },
     {
-      "id": "centrum-pro-neslysici-nedoslychave",
-      "name": "Centrum pro neslyšící a nedoslýchavé, o. p. s.",
-      "description": "Poskytuje tlumočení, základní poradenství a aktivity pro občany se sluchovým postižením na území Moravskoslezského kraje.",
+      "id": "centrum-pro-neslysici-a-nedoslychave",
+      "name": "Centrum pro neslyšící a nedoslýchavé, o. p. s,",
       "services": [
         {
+          "id": "centrum-pro-neslysici-a-nedoslychave-tlumocnicke-sluzby",
           "name": "Tlumočnické služby",
-          "description": "Ambulantní i terénní tlumočnické služby pro překonání komunikačních bariér."
+          "description": "Posláním organizace je poskytovat tlumočení, základní poradenství a obecně pro- spěšné aktivity občanům se sluchovým postižením profesionálním způsobem na úze- mí Moravskoslezského kraje a šířit osvětu vůči veřejnosti k překonání komunikačních bariér. Jedná se o ambulantní i terénní službu.",
+          "contact": {
+            "phone": "+420 730 542 933",
+            "website": "https://csnn.cz",
+            "email": "csnn@csnn.cz",
+            "address": "28. října 286/10, 702 00 Ostrava"
+          }
         }
-      ],
-      "contact": {
-        "address": "28. října 286/10, 702 00 Ostrava",
-        "phone": "+420 730 542 933",
-        "email": "csnn@csnn.cz",
-        "website": "https://csnn.cz"
-      }
+      ]
     },
     {
       "id": "ceska-unie-neslysicich",
       "name": "Česká unie neslyšících, z. ú.",
-      "description": "Poskytuje tlumočnické služby pro neslyšící osoby na celém území Moravskoslezského kraje.",
       "services": [
         {
+          "id": "ceska-unie-neslysicich-tlumocnicke-sluzby",
           "name": "Tlumočnické služby",
-          "description": "Terénní a ambulantní služby umožňující neslyšícím komunikovat bez bariér."
+          "description": "Posláním tlumočnické služby je umožnit neslyšícím osobám komunikovat bez bariér v běžných životních situacích, a tak napomáhat k jejich samostatnosti a zodpověd- nosti, aby mohli být rovnocennými partnery v kontaktu s většinovou slyšící společnos- tí. Terénně je služba poskytována na celém území Moravskoslezského kraje. Ambu- lantní služba je poskytována v prostorách České unie neslyšících na uvedené adrese.",
+          "contact": {
+            "phone": "+420 778 087 718",
+            "website": "https://cun.cz",
+            "email": "ostrava@cun.cz",
+            "address": "A. Macka 1711/3, 702 00 Ostrava"
+          }
         }
-      ],
-      "contact": {
-        "address": "A. Macka 1711/3, 702 00 Ostrava",
-        "phone": "+420 778 087 718",
-        "email": "ostrava@cun.cz",
-        "website": "https://cun.cz"
-      }
+      ]
     },
     {
       "id": "ceske-ilco",
       "name": "České ILCO, z. s.",
-      "description": "Pacientská organizace pomáhající stomikům. Poskytuje poradenství a pomoc při řešení problémů spojených se životem se stomií.",
+      "description": "České ILCO, z. s., je pacientská organizace, která pomáhá aktivně hájit práva stomiků a zmírňujeme obavy ze života se stomií. Poskytuje poradenství a dlouhodobě pomáhá řešit zdravotní, sociální a psychické problémy, které jsou spojeny s návratem stomika do běžného života. Jedná jménem stomiků s ministerstvy, zdravotními pojišťovnami, distributory stomických pomůcek a dalšími zainteresovanými orgány aj.",
       "services": [
         {
-          "name": "Podpora stomiků",
-          "description": "Poradenství, obhajoba práv stomiků, jednání s ministerstvy a pojišťovnami."
+          "id": "ilco-novojicinska-spolek-stomiku",
+          "name": "ILCO Novojičínska spolek stomiků",
+          "description": "ILCO Novojičínská společnost stomiků je regionální pacientská organizace, která poskytuje podporu a pomoc lidem se stomií (vývodem) a jejich rodinám na Novojičín- sku. Vyškolení dobrovolníci nabízejí bezplatné poradenství a sdílejí své zkušenosti. Organizuje také rekondiční pobyty, volnočasové aktivity a odborné přednášky, aby usnadnili návrat do života v nové situaci.",
+          "contact": {
+            "email": "tucny@seznam.cz",
+            "phone": "+420 732 784 740",
+            "website": "https://facebook.com",
+            "address": "/Stomiciunas"
+          }
         }
       ],
       "contact": {
-        "address": "Polská 1664/15, 120 00 Praha 2",
-        "phones": ["+420 777 431 953", "+420 601 324 100"],
+        "phones": [
+          "+420 777 431 953",
+          "+420 601 324 100"
+        ],
+        "website": "https://ilco.cz",
         "email": "ilco@ilco.cz",
-        "website": "https://ilco.cz"
-      }
-    },
-    {
-      "id": "ilco-novojicinska",
-      "name": "ILCO Novojičínska spolek stomiků",
-      "description": "Regionální pacientská organizace poskytující podporu lidem se stomií a jejich rodinám na Novojičínsku.",
-      "services": [
-        {
-          "name": "Podpora stomiků",
-          "description": "Bezplatné poradenství, rekondiční pobyty, volnočasové aktivity a odborné přednášky."
-        }
-      ],
-      "contact": {
-        "phone": "+420 732 784 740",
-        "email": "tucny@seznam.cz",
-        "website": "https://facebook.com/Stomiciunas"
+        "address": "Polská 1664/15, 120 00 Praha 2"
       }
     },
     {
       "id": "diakonie-cce-ostrava",
       "name": "Diakonie ČCE – středisko v Ostravě",
-      "description": "Poskytuje pečovatelskou službu, senior dopravu a organizuje sbírky oblečení.",
       "services": [
         {
           "id": "pecovatelska-sluzba-pribor",
           "name": "Pečovatelská služba Příbor",
-          "description": "Pro osoby starší 18 let se sníženou soběstačností. Umožňuje setrvat v domově a zachovat přirozené sociální vazby.",
+          "description": "Pečovatelská služba Příbor je pro všechny osoby starší 18 let, které se potýkají se sníženou soběstačností a potřebují pomoc druhé osoby. Posláním je umožnit těmto lidem setrvat ve svých domovech, zachovat jejich dosavadní způsob života a přiroze- né sociální vazby.",
           "contact": {
-            "address": "Jičínská 238, Příbor",
             "phone": "+420 737 286 554",
+            "address": "ostrava.diakonie.cz",
             "email": "bicanova@diakonieostrava.cz"
           }
         },
         {
           "id": "diakonacek",
           "name": "Senior doprava Diakonáček",
-          "description": "Doprava seniorů a držitelů průkazů ZTP/ZTP-P k lékaři, do lékárny, na poštu, úřad, hřbitov a do zdravotnických zařízení v Kopřivnici a Novém Jičíně.",
+          "description": "Diakonáček slouží k dopravě seniorů a držitelů průkazů ZTP a ZTP/P na území města Příbora včetně místních částí Hájova a Prchalova, a to k lékaři, do lékárny, rehabilitač- ního centra, na poštu, městský úřad, hřbitov a k cestám do zdravotnického zařízení v Kopřivnici a Novém Jičíně.",
           "contact": {
-            "address": "Jičínská 238, Příbor",
             "phone": "+420 605 491 232",
+            "address": "ostrava.diakonie.cz",
             "email": "bicanova@diakonieostrava.cz"
           }
         },
         {
-          "name": "Šatník Diakonie",
-          "description": "Sbírky oblečení a obuvi pro lidi ohrožené sociálním vyloučením."
+          "id": "satnik-diakonie-cce-stredisko-v-ostrave",
+          "name": "Šatník Diakonie ČCE – středisko v Ostravě",
+          "description": "Diakonie ČCE – středisko v Ostravě každoročně na jaře a na podzim organizuje sbírku oblečení a obuvi, které již občané nepotřebují. Tyto věci následně ve spolupráci s od- borem sociálních věcí Městského úřadu Příbor poskytuje lidem ohroženým sociálním vyloučením.",
+          "contact": {
+            "phone": "+420 737 286 554",
+            "address": "ostrava.diakonie.cz",
+            "email": "bicanova@diakonieostrava.cz"
+          }
         }
-      ],
-      "contact": {
-        "website": "https://ostrava.diakonie.cz"
-      }
+      ]
     },
     {
       "id": "adra-frydek-mistek",
       "name": "Dobrovolnické centrum ADRA Frýdek-Místek",
-      "description": "Propojuje dobrovolníky s lidmi potřebujícími pomoc - děti, mládež, senioři, lidé se zdravotním postižením či těžkým onemocněním.",
-      "services": [
-        {
-          "name": "Dobrovolnictví",
-          "description": "Koordinace dobrovolníků pro pomoc v domovech pro seniory a dalších zařízeních."
-        }
-      ],
+      "description": "Dobrovolnické centrum ADRA Frýdek-Místek propojuje lidi ochotné pomáhat s těmi, kteří pomoc potřebují. Je součástí humanitární organizace ADRA, která pomáhá lidem v nouzi. Dobrovolníci a dobrovolnice přinášejí radost do života a podporu dětem i mládeži, seniorům a seniorkám, lidem se zdravotním postižením či lidem s těžkým onemocněním.",
       "contact": {
-        "address": "Radniční 1242, 738 01 Frýdek-Místek",
         "phone": "+420 734 645 927",
+        "website": "https://adra.cz",
         "email": "dobrovolnik@adra.cz",
-        "website": "https://adra.cz"
+        "address": "Radniční 1242, 738 01 F–M"
       }
     },
     {
       "id": "domov-duha",
       "name": "Domov Duha, p. o.",
-      "description": "Poskytuje pobytové služby pro seniory a osoby s demencí.",
       "services": [
         {
           "id": "domov-duha-seniory",
           "name": "Domov pro seniory",
-          "description": "Pobytová služba pro osoby starší 65 let, které potřebují péči a nemohou zůstat doma.",
+          "description": "Poskytuje pobytovou službu sociální péče lidem starším 65 let, kteří vzhledem ke své- mu věku a ztrátě soběstačnosti potřebují péči, která jim nemůže být zajištěna rodinný- mi příslušníky, ani jinou formou pomoci. Usilují o to, aby tito lidé mohli žít důstojný život. Snahou je udržet a podporovat jejich schopnosti. Službu poskytují nepřetržitě.",
           "contact": {
-            "address": "Bezručova 419/20, 741 01 Nový Jičín",
-            "phones": ["+420 733 598 551", "+420 736 750 603"],
-            "email": "gavlasova@domovduha.cz"
+            "phones": [
+              "+420 733 598 551",
+              "+420 736 750 603"
+            ],
+            "website": "https://domovduha.cz",
+            "email": "gavlasova@domovduha.cz",
+            "address": "Bezručova 419/20, 741 01 Nový Jičín"
           }
         },
         {
           "id": "domov-duha-zvlastni-rezim",
           "name": "Domov se zvláštním režimem",
-          "description": "Pro osoby od 55 let s Alzheimerovou chorobou, stařeckou demencí či jinými typy demence.",
+          "description": "Domov se zvláštním režimem umožňuje lidem s demencí prožívat důstojný život v bezpečném prostředí, který už nezvládají ve svém domácím prostředí z důvodu ne- moci, věku a ztráty soběstačnosti. Cílovou skupinou jsou osoby ve věku 55 let a více, které vzhledem ke svému onemocnění Alzheimerovou chorobou, stařeckou demencí či jinými typy demence potřebují péči, která jim nemůže být zajištěna rodinnými pří- slušníky, ani jinou formou pomoci.",
           "contact": {
-            "address": "Hřbitovní 1128/41, 741 01 Nový Jičín",
-            "phones": ["+420 556 714 188", "+420 733 598 552"],
-            "email": "helena.friedrichova@domovduha.cz"
+            "phones": [
+              "+420 556 714 188",
+              "+420 733 598 552"
+            ],
+            "website": "https://domovduha.cz",
+            "email": "helena.friedrichova@domovduha.cz",
+            "address": "Hřbitovní 1128/41, 741 01 Nový Jičín"
           }
         }
-      ],
-      "contact": {
-        "website": "https://domovduha.cz"
-      }
+      ]
     },
     {
       "id": "domov-hortenzie",
       "name": "Domov Hortenzie, p. o.",
-      "description": "Pobytová sociální služba pro seniory nad 65 let se sníženou soběstačností.",
-      "services": [
-        {
-          "name": "Domov pro seniory",
-          "description": "Celodenní pečovatelská a ošetřovatelská služba v důstojném prostředí."
-        }
-      ],
+      "description": "Domov Hortenzie poskytuje pobytovou sociální službu seniorům ve věku nad 65 se sníženou soběstačností zejména z důvodu věku, jejichž situace vyžaduje pravidelnou pomoc jiné fyzické osoby. Cílem je zajištění celodenní pečovatelské a ošetřovatelské služby uživatelům tak, aby byli individuálně podporováni v soběstačnosti a aby jim bylo zabezpečeno důstojné, bezpečné a klidné prostředí v prostorách domova.",
       "contact": {
-        "address": "Za Střelnicí 1568, 744 01 Frenštát pod Radhoštěm",
-        "phones": ["+420 556 806 119", "+420 734 260 456"],
+        "phones": [
+          "+420 556 806 119",
+          "+420 734 260 456"
+        ],
+        "website": "https://domovhortenzie.cz",
         "email": "stasova@domovhortenzie.cz",
-        "website": "https://domovhortenzie.cz"
+        "address": "Za Střelnicí 1568, 744 01 Frenštát pod Radhoštěm"
       }
     },
     {
       "id": "domov-nanovo",
       "name": "Domov NaNovo, p. o.",
-      "description": "Poskytuje služby pro osoby s mentálním a zdravotním postižením.",
       "services": [
         {
           "id": "domov-nanovo-studenka",
           "name": "Domov pro osoby se zdravotním postižením Studénka",
-          "description": "Pro dospělé od 27 let s mentálním nebo zdravotním postižením se střední až vysokou mírou podpory."
+          "description": "Služba je určena dospělým lidem s mentálním postižením a lidem se zdravotním postižením, kteří mají významně sníženou úroveň rozumových schopností. Cílovou skupinou jsou osoby od 27 let se střední až vysokou mírou potřebné podpory při zajištění chodu domácnosti, zvládání běžných úkonů péče o vlastní osobu, zprostřed- kování kontaktu se společenským prostředím, zajištění stravy, v sociálním začlenění a v dalších běžných činnostech."
         },
         {
           "id": "domov-nanovo-suchdol",
           "name": "Domov pro osoby se zdravotním postižením Suchdol nad Odrou",
-          "description": "Pro osoby 27-64 let s duševním onemocněním v kombinaci s mentálním nebo zdravotním postižením."
+          "description": "Služba je určena dospělým lidem s duševním onemocněním v kombinaci s mentál- ním nebo zdravotním postižením, kteří mají významně sníženou úroveň rozumových schopností. Cílovou skupinou jsou lidé od 27 do 64 let s lehkou až střední mírou po- třebné podpory při zajištění chodu domácnosti, zvládání běžných úkonů péče o vlast- ní osobu, zprostředkování kontaktu se společenským prostředím, zajištění stravy, v sociálním začlenění a v dalších běžných činnostech."
         },
         {
           "id": "domov-nanovo-chranene-bydleni",
           "name": "Chráněné bydlení",
-          "description": "Pro dospělé 19-64 let s mentálním postižením. Podpora v přebírání zodpovědnosti a začleňování do běžného života."
+          "description": "Služba podporuje klienty v přebírání zodpovědnosti za svůj život a domácnost a v začleňování do běžného života. Pomáhá klientům při osvojování a upevňování pracovních, osobních a společenských návyků. Služby poskytují v přirozeném pro- středí domácího charakteru. Cílovou skupinou jsou dospělí lidé s mentálním postiže- ním ve věku od 19–64 let.",
+          "contact": {
+            "phone": "+420 556 715 202",
+            "website": "https://dnanovo.cz",
+            "email": "lukas.spurny@dnanovo.cz",
+            "address": "Poštovní 912, 742 13 Studénka"
+          }
         }
-      ],
-      "contact": {
-        "address": "Poštovní 912, 742 13 Studénka",
-        "phone": "+420 556 715 202",
-        "email": "lukas.spurny@dnanovo.cz",
-        "website": "https://dnanovo.cz"
-      }
+      ]
     },
     {
       "id": "domov-pod-bilou-horou",
       "name": "Domov pod Bílou horou, p. o.",
-      "description": "Pobytové služby pro seniory a osoby s demencí.",
       "services": [
         {
           "id": "domov-pod-bilou-horou-seniory",
           "name": "Domov pro seniory",
-          "description": "Pro osoby od 65 let potřebující celodenní pomoc."
+          "description": "Služba Domov pro seniory je určena osobám od 65 let, které potřebují z důvodu věku a zdravotního stavu celodenní pomoc jiné fyzické osoby a jejichž potřeby není možno zajistit v domácím prostředí ani za pomoci osob blízkých, terénní či ambulantní sociál- ní služby.",
+          "contact": {
+            "phones": [
+              "+420 733 143 960",
+              "+420 733 145 707"
+            ],
+            "website": "https://domovpodbh.cz",
+            "email": "socialni1@domovpodbh.cz",
+            "address": "Příčná 317/4, 742 21 Kopřivnice"
+          }
         },
         {
           "id": "domov-pod-bilou-horou-zvlastni-rezim",
           "name": "Domov se zvláštním režimem",
-          "description": "Pro osoby od 55 let s Alzheimerovou chorobou a ostatními typy demencí."
+          "description": "Služba Domov se zvláštním režimem je určena osobám od 55 let, které potřebují z důvodu onemocnění Alzheimerovou chorobou a ostatními typy demencí celodenní pomoc jiné fyzické osoby a jejichž potřeby není možno zajistit v domácím prostředí ani za pomoci osob blízkých, terénní či ambulantní sociální služby.",
+          "contact": {
+            "phones": [
+              "+420 733 143 960",
+              "+420 733 145 707"
+            ],
+            "website": "https://domovpodbh.cz",
+            "email": "socialni2@domovpodbh.cz",
+            "address": "Příčná 317/4, 742 21 Kopřivnice"
+          }
         }
-      ],
-      "contact": {
-        "address": "Příčná 317/4, 742 21 Kopřivnice",
-        "phones": ["+420 733 143 960", "+420 733 145 707"],
-        "email": "socialni1@domovpodbh.cz",
-        "website": "https://domovpodbh.cz"
-      }
+      ]
     },
     {
       "id": "domov-pribor",
       "name": "Domov Příbor, p. o.",
-      "description": "Pobytové zařízení rodinného typu pro seniory od 65 let, kteří jsou zcela nebo těžce závislí na pomoci jiné osoby.",
-      "services": [
-        {
-          "name": "Domov pro seniory",
-          "description": "Podpora a pomoc při zajištění důstojného způsobu života."
-        }
-      ],
+      "description": "Domov Příbor je pobytové zařízení „rodinného typu“, které nabízí sociální služby seniorům, kteří již nemohou žít sami ve svém domácím prostředí, potřebují podporu a pomoc při zajištění důstojného způsobu života. Přijímá seniory od 65 let, kteří jsou zcela nebo těžce závislí na pomoci jiné fyzické osoby a kteří jsou ohroženi nebo vystaveni sociální izolaci.",
       "contact": {
-        "address": "Masarykova 542, 742 58 Příbor",
-        "phones": ["+420 556 720 043", "+420 604 236 518"],
+        "phones": [
+          "+420 556 720 043",
+          "+420 604 236 518"
+        ],
+        "website": "https://domovpribor.cz",
         "email": "bilkova@domovpribor.cz",
-        "website": "https://domovpribor.cz"
+        "address": "Masarykova 542, 742 58 Příbor"
       }
     },
     {
       "id": "euroklic",
       "name": "Euroklíč",
-      "description": "Speciální klíč pro přístup k veřejným sociálním a technickým kompenzačním zařízením (WC, výtahy, plošiny) pro držitele průkazů TP, ZTP, ZTP/P a osoby s různými diagnózami.",
+      "description": "Euroklíč je speciální klíč, kterým se otvírá speciální zámek - Eurozámek. Eurozám- ky jsou osazovaná veřejná sociální a technická kompenzační zařízení (WC, výtahy, plošiny), která mohou pomoci osobám se zdravotním postižením cítit se i na veřejnosti lépe. Euroklíč je určen pro držitele průkazu TP, ZTP, ZTP/P, držitele WC karty - IBD pacienty, diabetiky, stomiky, onkologické pacienty, pro lidi s následujícími diagnózami: roztroušená skleróza, Parkinsonova choroba, cystická fibróza, nespecifické střevní záněty (Crohnova choroba a ulcerózní kolitida), močové dysfunkce, porucha autistic- kého spektra a angioedém (HAE).",
       "services": [
         {
-          "name": "Euroklíč",
-          "description": "Klíč pro otevírání Eurozámků na veřejných místech."
-        }
-      ],
-      "contact": {
-        "distributionPoints": [
-          {
-            "city": "Ostrava",
-            "name": "Regionální pracoviště a poradna NRZP ČR",
-            "address": "30. dubna 2944/1, 702 00 Ostrava",
-            "phones": ["+420 596 110 282", "+420 736 751 206"],
-            "email": "poradnaostrava@nrzp.cz"
-          },
-          {
-            "city": "Frýdek-Místek",
-            "name": "Statutární město, odbor sociálních služeb",
-            "address": "Radniční 1149, 738 22 Frýdek-Místek",
-            "phone": "+420 558 609 317",
-            "email": "podatelna@frydekmistek.cz"
+          "id": "distribucni-mista-pro-vyzvednuti-euroklice",
+          "name": "Distribuční místa pro vyzvednutí Euroklíče:"
+        },
+        {
+          "id": "ostrava",
+          "name": "Ostrava",
+          "description": "Regionální pracoviště a poradna NRZP ČR, 30. dubna 2944/1, 702 00,",
+          "contact": {
+            "email": "poradnaostrava@nrzp.cz",
+            "phones": [
+              "+420 596 110 282",
+              "+420 736 751 206"
+            ],
+            "address": "Ostrava - Moravská Ostrava a Přívoz,"
           }
-        ],
-        "website": "https://euroklic.cz"
-      }
+        },
+        {
+          "id": "frydek-mistek",
+          "name": "Frýdek-Místek",
+          "contact": {
+            "email": "podatelna@frydekmistek.cz",
+            "website": "https://www.euroklic.cz",
+            "phone": "+420 558 609 317",
+            "address": "pracoviště Radniční 1149, 738 22 Frýdek-Místek"
+          }
+        }
+      ]
     },
     {
       "id": "hospic-frydek-mistek",
-      "name": "Hospic Frýdek-Místek, p. o.",
-      "description": "Zajišťuje péči o klienty v terminální fázi onemocnění, paliativní péči, pobytové odlehčovací služby.",
-      "services": [
-        {
-          "name": "Hospicová péče",
-          "description": "Péče o nevyléčitelně nemocné v důstojném prostředí."
-        }
-      ],
+      "name": "Hospic Frýdek - Místek, p. o.",
+      "description": "Hospic zajišťuje péči o klienty v terminální fázi jejich onemocnění, poskytuje paliativní péči a provozuje pobytové odlehčovací služby a sociálně zdravotní služby. Hospic směřuje k poskytnutí pomoci lidem tak, aby i v nepříznivé sociální situaci mohli zůstat součástí místního společenství, žili důstojným životem, mohli využívat instituce po- skytující veřejné služby, udržovali přirozené vztahové sítě, zachovávali a rozvíjeli své individuální možnosti.",
       "contact": {
-        "address": "I. J. Pešiny 3640, Frýdek-Místek",
-        "phones": ["+420 595 538 133", "+420 595 538 127"],
-        "email": "k.karaffova@hospicfm.cz",
-        "website": "https://hospicfm.cz"
+        "phones": [
+          "+420 595 538 133",
+          "+420 595 538 127"
+        ],
+        "website": "https://hospicfm.cz",
+        "email": "k.karaffova@hospicfm.cz"
       }
     },
     {
       "id": "charita-koprivnice",
       "name": "Charita Kopřivnice",
-      "description": "Poskytuje pečovatelské, ošetřovatelské služby, mobilní pedikúru a SeniorTaxi.",
       "services": [
         {
           "id": "pecovatelska-sluzba-charita-koprivnice",
           "name": "Charitní pečovatelská služba",
-          "description": "Terénní pomoc v domácím prostředí osobám se sníženou soběstačností.",
+          "description": "Charitní pečovatelská služba je poskytována terénní formou v domácím prostředí osob, které se ocitly v nepříznivé sociální situaci z důvodu věku, ztráty soběstačnosti, zdraví nebo z jiných závažných důvodů a pomůže jim naplnit jejich individuální potřeby.",
           "contact": {
-            "phones": ["+420 603 247 468", "+420 731 625 702"],
-            "email": "vrchnisestra@charitakoprivnice.cz"
+            "phones": [
+              "+420 603 247 468",
+              "+420 731 625 702"
+            ],
+            "website": "https://charitakoprivnice.cz",
+            "email": "vrchnisestra@charitakoprivnice.cz",
+            "address": "Štefánikova 1163/12, 742 21 Kopřivnice"
           }
         },
         {
           "id": "charita-koprivnice-osetrovatelska",
           "name": "Charitní ošetřovatelská služba",
-          "description": "Ošetřování pacientů s akutním nebo chronickým onemocněním v domácím prostředí. Hrazeno pojišťovnami.",
+          "description": "Charitní ošetřovatelská služba je zaměřená na ošetřování pacientů s akutním nebo chronickým onemocněním, pacientů tělesně postižených nebo závislých na cizí pomoci, a to v jejich vlastním sociálním prostředí. Tato služba umožňuje pacientům zůstat co možná nejdéle v jejich domácím prostředí a zlepšit jejich kvalitu života. Současně zkracuje a zamezuje pobyt v nemocnici. Veškeré zdravotní úkony jsou na základě uzavřených smluv hrazeny zdravotními pojišťovnami, tzn., že pacient tyto služby nehradí.",
           "contact": {
-            "phones": ["+420 556 813 638", "+420 731 625 702"],
-            "email": "vrchnisestra@charitakoprivnice.cz"
+            "phones": [
+              "+420 556 813 638",
+              "+420 731 625 702"
+            ],
+            "website": "https://charitakoprivnice.cz",
+            "email": "vrchnisestra@charitakoprivnice.cz",
+            "address": "Štefánikova 1163/12, 742 21 Kopřivnice"
           }
         },
         {
+          "id": "mobilni-pedikura-zdrave-kroky",
           "name": "Mobilní pedikúra - Zdravé kroky",
-          "description": "Profesionální pedikúra až domů pro seniory a osoby se zdravotními omezeními.",
+          "description": "Služba Zdravé kroky přináší profesionální pedikúru až k vám domů. Je určena se- niorům a lidem se zdravotními omezeními, kteří nemohou nebo jen obtížně docházejí do pedikérských salonů.",
           "contact": {
-            "phone": "+420 704 999 933"
+            "phone": "+420 704 999 933",
+            "website": "https://charitakoprivnice.cz"
           }
         },
         {
           "id": "charitacek",
           "name": "SeniorTaxi s dopomocí – Chariťáček",
-          "description": "Přeprava seniorů 65+ s omezenou mobilitou, včetně doprovodu. Cíl do 100 km.",
+          "description": "Služba SeniorTaxi je určena pro seniory starší 65 let, kteří z důvodů snížené schop- nosti pohybu, ztížené mobility, vyššího stáří, poúrazové situace či špatného zdravot- ního stavu nemohou ke své přepravě využít jiné dopravní prostředky nebo veřejnou přepravu autobusy, nebo potřebují doprovodit na dané místo.",
           "contact": {
             "phone": "+420 730 554 444",
-            "email": "info@charitakoprivnice.cz"
+            "website": "https://charitakoprivnice.cz",
+            "email": "info@charitakoprivnice.cz",
+            "address": "Štefánikova 1163/12, 742 21 Kopřivnice"
           }
         }
-      ],
-      "contact": {
-        "address": "Štefánikova 1163/12, 742 21 Kopřivnice",
-        "website": "https://charitakoprivnice.cz"
-      }
+      ]
     },
     {
       "id": "kafira",
       "name": "KAFIRA o.p.s.",
-      "description": "Podporuje aktivní a samostatný život osob se zrakovým nebo zrakovým kombinovaným postižením.",
       "services": [
         {
+          "id": "socialni-rehabilitace-novy-jicin",
           "name": "Sociální rehabilitace – Nový Jičín",
-          "description": "Pro děti od 7 let a dospělé. Nácviky, rozvoj schopností, pomoc při výběru kompenzačních pomůcek."
+          "description": "Podporuje aktivní a samostatný život dětí od 7 let a dospělých se zrakovým nebo zrakovým kombinovaným postižením, které toto postižení ovlivňuje při zvládání kaž- dodenních činností běžných ve společnosti. Řízenými nácviky a další činností rozvíjí a udržuje jejich specifické schopnosti a dovednosti, které potřebují v běžném životě, a podporuje jejich soběstačnost a samostatnost a udržení přirozených sociálních vazeb. Nedílnou součástí služby je pomoc při výběru a získání vhodné kompenzační pomůcky.",
+          "contact": {
+            "phone": "+420 777 574 368",
+            "website": "https://kafira.cz",
+            "email": "novyjicin@kafira.cz",
+            "address": "Štefánikova 7, 741 11 Nový Jičín"
+          }
         }
-      ],
-      "contact": {
-        "address": "Štefánikova 7, 741 11 Nový Jičín",
-        "phone": "+420 777 574 368",
-        "email": "novyjicin@kafira.cz",
-        "website": "https://kafira.cz"
-      }
+      ]
     },
     {
       "id": "klub-otevreneneho-srdce",
       "name": "Klub otevřeného srdce, z. s.",
-      "description": "Svépomocné skupiny pro osoby s duševním onemocněním, jejich rodinné příslušníky a přátele.",
-      "services": [
-        {
-          "name": "Svépomocná skupina",
-          "description": "Setkávání lidí se zkušenostmi s duševním onemocněním."
-        }
-      ],
+      "description": "Klub otevřeného srdce, z. s., byl založen pro podporu a rozvoj svépomocných skupin pro osoby s duševním onemocněním, pro blízké rodinné příslušníky nebo kamarády. Je otevřený pro každého, kdo se s duševním onemocněním potýká a kterého zajímá téma duševního zdraví. Klub neorganizují profesionálové, ale svépomocí sami lidé se zkušenostmi s duševním onemocněním.",
       "contact": {
-        "address": "Jičínská 881, 742 58 Příbor",
         "phone": "+420 603 552 276",
+        "website": "https://klubotevrenehosrdce.cz",
         "email": "info@klubos.cz",
-        "website": "https://klubotevrenehosrdce.cz"
+        "address": "Jičínská 881, 742 58 Příbor"
       }
     },
     {
       "id": "klub-duchodcu-hajov",
       "name": "Klub důchodců Hájov",
-      "description": "Sdružuje seniory místní části Hájov - Příbor. Pravidelná setkání a výlety.",
-      "services": [
-        {
-          "name": "Setkávání seniorů",
-          "description": "Pravidelná setkání, výlety za kulturou a na zajímavá místa."
-        }
-      ],
+      "description": "Klub důchodců Hájov sdružuje seniory místní části Hájov - Příbor. Senioři se pravi- delně setkávají, aby si mohli v příjemné atmosféře vzájemně popovídat. Občas také společně vyrazí na menší výlet, ať už za kulturou nebo na zajímavá místa v okolí.",
       "contact": {
-        "address": "Příbor, Hájov 87",
-        "phone": "+420 737 483 637"
+        "phone": "+420 737 483 637",
+        "address": "Příbor, Hájov 87"
       }
     },
     {
       "id": "klub-senioru-pribor",
       "name": "Klub seniorů města Příbora, z. s.",
-      "description": "Místo setkávání seniorů s programem zájezdů, exkurzí, přednášek a kulturních akcí.",
-      "services": [
-        {
-          "name": "Aktivity pro seniory",
-          "description": "Poznávací zájezdy, exkurze, přednášky, kulturní a společenské akce."
-        }
-      ],
+      "description": "Klub je místem setkávání seniorů města Příbora, kde si mohou v přátelském prostředí posedět u kávy či čaje a popovídat si o všedních radostech i starostech. Pro své členy připravuje Klub také zajímavý program – od poznávacích zájezdů a exkurzí přes před- nášky na různá témata až po kulturní a společenské akce.",
       "contact": {
-        "address": "nám. Sigmunda Freuda 33, 742 58 Příbor",
-        "phone": "+420 602 603 200"
+        "phone": "+420 602 603 200",
+        "address": "nám. Sigmunda Freuda 33, 742 58"
       }
     },
     {
       "id": "krizove-centrum-ostrava",
       "name": "Krizové centrum Ostrava, z. s.",
-      "description": "Nepřetržitá a bezplatná pomoc lidem v akutní krizi a psychické tísni. Otevřeno 24/7.",
-      "services": [
-        {
-          "name": "Krizová pomoc",
-          "description": "Ambulantní, pobytová a terénní forma krizové pomoci pro osoby od 15 let."
-        }
-      ],
+      "description": "Krizové centrum nabízí nepřetržitou a bezplatnou pomoc lidem v akutní krizi a psy- chické tísni. Zařízení je otevřeno 24 hodin denně, včetně víkendů a svátků. Nabízí am- bulantní, pobytovou a terénní formu krizové pomoci. Služba je poskytována osobám od 15 let, které se ocitly v krizové situaci. Děti do 15 let mohou využívat služby KCO v rámci služeb poskytovaných rodině jako celku při řešení krizové situace celé rodiny.",
       "contact": {
-        "address": "Ruská 94/29, Ostrava - Vítkovice",
-        "phones": ["+420 596 110 882", "+420 596 110 883"],
-        "email": "krizovecentrum@kriceos.cz",
-        "website": "https://kriceos.cz"
+        "phones": [
+          "+420 596 110 882",
+          "+420 596 110 883"
+        ],
+        "website": "https://kriceos.cz",
+        "email": "krizovecentrum@kriceos.cz"
       }
     },
     {
       "id": "luna-pribor",
       "name": "LUNA PŘÍBOR, středisko volného času, p. o.",
-      "description": "Provozuje mateřské centrum pro rodiče na rodičovské dovolené.",
       "services": [
         {
           "id": "materske-centrum-zvonecek",
-          "name": "Mateřské centrum Zvoneček",
-          "description": "Setkávání, vzdělávání a zábava pro rodiče a jejich děti. Zajištěno hlídání dětí."
+          "name": "Mateřské centrum „Zvoneček“",
+          "description": "Mateřské centrum „Zvoneček“ je místem, ve kterém se setkávají, vzdělávají a baví maminky a tatínkové na rodičovské dovolené a jejich děti. Vítány jsou též ženy v do- mácnosti, babičky a dědečkové. V centru je pro všechny připraven zajímavý program, během kterého je zajištěno hlídání dětí.",
+          "contact": {
+            "phone": "+420 556 725 029",
+            "website": "https://lunapribor.cz",
+            "email": "luna@lunapribor.cz",
+            "address": "Lidická 560, 742 58 Příbor"
+          }
         }
-      ],
-      "contact": {
-        "address": "Lidická 560, 742 58 Příbor",
-        "phone": "+420 556 725 029",
-        "email": "luna@lunapribor.cz",
-        "website": "https://lunapribor.cz"
-      }
+      ]
     },
     {
       "id": "mas-cas",
-      "name": "Máš čas?, z. s.",
-      "description": "Provozuje nízkoprahové denní centrum pro osoby bez přístřeší.",
+      "name": "„Máš čas?“, z. s.",
       "services": [
         {
           "id": "nizkoprahove-denni-centrum-racek",
           "name": "Nízkoprahové denní centrum Racek",
-          "description": "Pro osoby od 18 let bez přístřeší - možnost hygieny, jídla, zázemí, pomoc s dokumenty."
+          "description": "Nízkoprahové denní centrum usiluje o sociální začlenění a pozitivní změnu v životech osob bez přístřeší. Služba je určena pro osoby od 18 let, které se ocitly v tíživé životní situaci z důvodu hmotné nouze, rozpadu rodiny, zdravotního onemocnění, ztrátou důvěry v instituce, ztráty vůle k životu, pro osoby, které nemají možnost se umýt, po- užít toaletu, převléknout se, najíst se, jsou bez dokladů, financí, práce, hledají zázemí, teplo, bezpečí.",
+          "contact": {
+            "phones": [
+              "+420 790 232 245",
+              "+420 790 232 244"
+            ],
+            "website": "https://mascas.cz",
+            "email": "ndcracek@seznam.cz",
+            "address": "Horní 1113, 742 21 Kopřivnice"
+          }
         }
-      ],
-      "contact": {
-        "address": "Horní 1113, 742 21 Kopřivnice",
-        "phones": ["+420 790 232 245", "+420 790 232 244"],
-        "email": "ndcracek@seznam.cz",
-        "website": "https://mascas.cz"
-      }
+      ]
     },
     {
       "id": "mesto-pribor",
       "name": "Město Příbor",
-      "description": "Poskytuje domy s pečovatelskou službou, sociální byty, ubytovnu a slevy pro seniory.",
       "services": [
         {
+          "id": "domy-s-pecovatelskou-sluzbou-pribor",
           "name": "Domy s pečovatelskou službou Příbor",
-          "description": "Pro osoby se sníženou soběstačností. Objekty na ul. Jičínská 238, Čs. armády 231 a 233.",
+          "description": "Domy s pečovatelskou službou v Příboře jsou určeny osobám, které mají sníženou soběstačnost z důvodu věku, chronického onemocnění nebo zdravotního postižení. Žádosti se podávají na odboru sociálních věcí Městského úřadu Příbor. Jedná se o ob- jekty na ul: Jičínská 238, Čs. armády 231 a Čs. armády 233.",
           "contact": {
             "phone": "+420 556 455 471",
-            "email": "jureckova@pribor-mesto.cz"
+            "website": "https://pribor.eu",
+            "email": "jureckova@pribor-mesto.cz",
+            "address": "Freudova 118, 742 58 Příbor"
           }
         },
         {
-          "name": "Sociální byty Jičínská 247",
-          "description": "Pro jednotlivce a rodiny v obtížné životní situaci, kteří nemohou zajistit bydlení na běžném trhu."
+          "id": "socialni-byty-jicinska-247-pribor",
+          "name": "Sociální byty Jičínská 247, Příbor",
+          "description": "Sociální byty jsou určeny jednotlivcům i rodinám, které se ocitly v obtížné životní situaci a nemohou si samy zajistit bydlení na běžném trhu s nájemním bydlením. Jsou určeny pro ty, kteří jsou bez domova, těm, kterým hrozí jeho ztráta, nebo těm, kteří žijí v nevyhovujících či nedůstojných podmínkách. Žádosti se podávají na odboru sociál- ních věcí Městského úřadu Příbor."
         },
         {
-          "name": "Ubytovna Jičínská 247",
-          "description": "Celoroční ubytování pro osoby bez přístřeší starší 18 let.",
+          "id": "ubytovna-jicinska-247-pribor",
+          "name": "Ubytovna Jičínská 247, Příbor",
+          "description": "Ubytování s celoročním provozem lze poskytnout osobám (mužům i ženám) bez přístřeší starším 18 let při řešení jejich nepříznivé sociální situace. Žádosti se podávají na odboru sociálních věcí Městského úřadu Příbor.",
           "contact": {
             "phone": "+420 556 455 472",
-            "email": "filipcova@pribor-mesto.cz"
+            "website": "https://pribor.eu",
+            "email": "filipcova@pribor-mesto.cz",
+            "address": "Freudova 118, 742 58 Příbor"
           }
         },
         {
           "id": "slevy-pro-seniory-pribor",
           "name": "Slevy pro seniory v Příboře",
-          "description": "50% sleva ke vstupnému na akce pořádané městem pro seniory od 65 let.",
+          "description": "Město Příbor poskytuje pro seniory od 65 let 50% slevy ke vstupnému na všechny kulturní a společenské akce pořádané městem Příborem. Nárok na seniorskou slevu prokazuje zájemce průkazem totožnosti.",
           "contact": {
-            "address": "KD Příbor, Lidická 560, 742 58",
-            "phones": ["+420 556 455 490", "+420 731 130 855"],
-            "email": "info@pribor-mesto.cz"
+            "phones": [
+              "+420 556 455 490",
+              "+420 731 130 855"
+            ],
+            "website": "https://pribor.eu",
+            "email": "info@pribor-mesto.cz",
+            "address": "KD Příbor, Lidická 560, 742 58"
           }
         }
-      ],
-      "contact": {
-        "address": "Freudova 118, 742 58 Příbor",
-        "website": "https://pribor.eu"
-      }
+      ]
     },
     {
       "id": "mikasa",
       "name": "MIKASA z. s.",
-      "description": "Pomáhá rodinám s dětmi s autismem, středně těžkým až těžkým mentálním postižením a atypickým chováním.",
       "services": [
         {
+          "id": "pruvodcovstvi-rodin-s-detmi-s-autismem",
           "name": "Průvodcovství rodin s dětmi s autismem",
-          "description": "Pomoc rodinám a odborníkům s komunikací a životem s postiženým člověkem."
+          "description": "Klienty jsou lidé s autismem, středně těžkým až těžkým mentálním postižením, více vadami a atypickým chováním. Organizace pomáhá také rodinám a odborníkům prohlubovat jejich vědomosti a hledat cestu k lepší komunikaci a životu s postiženým člověkem.",
+          "contact": {
+            "phones": [
+              "+420 730 513 405",
+              "+420 775 150 103",
+              "150"
+            ],
+            "website": "https://mikasazs.cz",
+            "email": "info@mikasazs.cz",
+            "address": "Srbská 856/2A, 700 30 Ostrava"
+          }
         }
-      ],
-      "contact": {
-        "address": "Srbská 856/2A, 700 30 Ostrava",
-        "phones": ["+420 730 513 405", "+420 775 150 103"],
-        "email": "info@mikasazs.cz",
-        "website": "https://mikasazs.cz"
-      }
+      ]
     },
     {
       "id": "mobilni-hospic-ondrasek",
       "name": "Mobilní hospic Ondrášek o. p. s.",
-      "description": "Poskytuje odbornou zdravotní a psychosociální podporu nevyléčitelně nemocným v domácím prostředí.",
       "services": [
         {
-          "name": "Mobilní hospic pro dospělé a děti",
-          "description": "Lékaři, sestry, sociální pracovnice, psychologové a duchovní pro doprovázení nemocných a pečujících."
+          "id": "mobilni-hospic-pro-dospele-a-mobilni-hospic-pro-deti",
+          "name": "Mobilní hospic pro dospělé a mobilní hospic pro děti",
+          "description": "Poskytuje nevyléčitelně nemocným a jejich rodinám odbornou zdravotní a psychoso- ciální podporu v domácím prostředí. Rodinu zaškolí a společně projdou krok po kroku celou péčí. Tým mobilního hospice tvoří lékaři, zdravotní sestry, sociální pracovni- ce, poradce pro pozůstalé, psychologové a duchovní. Poskytují podporu pečujícím a doprovází nemocné tak, aby mohli v klidu a důstojně zemřít doma, v kruhu svých blízkých.",
+          "contact": {
+            "phones": [
+              "+420 725 409 411",
+              "+420 724 975 278"
+            ],
+            "website": "https://mhondrasek.cz",
+            "email": "zdravotni@mhondrasek.cz",
+            "address": "Gurťjevova 459/11, 700 30 Ostrava"
+          }
         }
-      ],
-      "contact": {
-        "address": "Gurťjevova 459/11, 700 30 Ostrava",
-        "phones": ["+420 725 409 411", "+420 724 975 278"],
-        "email": "zdravotni@mhondrasek.cz",
-        "website": "https://mhondrasek.cz"
-      }
+      ]
     },
     {
       "id": "neziskovka-s-dusi",
       "name": "Neziskovka s duší z. s.",
-      "description": "Pomáhá pečujícím osobám a asistuje při péči o seniory, lidi s handicapem a duševními poruchami.",
-      "services": [
-        {
-          "name": "Pomoc pečujícím",
-          "description": "Asistence při péči o osoby znevýhodněné zdravotně či sociálně v domácím prostředí."
-        }
-      ],
+      "description": "Neziskovka s duší z. s. je spolek, který se hlásí k principům sociálního podnikání a klade si za primární cíl pomáhat pečujícím osobám. Pomáhá lidem, kteří pečují o své blízké v domácím prostředí, a asistuje při péči o osoby znevýhodněné zdravotně či sociálně, zejména seniory, lidi s handicapem a lidi s duševními poruchami.",
       "contact": {
-        "address": "Dukelská 573, 742 58 Příbor",
         "phone": "+420 732 754 269",
+        "website": "https://neziskovkasdusi.cz",
         "email": "e.roubalikova@neziskovkasdusi.cz",
-        "website": "https://neziskovkasdusi.cz"
+        "address": "Dukelská 573, 742 58 Příbor"
       }
     },
     {
       "id": "pedagogicko-psychologicka-poradna-novy-jicin",
-      "name": "Pedagogicko-psychologická poradna Nový Jičín, p. o.",
-      "description": "Odborná psychologická a speciálně pedagogická služba dětem a mládeži od 3 let do ukončení studia.",
+      "name": "Pedagogicko-psychologická poradna, Nový Jičín, p. o.",
+      "description": "Poradna zajišťuje odbornou psychologickou a speciálně pedagogickou službu dětem a mládeži od 3 let do ukončení středoškolského studia, respektive studia na VOŠ. V souvislosti s touto péčí je také zajišťována poradenská a metodická pomoc rodičům a učitelům těchto dětí a dospívajících ve všech typech škol v regionu Nový Jičín.",
       "services": [
         {
-          "name": "Psychologická a speciálně pedagogická služba",
-          "description": "Poradenská a metodická pomoc rodičům a učitelům."
-        }
-      ],
-      "contact": {
-        "locations": [
-          {
-            "name": "Hlavní pracoviště: Nový Jičín",
-            "address": "Žižkova 1154/3, 741 01 Nový Jičín",
-            "phones": ["+420 556 771 144", "+420 731 664 765"],
-            "email": "info@pppnj.cz"
-          },
-          {
-            "name": "Odloučené pracoviště: Kopřivnice",
-            "address": "Štefánikova 1163/12, Kopřivnice",
+          "id": "hlavni-pracoviste-novy-jicin",
+          "name": "Hlavní pracoviště: Nový Jičín",
+          "contact": {
+            "phones": [
+              "+420 556 771 144",
+              "+420 731 664 765"
+            ],
+            "website": "https://pppnj.cz",
+            "email": "info@pppnj.cz",
+            "address": "Žižkova 1154/3, 741 01 Nový Jičín"
+          }
+        },
+        {
+          "id": "odloucene-pracoviste-koprivnice",
+          "name": "Odloučené pracoviště: Kopřivnice",
+          "contact": {
             "phone": "+420 556 879 635",
+            "website": "https://pppnj.cz",
             "email": "detas.kopr@pppnj.cz"
           }
-        ],
-        "website": "https://pppnj.cz"
-      }
+        }
+      ]
     },
     {
       "id": "podane-ruce-osobni-asistence",
       "name": "Podané ruce - osobní asistence",
-      "description": "Terénní služba pro osoby se sníženou soběstačností od 1 roku věku.",
-      "services": [
-        {
-          "name": "Osobní asistence",
-          "description": "Pomoc při běžných činnostech v přirozeném prostředí."
-        }
-      ],
+      "description": "Osobní asistence je terénní služba poskytovaná osobám, které mají sníženou soběstačnost z důvodu věku, chronického onemocnění nebo zdravotního postižení, jejichž situace vyžaduje pomoc jiné fyzické osoby. Služba je poskytována v přiroze- ném sociálním prostředí osob a při činnostech, které osoba potřebuje. Služby jsou poskytovány všem těmto osobám od 1 roku.",
       "contact": {
-        "address": "Zborovská 465, 738 01 Frýdek-Místek",
         "phone": "+420 595 174 111",
+        "website": "https://podaneruce.eu",
         "email": "podaneruce@podaneruce.eu",
-        "website": "https://podaneruce.eu"
+        "address": "Zborovská 465, 738 01 F-M"
       }
     },
     {
       "id": "prosenior-novy-jicin",
       "name": "ProSenior Nový Jičín",
-      "description": "Poskytuje odlehčovací službu a denní stacionář pro seniory.",
       "services": [
         {
           "id": "odlehcovaci-sluzba-pohoda",
           "name": "Odlehčovací služba Pohoda",
-          "description": "Pro seniory od 60 let. Umožňuje pečujícím odpočinek nebo zajištění péče při hospitalizaci."
+          "description": "Odlehčovací služba je určena seniorům starším 60 let, o které je jinak pečováno v jejich přirozeném domácím prostředí. Cílem služby je umožnit pečujícím nezbytný odpočinek, nebo zajistit péči o seniora např. v době hospitalizace pečujícího."
         },
         {
           "id": "domovinka-novy-jicin",
           "name": "Denní stacionář Domovinka",
-          "description": "Služba a dohled pro seniory částečně odkázané na pomoc během pracovní doby pečujících."
+          "description": "Posláním denního stacionáře pro seniory je poskytnout službu, zajistit dohled a po- třebnou péči klientům, kteří jsou částečně odkázáni na pomoc druhé osoby a tuto pomoc jim nemohou zajistit rodinní příslušníci v době, kdy jsou v zaměstnání.",
+          "contact": {
+            "phones": [
+              "+420 556 778 391",
+              "+420 556 778 300"
+            ],
+            "website": "https://psnj.cz",
+            "email": "pavlina.richterova@novyjicin.cz",
+            "address": "Pod Lipami 19, 741 01 Nový Jičín"
+          }
         }
-      ],
-      "contact": {
-        "address": "Pod Lipami 19, 741 01 Nový Jičín",
-        "phones": ["+420 556 778 391", "+420 556 778 300"],
-        "email": "pavlina.richterova@novyjicin.cz",
-        "website": "https://psnj.cz"
-      }
+      ]
     },
     {
       "id": "psychiatricka-nemocnice-opava",
       "name": "Psychiatrická nemocnice v Opavě",
-      "description": "Poskytuje služby následné péče pro osoby s chronickým duševním onemocněním.",
       "services": [
         {
+          "id": "sluzby-nasledne-pece",
           "name": "Služby následné péče",
-          "description": "Podpora dospělých 18-64 let při přechodu ze zdravotnického lůžka do běžného života."
+          "description": "Posláním služby je podpora dospělých osob s chronickým duševním onemocněním v přirozeném, plynulém a bezpečném přechodu ze zdravotnického lůžka do běžného života nebo do jiné služby, která více vyhovuje potřebám klienta. Služba propojuje so- ciální i zdravotní systém, kdy člověk v průběhu nebo ihned po ukončení lůžkové péče využije službu za účelem lepšího začlenění do běžné komunity, případně dokáže být připraven k využívání sociálních služeb bližších jeho potřebám, nebo bude schopen žít samostatně za pomoci a podpory terénní sociální práce. Služba je určena osobám s chronickým duševním onemocněním ve věku 18–64 let.",
+          "contact": {
+            "phones": [
+              "+420 553 695 179",
+              "+420 553 695 295"
+            ],
+            "website": "https://pnopava.cz",
+            "email": "konopkova@pnopava.cz",
+            "address": "Olomoucká 305/88, 746 01 Opava"
+          }
         }
-      ],
-      "contact": {
-        "address": "Olomoucká 305/88, 746 01 Opava",
-        "phones": ["+420 553 695 179", "+420 553 695 295"],
-        "email": "konopkova@pnopava.cz",
-        "website": "https://pnopava.cz"
-      }
+      ]
     },
     {
       "id": "renarkon",
       "name": "Renarkon, o. p. s.",
-      "description": "Poskytuje terénní program pro uživatele návykových látek.",
       "services": [
         {
           "id": "renarkon-terenni-program",
           "name": "Terénní program na Novojičínsku",
-          "description": "Minimalizace rizik závislostního chování, sociálně-právní pomoc. Bezplatně, anonymně."
+          "description": "Posláním Terénního programu na Novojičínsku je vyhledávat a kontaktovat skrytou populaci uživatelů nealkoholových drog v jejich přirozeném prostředí, minimalizovat rizika spojená se závislostním chováním jak pro samotné uživatele návykových látek, tak pro širší veřejnost. Svými aktivitami usilují o motivaci lidí ohrožených látkovou či nelátkovou závislostí směrem k zodpovědnějšímu chování vůči sobě a svému okolí. Služba je poskytována bezplatně, anonymně v přirozeném prostředí klienta. Sociálně- -právní pomoc a poradenství mohou rovněž využít rodiče, partneři a osoby blízké.",
+          "contact": {
+            "phones": [
+              "+420 602 492 871",
+              "+420 723 946 507"
+            ],
+            "website": "https://renarkon.cz",
+            "email": "lsedovicova@renarkon.cz",
+            "address": "Štefánikova 1163, 742 21 Kopřivnice"
+          }
         }
-      ],
-      "contact": {
-        "address": "Štefánikova 1163, 742 21 Kopřivnice",
-        "phones": ["+420 602 492 871", "+420 723 946 507"],
-        "email": "lsedovicova@renarkon.cz",
-        "website": "https://renarkon.cz"
-      }
+      ]
     },
     {
       "id": "seniorcentrum-oasa",
       "name": "Seniorcentrum OASA s. r. o.",
-      "description": "Poskytuje domácí péči a domov pro seniory.",
       "services": [
         {
           "id": "agentura-domaci-pece-oasa",
           "name": "Agentura domácí péče OASA Nový Jičín",
-          "description": "Zdravotní péče ordinovaná lékařem pro pacienty po propuštění z nemocnice.",
+          "description": "Domácí péče je určena pacientům vyžadujícím odbornou zdravotní péči, kteří jsou propuštěni z nemocnice (pooperační stavy, úrazy, srdeční nebo nervové choroby). Tento druh zdravotní péče ordinuje lékař, který propouští pacienta do domácího pro- středí.",
           "contact": {
-            "address": "Hoblíkova 491/2, 741 01 Nový Jičín",
             "phone": "+420 608 350 518",
+            "address": "nj.agentura-oasa.cz",
             "email": "adpoasanj@seznam.cz"
           }
         },
         {
           "id": "seniorcentrum-oasa-domov",
           "name": "Domov pro seniory",
-          "description": "Pobytová služba pro osoby nad 55 let se sníženou soběstačností.",
+          "description": "Cílovou skupinu této pobytové sociální služby domova pro seniory tvoří osoby, které z důvodu věku nebo zdravotního postižení (nad 55 let) mají sníženou soběstačnost, jsou závislí na péči jiné osoby při zvládání úkonů péče o vlastní osobu. Jejich potřeby nelze zajistit terénní službou v jejich domácím prostředí nebo rodinou, blízkými či jinou službou.",
           "contact": {
-            "address": "Petřvald 2 - Petřvaldík 68, 742 60 Petřvald",
             "phone": "+420 608 350 523",
+            "address": "nj.agentura-oasa.cz",
             "email": "boreka@seznam.cz"
           }
         }
-      ],
-      "contact": {
-        "website": "https://nj.agentura-oasa.cz"
-      }
+      ]
     },
     {
       "id": "senior-pas",
       "name": "Senior pas",
-      "description": "Sociální projekt nabízející seniorům od 55 let semináře, akce, výlety, právní pomoc a systém slev.",
+      "description": "Aktivní, informovaní a spokojení senioři, kteří vědí, že na žádný problém nemusejí být sami. To je dlouhodobý cíl sociálního projektu Senior Pas. Seniorům nad 55 let po celé České republice nabízí odborné semináře, kulturní akce i organizované výlety, ale také kontaktní linku nebo právní pomoc. To vše doplněno o množství slev a výhod, které jim mohou usnadnit každodenní život. Ve spolupráci s jednotlivými kraji se snaží informo- vat o možnostech, jak smysluplně trávit volný čas, edukovat a v případě potřeby podat pomocnou ruku. Linka Senior pas je dostupná každý všední den od 8 do 16 hodin.",
       "services": [
         {
+          "id": "karta-senior-pas",
           "name": "Karta Senior Pas",
-          "description": "Bezplatná karta pro slevy na zdravotnictví, lázeňství, wellness, cestování, stravování aj."
+          "description": "Karta Senior Pas je projekt, který zajišťuje systém slev na výrobky a služby poskyto- vané držitelům karet Senior Pas. Slevy jsou z oblasti zdravotnictví, lázeňství, wellness, cestování, stravování, ubytování, vzdělávání, muzea, galerie, spotřební nákupy apod. Karta je zájemcům vydávána zdarma. Registrovat se a získat kartu Senior Pas je možné prostřednictvím webových stránek, telefonicky či e-mailem. Pomoc s registrací mohou poskytnout pracovníci odboru sociálních věcí Městského úřadu Příbor.",
+          "contact": {
+            "phone": "+420 725 534 865",
+            "website": "https://seniorpasy.cz",
+            "email": "info@seniorpasy.cz",
+            "address": "Mendlovo náměstí 907/1A, Staré Brno, 603 00 Brno"
+          }
         }
-      ],
-      "contact": {
-        "address": "Mendlovo náměstí 907/1A, Staré Brno, 603 00 Brno",
-        "phone": "+420 725 534 865",
-        "email": "info@seniorpasy.cz",
-        "website": "https://seniorpasy.cz"
-      }
+      ]
     },
     {
-      "id": "sons-novy-jicin",
-      "name": "Sjednocená organizace nevidomých a slabozrakých ČR, z.s., Oblastní pobočka Nový Jičín",
-      "description": "Poskytuje služby pro zrakově postižené občany.",
+      "id": "sjednocena-organizace-nevidomych-a-slabozrakych-ceske-republiky-zapsany-spolek-oblastni-pobocka-novy-jicin",
+      "name": "Sjednocená organizace nevidomých a slabozrakých České republiky, zapsaný spolek, Oblastní pobočka Nový Jičín",
       "services": [
         {
-          "id": "sons-poradenstvi",
-          "name": "Sociálně právní poradenství pro zrakově postižené",
-          "description": "Bezplatné poradenství, pracovně právní a technické poradenství, nácvik obsluhy pomůcek."
+          "id": "socialne-pravni-poradenstvi-pro-zrakove-postizene-obcany",
+          "name": "Sociálně právní poradenství pro zrakově postižené občany",
+          "description": "Bezplatné sociálně právní poradenství pro zrakově postižené občany, základní pora- denství o možnostech kompenzace handicapu zrakového postižení i poskytovatelích služeb takto postiženým lidem, pracovně právní poradenství, technické poradenství při výběru pomůcek pro zpracování informací včetně nácviku obsluhy takových zařízení aj."
         },
         {
-          "id": "sons-aktivizacni",
-          "name": "Sociálně aktivizační služby pro zrakově postižené",
-          "description": "Rekondiční pobyty, klubové dílny, sportovní aktivity, přednášky, výlety, dobrovolná dopomoc."
+          "id": "socialne-aktivizacni-sluzby-pro-zrakove-postizene-obcany",
+          "name": "Sociálně aktivizační služby pro zrakově postižené občany",
+          "description": "Sociálně aktivizační služby nabízejí a zajišťují rekondiční pobyty, klubové a zájmové dílny, sportovní a pobytové aktivity, informační a vzdělávací workshopy, přednášky, poznávací vycházky s výkladem průvodce, výlety a exkurze, dobrovolnou dopomoc - pomoc dobrovolníků zrakově postiženým, semináře zaměřené na problematiku zrakového postižení."
         },
         {
-          "id": "sons-pujcovna",
+          "id": "sjednocena-organizace-nevidomych-a-slabozrakych-ceske-republiky-zapsany-spolek-oblastni-pobocka-novy-jicin-pujcovna-kompenzacnich-pomucek",
           "name": "Půjčovna kompenzačních pomůcek",
-          "description": "Více jak 150 speciálních pomůcek pro zrakově postižené k bezplatnému zapůjčení."
+          "description": "Půjčovna nabízí více jak 150 speciálních kompenzačních pomůcek pro zrakově posti- žené k bezplatnému zapůjčení.",
+          "contact": {
+            "phone": "+420 776 488 164",
+            "website": "https://sonsnj.cz",
+            "email": "novyjicin-odbocka@sons.cz",
+            "address": "Sokolovská 617/9, 741 01 Nový Jičín"
+          }
         }
-      ],
-      "contact": {
-        "address": "Sokolovská 617/9, 741 01 Nový Jičín",
-        "phone": "+420 776 488 164",
-        "email": "novyjicin-odbocka@sons.cz",
-        "website": "https://sonsnj.cz"
-      }
+      ]
     },
     {
       "id": "slezska-diakonie",
       "name": "Slezská diakonie",
-      "description": "Poskytuje široké spektrum služeb pro osoby s postižením.",
       "services": [
         {
           "id": "archa-novy-jicin",
           "name": "ARCHA Nový Jičín, chráněné bydlení",
-          "description": "Bydlení pro dospělé 18-60 let s mentálním, kombinovaným postižením nebo duševním onemocněním.",
+          "description": "Chráněné bydlení poskytuje dospělým lidem s mentálním a kombinovaným postiže- ním bydlení v samostatných domácnostech s možností využít společné zázemí a pod- poru pracovníka. Klienty vedou a připravují k tomu, aby byli dříve nebo později schopni vést samostatný život ve své domácnosti. Služba je rovněž poskytována lidem s duševním onemocněním s cílem podpořit je v co největší samostatnosti za účelem začlenění se do běžné společnosti a získání svého bydlení. Věková hranice pro vstup do služby je 18 – 60 let.",
           "contact": {
-            "address": "Beskydská 142, 741 01 Nový Jičín",
             "phone": "+420 604 228 205",
-            "email": "archa.nj@slezskadiakonie.cz"
+            "website": "https://slezskadiakonie.cz",
+            "email": "archa.nj@slezskadiakonie.cz",
+            "address": "Beskydská 142, 741 01 Nový Jičín"
           }
         },
         {
           "id": "eden-novy-jicin-stacionar",
           "name": "EDEN Nový Jičín, denní stacionář",
-          "description": "Pro osoby 15-60 let s mentálním a kombinovaným postižením. Rozvoj dovedností a aktivní trávení dne.",
+          "description": "Posláním denního stacionáře EDEN Nový Jičín je podporovat a pečovat o lidi s men- tálním a kombinovaným postižením tak, aby prožili svůj den aktivně. S přihlédnutím k jejich potřebám rozvíjet, udržovat a naplňovat jejich dovednosti a schopnosti tak, aby je uměli využívat co nejvíce samostatně. Cílovou skupinou jsou lidé s lehkým, středně těžkým až těžkým mentálním a kombinovaným postižením, kteří potřebují do- pomoc při běžných činnostech, jako je sebeobsluha, hygiena, mobilita, komunikace. Věková hranice pro přijetí do služby je 15 - 60 let.",
           "contact": {
-            "address": "Beskydská 274, 741 01 Nový Jičín",
-            "phones": ["+420 734 439 346", "+420 733 142 416"],
-            "email": "eden.nj@slezskadiakonie.cz"
+            "phones": [
+              "+420 734 439 346",
+              "+420 733 142 416"
+            ],
+            "website": "https://slezskadiakonie.cz",
+            "email": "eden.nj@slezskadiakonie.cz",
+            "address": "Beskydská 274, 741 01 Nový Jičín"
           }
         },
         {
           "id": "eden-novy-jicin-odlehcovaci",
           "name": "EDEN Nový Jičín, odlehčovací služby",
-          "description": "Pro děti a dospělé 10-40 let s mentálním a kombinovaným postižením včetně autismu.",
+          "description": "Posláním ambulantní odlehčovací služby je zajistit dětem a dospělým s mentálním a kombinovaným postižením, včetně poruch autistického spektra, bezpečné podnětné prostředí a odbornou péči odpovídající individuálním potřebám klienta. Zároveň umožnit pečujícím osobám potřebný čas k odpočinku, regeneraci a vyřízení osobních záležitostí. Cílovou skupinou služby jsou děti a dospělí s mentálním a kombinovaným postižením, včetně poruch autistického spektra, od 10 do 40 let a jejich rodiny a další pečující osoby.",
           "contact": {
-            "address": "Beskydská 274, 741 01 Nový Jičín",
-            "phones": ["+420 703 872 255", "+420 733 142 416"],
-            "email": "sp.edennj@slezskadiakonie.cz"
+            "phones": [
+              "+420 703 872 255",
+              "+420 733 142 416"
+            ],
+            "website": "https://slezskadiakonie.cz",
+            "email": "sp.edennj@slezskadiakonie.cz",
+            "address": "Beskydská 274, 741 01 Nový Jičín"
           }
         },
         {
           "id": "effatha-koprivnice",
           "name": "EFFATHA Kopřivnice, sociálně terapeutické dílny",
-          "description": "Podpora dospělých s mentálním a kombinovaným postižením v získání pracovních dovedností.",
+          "description": "Podporují dospělé lidi s mentálním a kombinovaným postižením v upevnění a získání pracovních, sociálních dovedností a návyků vedoucích k pracovnímu uplatnění. Sna- hou je získat nebo udržet soběstačnost a nezávislost na pomoci druhých lidí.",
           "contact": {
-            "address": "Školní 926, 742 21 Kopřivnice",
-            "phones": ["+420 703 872 222", "+420 704 675 696"],
-            "email": "effatha.sp@slezskadiakonie.cz"
+            "phones": [
+              "+420 703 872 222",
+              "+420 704 675 696"
+            ],
+            "website": "https://slezskadiakonie.cz",
+            "email": "effatha.sp@slezskadiakonie.cz",
+            "address": "Školní 926, 742 21 Kopřivnice"
           }
         },
         {
           "id": "effatha-novy-jicin",
           "name": "EFFATHA Nový Jičín, sociálně terapeutické dílny",
-          "description": "Podpora dospělých s mentálním a kombinovaným postižením a autismem v pracovním uplatnění.",
+          "description": "EFFATHA Nový Jičín, sociálně terapeutické dílny Slezské diakonie podporují dospělé lidi s mentálním a kombinovaným postižením, s poruchami autistického spektra v upevnění a získání pracovních, sociálních dovedností a návyků vedoucích k pracovnímu uplatně- ní. Snahou je získat nebo udržet soběstačnost a nezávislost na pomoci druhých lidí.",
           "contact": {
-            "address": "U Jičínky 25, 741 01 Nový Jičín",
-            "phones": ["+420 704 675 734", "+420 734 416 302"],
-            "email": "effathanj@slezskadiakonie.cz"
+            "phones": [
+              "+420 704 675 734",
+              "+420 734 416 302"
+            ],
+            "website": "https://slezskadiakonie.cz",
+            "email": "effathanj@slezskadiakonie.cz",
+            "address": "U Jičínky 25, 741 01 Nový Jičín"
           }
         },
         {
           "id": "karmel-ticha-stacionar",
           "name": "KARMEL Tichá, denní stacionář",
-          "description": "Pro osoby 16-60 let s mentálním a kombinovaným postižením, především s autismem.",
-          "contact": {
-            "address": "Tichá 295, 742 74 Tichá",
-            "phones": ["+420 734 780 233", "+420 731 146 931"],
-            "email": "karmel.ticha@slezskadiakonie.cz"
-          }
+          "description": "Denní stacionář poskytuje službu dospělým lidem od 16 do 60 let s mentálním a kombinovaným postižením, především s poruchami autistického spektra, závislým na pomoci druhé osoby. Služba nabízí prostor pro aktivně strávený den, setkávání se s vrstevníky a pro získávání dovedností potřebných k samostatnějšímu životu."
         },
         {
           "id": "karmel-ticha-domov",
           "name": "KARMEL Tichá, domov pro osoby se zdravotním postižením",
-          "description": "Celoroční bydlení pro dospělé od 18 let (nově příchozí do 45 let) s mentálním postižením a autismem.",
+          "description": "Posláním domova KARMEL v Tiché je poskytovat dospělým lidem s mentálním a kom- binovaným postižením s poruchami autistického spektra celoroční bydlení, přimě- řenou pomoc a podporu dle jejich potřeb a přání. Služba je pro dospělé od 18 let, pro nově příchozí je stávající horní věková hranice omezena věkem 45 let.",
           "contact": {
-            "address": "Tichá 295, 742 74 Tichá",
-            "phones": ["+420 734 780 233", "+420 731 146 931"],
-            "email": "karmel.ticha@slezskadiakonie.cz"
+            "phones": [
+              "+420 734 780 233",
+              "+420 731 146 931"
+            ],
+            "website": "https://slezskadiakonie.cz",
+            "email": "karmel.ticha@slezskadiakonie.cz",
+            "address": "Tichá 295, 742 74 Tichá"
           }
         },
         {
           "id": "rut-novy-jicin",
           "name": "RÚT Nový Jičín, sociální rehabilitace",
-          "description": "Podpora soběstačnosti osob od 15 let s duševním onemocněním, mentálním postižením nebo autismem.",
+          "description": "Služba posiluje soběstačnost klientů tak, aby zvládli každodenní činnosti svého života a samostatně využívali běžně dostupné zdroje ve svém okolí. Cílovou skupinou služby jsou osoby od 15 let věku, které se vlivem duševního onemocnění, mentálního nebo kombinovaného znevýhodnění, poruch autistického spektra nacházejí v sociálně nepříznivé situaci, nebo jsou vznikem této situace ohroženy.",
           "contact": {
-            "address": "Sokolovská 9, 741 01 Nový Jičín",
-            "phones": ["+420 734 366 561", "+420 739 525 375"],
-            "email": "rut.nj@slezskadiakonie.cz"
+            "phones": [
+              "+420 734 366 561",
+              "+420 739 525 375"
+            ],
+            "website": "https://slezskadiakonie.cz",
+            "email": "rut.nj@slezskadiakonie.cz",
+            "address": "Sokolovská 9, 741 01 Nový Jičín"
           }
         },
         {
           "id": "matana",
           "name": "Poradna rané péče MATANA",
-          "description": "Pro rodiny s dětmi do 7 let s opožděným vývojem, mentálním, pohybovým postižením nebo autismem. Zdarma.",
+          "description": "Služba je určena rodinám s dětmi od narození do 7 let věku, které vnímají odlišnosti ve vývoji svého dítěte. Děti s opožděným a odlišným vývojem (například v oblasti řeči, pohybu), s mentálním, pohybovým a kombinovaným postižením, s poruchou autistic- kého spektra, s ohroženým vývojem v důsledku předčasného narození. Služba raná péče je pro rodiny zdarma.",
           "contact": {
-            "address": "Hlubčická 9, 794 01 Krnov",
-            "phones": ["+420 731 191 868", "+420 734 366 287"],
-            "email": "matana@slezskadiakonie.cz"
+            "phones": [
+              "+420 731 191 868",
+              "+420 734 366 287"
+            ],
+            "website": "https://slezskadiakonie.cz",
+            "email": "matana@slezskadiakonie.cz",
+            "address": "Hlubčická 9, 794 01 Krnov"
           }
         }
-      ],
-      "contact": {
-        "website": "https://slezskadiakonie.cz"
-      }
+      ]
     },
     {
       "id": "spolecnost-pro-ranou-peci-ostrava",
       "name": "Společnost pro ranou péči, z. s., pobočka Ostrava",
-      "description": "Pomáhá rodinám s dětmi se zrakovým nebo kombinovaným postižením do 7 let věku. Zdarma.",
-      "services": [
-        {
-          "name": "Raná péče",
-          "description": "Podpora rodin s dětmi s postižením zrakového vnímání."
-        }
-      ],
+      "description": "Služba pomáhá rodinám s dětmi se zrakovým postižením do sedmi let věku, rodinám s dětmi s kombinovaným postižením do sedmi let věku (přičemž postižení je také v oblasti zrakového vnímání a je převažující nebo pro dítě určující v daném období jeho vývoje), rodinám s dětmi do sedmi let věku, kde je vývoj dítěte v oblasti zrakového vnímání v důsledku jeho nepříznivého zdravotního stavu ohrožen. Služba raná péče je pro rodiny zdarma.",
       "contact": {
-        "address": "Rodinná 2719/57, 700 30 Ostrava",
-        "phones": ["+420 774 242 736", "+420 774 567 236"],
+        "phones": [
+          "+420 774 242 736",
+          "+420 774 567 236"
+        ],
+        "website": "https://ranapece.cz",
         "email": "ostrava@ranapece.cz",
-        "website": "https://ranapece.cz"
+        "address": "Rodinná 2719/57, 700 30 Ostrava"
       }
     },
     {
       "id": "stredisko-socialnich-sluzeb-koprivnice",
       "name": "Středisko sociálních služeb města Kopřivnice, p. o.",
-      "description": "Poskytuje azylový dům, noclehárnu, denní stacionář a odlehčovací službu.",
       "services": [
         {
           "id": "azylovy-dum-koprivnice",
           "name": "Azylový dům",
-          "description": "Dočasné ubytování pro osoby se ztrátou bydlení.",
-          "contact": {
-            "address": "Horní 1113, 742 21 Kopřivnice",
-            "phones": ["+420 556 812 811", "+420 734 297 923"],
-            "email": "azyl.dum@sssmk.cz"
-          }
+          "description": "Pomáhá a podporuje muže a ženy - osoby, které se ocitly v nepříznivé sociální situaci spojené se ztrátou bydlení, a to poskytnutím dočasného ubytování při návratu k běž- nému životu s přihlédnutím k jejich individuálním potřebám."
         },
         {
           "id": "nocleharna-koprivnice",
           "name": "Noclehárna",
-          "description": "Přenocování pro osoby bez přístřeší od 18 let s možností hygieny.",
+          "description": "Služba noclehárna poskytuje osobám (mužům i ženám) bez přístřeší starším 18 let přenocování s možností provedení základní hygieny a individuální podporu a pomoc při řešení jejich nepříznivé sociální situace.",
           "contact": {
-            "address": "Horní 1113, 742 21 Kopřivnice",
-            "phones": ["+420 556 812 811", "+420 734 297 923"],
-            "email": "azyl.dum@sssmk.cz"
+            "phones": [
+              "+420 556 812 811",
+              "+420 734 297 923"
+            ],
+            "website": "https://sssmk.cz",
+            "email": "azyl.dum@sssmk.cz",
+            "address": "Horní 1113, 742 21 Kopřivnice"
           }
         },
         {
           "id": "kopretina",
           "name": "Denní stacionář Kopretina",
-          "description": "Pro dospělé se středně těžkým až těžkým mentálním a kombinovaným postižením a autismem.",
+          "description": "Poskytuje službu ambulantně, tzn., že klienti do stacionáře denně dojíždějí a odtud se pak opět vracejí do svých rodin, do svého bydliště. Je určen dospělým osobám se středně těžkým až těžkým mentálním a kombinovaným postižením, autismem a poruchami autistického spektra.",
           "contact": {
-            "address": "Francouzská 1181, 742 21 Kopřivnice",
             "phone": "+420 604 317 786",
-            "email": "kopretina.socialni@sssmk.cz"
+            "website": "https://sssmk.cz",
+            "email": "kopretina.socialni@sssmk.cz",
+            "address": "Francouzská 1181, 742 21 Kopřivnice"
           }
         },
         {
           "id": "odlehcovaci-sluzba-koprivnice",
           "name": "Odlehčovací služba",
-          "description": "Dočasná péče o blízkého pro odpočinek pečujících osob.",
+          "description": "Odlehčovací služba podporuje a pomáhá pečujícím osobám se zajištěním dočasné péče o jejich blízkého v případě, kdy potřebují čas ke svému odpočinku na dovolenou a regeneraci sil, popř. tehdy, nejsou-li samy schopny zajistit náročnou péči o svého blízkého.",
           "contact": {
-            "address": "Česká 320, 742 21 Kopřivnice",
-            "phones": ["+420 556 808 622", "+420 737 247 565"],
-            "email": "socialni@sssmk.cz"
+            "phones": [
+              "+420 556 808 622",
+              "+420 737 247 565"
+            ],
+            "website": "https://sssmk.cz",
+            "email": "socialni@sssmk.cz",
+            "address": "Česká 320, 742 21 Kopřivnice"
           }
         }
-      ],
-      "contact": {
-        "website": "https://sssmk.cz"
-      }
+      ]
     },
     {
       "id": "svaz-letcu-pribor",
       "name": "Svaz letců Příbor, z.s.",
-      "description": "Sdružuje vojenské a civilní letce a přátele letectví.",
-      "services": [
-        {
-          "name": "Klubová činnost",
-          "description": "Setkávání v klubovně na ul. Dukelské 1344."
-        }
-      ],
+      "description": "Svaz letců Příbor, z.s., sdružuje vojenské a civilní letce a přátele letectví. Svaz letců Příbor se schází ve své klubovně na ul. Dukelské 1344.",
       "contact": {
-        "address": "Dukelská 1344, 742 58 Příbor",
-        "phones": ["+420 602 754 989", "+420 604 963 272"]
+        "phones": [
+          "+420 602 754 989",
+          "+420 604 963 272"
+        ],
+        "address": "Dukelská 1344, 742 58 Příbor , + 420"
       }
     },
     {
-      "id": "svaz-telesne-postizenych-pribor",
-      "name": "Svaz tělesně postižených v ČR, z. s., místní organizace Příbor",
-      "description": "Pořádá zájezdy, výroční schůze, rekondiční pobyty, exkurze a besedy pro členy i veřejnost.",
-      "services": [
-        {
-          "name": "Aktivity pro tělesně postižené",
-          "description": "Poznávací zájezdy, rekondiční pobyty, exkurze, naučné besedy."
-        }
-      ],
+      "id": "svaz-telesne-postizenych-v-ceske-republice-z-s-mistni-organizace-pribor",
+      "name": "Svaz tělesně postižených v České republice, z. s., místní organizace Příbor",
+      "description": "Místní organizace Svazu tělesně postižených v České republice, z. s., pořádá pro své členy i pro veřejnost poznávací zájezdy, výroční schůze, rekondiční pobyty, jednoden- ní exkurze, naučné besedy a mnoho dalších aktivit.",
       "contact": {
-        "address": "nám. Sigmunda Freuda 33, 742 58 Příbor",
-        "phone": "+420 607 655 037"
+        "phone": "+420 607 655 037",
+        "address": "nám. Sigmunda Freuda 33, 742 58"
       }
     },
     {
       "id": "skolni-jidelna-komenskeho",
       "name": "Školní jídelna Komenského",
-      "description": "Zajišťuje obědy pro děti, mládež i veřejnost s možností dovozu.",
-      "services": [
-        {
-          "name": "Stravování a dovoz obědů",
-          "description": "Obědy na místě nebo dovoz domů."
-        }
-      ],
+      "description": "Školní jídelna Komenského zajišťuje obědy nejen pro děti a mládež, ale také pro veřej- nost. Strávníci si mohou oběd vychutnat přímo na místě, nebo si jej nechat dovézt.",
       "contact": {
-        "address": "Komenského 458, 742 58 Příbor",
-        "phones": ["+420 556 725 186", "+420 736 627 548"],
+        "phones": [
+          "+420 556 725 186",
+          "+420 736 627 548"
+        ],
+        "website": "https://jidelnapribor.cz",
         "email": "sj.pribor@tiscali.cz",
-        "website": "https://jidelnapribor.cz"
+        "address": "Komenského 458, 742 58 Příbor"
       }
     },
     {
       "id": "therapon-98",
       "name": "THERÁPON 98, a. s.",
-      "description": "Poskytuje následnou lůžkovou péči a domácí péči.",
       "services": [
         {
           "id": "therapon-98-zdravotni",
           "name": "Středisko následné lůžkové péče, oddělení zdravotních služeb",
-          "description": "Celodenní zdravotní a ošetřovatelská péče pro pacienty s chronickým i akutním onemocněním.",
+          "description": "Středisko následné lůžkové péče poskytuje celodenní odbornou zdravotní a ošetřova- telskou péči pacientům s chronickým i akutním onemocněním, pacientům po opera- cích převážně pohybového aparátu a pacientům v terminálním stadiu onemocnění.",
           "contact": {
             "phone": "+420 556 870 196",
-            "email": "kryskova.ludmila@therapon98.cz"
+            "website": "https://therapon98.cz",
+            "email": "kryskova.ludmila@therapon98.cz",
+            "address": "Štefánikova 1301, 742 21 Kopřivnice"
           }
         },
         {
           "id": "therapon-98-socialni",
           "name": "Středisko následné lůžkové péče, oddělení sociálních služeb",
-          "description": "Pobyt na zdravotně sociálním lůžku pro osoby se stabilizovaným zdravotním stavem.",
+          "description": "Středisko následné lůžkové péče, oddělení sociálních služeb poskytuje pobyt na tzv. zdravotně sociálním lůžku osobám se sníženou soběstačností, závislým na péči druhé osoby, jejichž zdravotní stav je stabilizovaný a již nevyžadují lůžkovou zdravotní péči.",
           "contact": {
             "phone": "+420 556 870 161",
-            "email": "socialni.pracovnice@therapon98.cz"
+            "website": "https://therapon98.cz",
+            "email": "socialni.pracovnice@therapon98.cz",
+            "address": "Štefánikova 1301, 742 21 Kopřivnice"
           }
         },
         {
           "id": "therapon-98-domaci-pece",
           "name": "Domácí péče",
-          "description": "Zdravotní péče v domácím prostředí na doporučení lékaře.",
+          "description": "Domácí péče je zdravotní péče poskytovaná pacientům na základě doporučení regis- trujícího praktického lékaře nebo ošetřujícího lékaře při hospitalizaci v jejich vlastním sociálním prostředí.",
           "contact": {
-            "phones": ["+420 556 870 233", "+420 602 557 118"],
-            "email": "mikulenkova.pavlina@therapon98.cz"
+            "phones": [
+              "+420 556 870 233",
+              "+420 602 557 118"
+            ],
+            "website": "https://therapon98.cz",
+            "email": "mikulenkova.pavlina@therapon98.cz",
+            "address": "Štefánikova 1301, 742 21 Kopřivnice"
           }
         }
-      ],
-      "contact": {
-        "address": "Štefánikova 1301, 742 21 Kopřivnice",
-        "website": "https://therapon98.cz"
-      }
+      ]
     },
     {
       "id": "tichy-svet",
       "name": "Tichý svět, o. p. s.",
-      "description": "Poskytuje tlumočnické a přepisovatelské služby pro osoby se sluchovým postižením.",
       "services": [
         {
+          "id": "tichy-svet-tlumocnicke-sluzby",
           "name": "Tlumočnické služby",
-          "description": "Bezbariérová komunikace pro osoby ovládající český znakový jazyk."
+          "description": "Posláním tlumočnických a přepisovatelských služeb je umožnit bezbariérovou komunikaci osobám se sluchovým postižením a osobám s kombinovaným postiže- ním, které ovládají český znakový jazyk nebo komunikují prostřednictvím psaného českého jazyka.",
+          "contact": {
+            "phones": [
+              "+420 702 158 110",
+              "+420 725 986 099",
+              "158"
+            ],
+            "website": "https://tichysvet.cz",
+            "email": "kamila.novakova@tichysvet.cz",
+            "address": "Masná 1493/8, 702 00 Ostrava"
+          }
         }
-      ],
-      "contact": {
-        "address": "Masná 1493/8, 702 00 Ostrava",
-        "phones": ["+420 702 158 110", "+420 725 986 099"],
-        "email": "kamila.novakova@tichysvet.cz",
-        "website": "https://tichysvet.cz"
-      }
+      ]
     },
     {
       "id": "tyflocentrum-ostrava",
       "name": "TyfloCentrum Ostrava, o. p. s.",
-      "description": "Vede osoby se zrakovým postižením k větší samostatnosti.",
       "services": [
         {
+          "id": "socialni-rehabilitace",
           "name": "Sociální rehabilitace",
-          "description": "Pro osoby od 7 let s poškozením zraku. Rozvoj znalostí a dovedností pro plnohodnotný život."
+          "description": "Posláním sociální rehabilitace TyfloCentra Ostrava je vést osoby se zrakovým posti- žením k větší samostatnosti a nezávislosti při řešení běžných životních situací pro- střednictvím aktivit, které jim umožní získat a rozvíjet znalosti a dovednosti potřebné k plnohodnotnému životu. Sociální rehabilitace je určena osobám starším sedmi let, které jejich poškození zraku negativně ovlivňuje při každodenních činnostech a hledají podporu k zajištění samostatného a nezávislého života ve společnosti.",
+          "contact": {
+            "phones": [
+              "+420 776 069 142",
+              "+420 774 731 331"
+            ],
+            "website": "https://tyflocentrum-ova.cz",
+            "email": "durkova@tyflocentrum-ova.cz",
+            "address": "nám. Mgr. Šrámka 1760/4, 702 00 Ostrava"
+          }
         }
-      ],
-      "contact": {
-        "address": "nám. Mgr. Šrámka 1760/4, 702 00 Ostrava",
-        "phones": ["+420 776 069 142", "+420 774 731 331"],
-        "email": "durkova@tyflocentrum-ova.cz",
-        "website": "https://tyflocentrum-ova.cz"
-      }
+      ]
     },
     {
       "id": "zs-ms-motylek",
       "name": "Základní škola a Mateřská škola Motýlek",
-      "description": "Vzdělávání dětí a žáků se speciálními vzdělávacími potřebami - mentální postižení, autismus, DMO.",
-      "services": [
-        {
-          "name": "Speciální vzdělávání",
-          "description": "Metodiky práce s dětmi s mentálním postižením, autismem a kombinovanými vadami."
-        }
-      ],
+      "description": "Základní a Mateřská škola Motýlek umožňuje vzdělávání dětí a žáků s takovou úrovní rozvoje rozumových schopností a postižení, které jim nedovolí navštěvovat běžnou mateřskou a základní školu. Vzdělává děti a žáky se speciálními vzdělávacími potře- bami, zaměřuje se na metodiky práce s dětmi a žáky s mentálním postižením, poru- chami autistického spektra, dětskou mozkovou obrnou, poruchou aktivity a pozornos- ti, narušenou komunikační schopností a se souběžným postižením více vad.",
       "contact": {
-        "address": "Smetanova 1122/1, 742 21 Kopřivnice",
-        "phones": ["+420 556 810 242", "+420 608 714 583"],
+        "phones": [
+          "+420 556 810 242",
+          "+420 608 714 583"
+        ],
+        "website": "https://detske-centrum.cz",
         "email": "info@detske-centrum.cz",
-        "website": "https://detske-centrum.cz"
+        "address": "Smetanova 1122/1, 742 21 Kopřivnice"
       }
     },
     {
       "id": "mestska-policie-pribor",
       "name": "Městská policie Příbor",
-      "description": "Dohlíží na veřejný pořádek v Příboře a přilehlých obcích Hájov a Prchalov.",
+      "description": "Městská policie Příbor dohlíží na veřejný pořádek v městě Příbore a v přilehlých ob- cích Hájov a Prchalov. Jejím posláním je ochrana práv občanů, prevence přestupků a řešení místních záležitostí v souladu s příslušnou legislativou.",
       "services": [
         {
+          "id": "prevence-kriminality",
           "name": "Prevence kriminality",
-          "description": "Sociální a situační prevence, koordinace preventivních programů, spolupráce se školami."
+          "description": "Cílem prevence kriminality je zabránit páchání trestné činnosti a snížit pocit nejistoty mezi občany. Hlavními aktivitami jsou sociální a situační prevence na místní úrovni, správa financí poskytnutých na projekty prevence, koordinace preventivních pro- gramů a úzká spolupráce s orgány státní správy, samosprávou, školami a zájmovými organizacemi.",
+          "contact": {
+            "website": "https://pribor.eu",
+            "email": "policie@pribor-mesto.cz",
+            "phone": "+420 721 146 146",
+            "address": "náměstí Sigmunda Freuda 19, 742 58 Příbor"
+          }
         }
-      ],
-      "contact": {
-        "address": "náměstí Sigmunda Freuda 19, 742 58 Příbor",
-        "phone": "+420 721 146 146",
-        "email": "policie@pribor-mesto.cz",
-        "website": "https://pribor.eu"
-      }
+      ]
     },
     {
       "id": "probacni-mediaci-sluzba-novy-jicin",
       "name": "Probační a mediační služba – Nový Jičín",
-      "description": "Pomáhá nacházet řešení mezi pachatelem a poškozeným trestného činu. Bezplatné služby.",
+      "description": "Probační a mediační služba (PMS) v Novém Jičíně pomáhá nacházet řešení mezi pa- chatelem a poškozeným trestného činu tak, aby byla zajištěna spravedlnost, náprava a ochrana společnosti. Cílem služby je umožnit pachatelům převzít odpovědnost za své jednání, předcházet dalším trestným činům a současně poskytovat podporu obě- tem. Služby jsou bezplatné a určené všem zúčastněným stranám trestního řízení.",
       "services": [
         {
-          "name": "Probace a mediace",
-          "description": "Umožňuje pachatelům převzít odpovědnost, poskytuje podporu obětem."
-        },
-        {
+          "id": "poradna-pro-obeti-trestnych-cinu",
           "name": "Poradna pro oběti trestných činů",
-          "description": "Bezplatná pomoc, právní informace, psychologická podpora, doprovod. Každé pondělí 10-13 hod."
+          "description": "Poradna pro oběti trestných činů v Novém Jičíně poskytuje bezplatnou, diskrétní a odbornou pomoc osobám, které se staly obětí trestného činu nebo byly trestným činem jinak zasaženy. Cílem poradny je poskytnout obětem právní informace, psy- chologickou podporu, pomoc při uplatnění práv na náhradu škody a zprostředkovat kontakt s dalšími odborníky či institucemi. Poradna také doprovází klienty při jednáních s policií, soudem či úřady a nabízí bez- pečný prostor pro řešení krizových situací. Provozní doba je každé pondělí 10.00–13.00 hodin.",
+          "contact": {
+            "website": "https://pmscr.cz",
+            "email": "bvitkovska@pms.justice.cz",
+            "phone": "+420 720 868 955",
+            "address": "Sokolovská 617/9, 741 01 Nový Jičín"
+          }
         }
-      ],
-      "contact": {
-        "address": "Sokolovská 617/9, 741 01 Nový Jičín",
-        "phone": "+420 720 868 955",
-        "email": "bvitkovska@pms.justice.cz",
-        "website": "https://pmscr.cz"
-      }
+      ]
     }
   ],
-
   "crisisLines": [
     {
       "id": "linka-bezpeci",
       "name": "Linka bezpečí",
       "phone": "116 111",
-      "description": "Pomáhá dětem, mládeži a studentům v náročné životní situaci nebo při každodenních starostech.",
+      "description": "Linka bezpečí pomáhá dětem, mládeži a studentům, kteří se dostanou do náročné životní situace, nebo řeší každodenní starosti a problémy, s kterými si neví rady. Je dostupná pro klienty z celé České republiky nonstop bezplatně na telefonním čísle 116 111, ale i na chatu a v e-mailové poradně.",
       "availability": "24/7",
       "free": true,
       "email": "pomoc@linkabezpeci.cz",
@@ -1490,7 +1665,7 @@
       "id": "linka-pro-rodinu-a-skolu",
       "name": "Linka pro rodinu a školu",
       "phone": "116 000",
-      "description": "Pomáhá rodinám, dětem a dospělým se šikanou, ohrožením dítěte nebo problémy v rodině.",
+      "description": "Linka pro rodinu a školu pomáhá rodinám, dětem a dospělým najít východisko ze situací, které momentálně nejsou schopni zvládat sami. Vyslechnou, podpoří, odborně poradí, co se šikanou ve škole, mimo školu či na internetu. Odborně poradí a zajistí pomoc v případě, že někdo nebo něco ohrožuje dítě nebo jsou problémy v rodině. Telefonní linka je anonymní, bezplatná a nonstop.",
       "availability": "24/7",
       "free": true,
       "website": "https://www.linkaztracenedite.cz"
@@ -1499,7 +1674,7 @@
       "id": "linka-prvni-psychicke-pomoci",
       "name": "Linka první psychické pomoci",
       "phone": "116 123",
-      "description": "Pomáhá dospělým a jejich blízkým najít východisko z krizových situací.",
+      "description": "Linka první psychické pomoci pomáhá dospělým najít východisko ze situací, které momentálně nejsou schopni zvládat sami. A také jejich blízkým, které událost zasahu- je, a chtěli by poradit, jak z krize ven. Telefonní linka je anonymní, bezplatná a nonstop.",
       "availability": "24/7",
       "free": true,
       "website": "https://www.linkapsychickepomoci.cz"
@@ -1507,17 +1682,17 @@
     {
       "id": "linka-duvery-ostrava",
       "name": "Linka důvěry Ostrava",
-      "phone": "+420 737 267 939",
-      "description": "Pro dospělou veřejnost od 18 let včetně osob s psychickými nebo somatickými obtížemi.",
+      "phone": "737 267 939",
+      "description": "Provoz Linky důvěry je nepřetržitý (24 hodin denně) a je určen široké dospělé veřej- nosti (osobám od 18 let), včetně osob s psychickými nebo somatickými obtížemi, v krizových situacích. Hovor je zpoplatněn běžným telefonním tarifem.",
       "availability": "24/7",
       "free": false,
       "website": "https://www.mnof.cz/linka-duvery"
     },
     {
-      "id": "linka-pomoci-obetem",
+      "id": "linka-pomoci-obetem-kriminality-a-domaciho-nasili",
       "name": "Linka pomoci obětem kriminality a domácího násilí",
       "phone": "116 006",
-      "description": "Okamžitá pomoc obětem domácího násilí, znásilnění, nebezpečného pronásledování.",
+      "description": "Ubližuje vám blízká osoba, se kterou sdílíte společnou domácnost? Trvá to dlouho a vy si nevíte rady? Máte pocit viny a stydíte se o tom mluvit? Potřebujete se zeptat, zda to, co se u vás doma děje, je domácí násilí? Bojíte se volat policii? Stal/a jste se obětí znásilnění? Váháte, zda podat trestní oznámení? Jste obětí nebezpečného pronásle- dování? Nevíte, jak reagovat na nevyžádané intervence do vašeho soukromí? Na lince vám nabízejí okamžitou a nonstop dostupnou pomoc. Volání je diskrétní a zdarma.",
       "availability": "24/7",
       "free": true,
       "website": "https://www.116006.cz"
@@ -1526,7 +1701,7 @@
       "id": "linka-senioru-elpida",
       "name": "Linka seniorů Elpida",
       "phone": "800 200 007",
-      "description": "Pro seniory a pečující o seniory. Podpora, pomoc, praktická rada či povzbuzení.",
+      "description": "Linka seniorů je dostupná seniorům a pečujícím o seniory bezplatně denně od 8 hodin ráno do 20 hodin večer. Na Linku seniorů se volající mohou obrátit s jakoukoliv starostí či náročnou životní situací, ve které hledají podporu a pomoc, praktickou radu či povzbuzení.",
       "availability": "8:00-20:00 denně",
       "free": true,
       "website": "https://www.zivot90.cz/cs/asistence/senior-telefon"
@@ -1535,17 +1710,16 @@
       "id": "narodni-linka-pro-odvykani",
       "name": "Národní linka pro odvykání",
       "phone": "800 350 000",
-      "description": "Pomoc při překonávání závislostí - kouření, léky, alkohol, hraní, drogy, digitální závislosti.",
-      "availability": "Po-Pá 10:00-18:00",
+      "description": "Telefonická linka pomáhá překonávat závislosti všech druhů – kouření, léky, alkohol, hraní, drogy, digitální závislosti. Je v provozu zdarma každý všední den od 10.00 do 18:00 pro osoby starší 15 let. Tým tvoří odborně zaškolení konzultanti z řad psycholo- gů a adiktologů.",
       "free": true,
-      "targetGroup": "15+",
-      "website": "https://www.chciodvykat.cz"
+      "website": "https://www.chciodvykat.cz",
+      "targetGroup": "15+"
     },
     {
       "id": "senior-telefon",
       "name": "Senior telefon",
       "phone": "800 157 157",
-      "description": "Linka důvěry pro osoby od 60 let a jejich pečující. Pomoc při smutku, osamělosti, ztrátě smyslu života.",
+      "description": "Bezplatná, anonymní a odborná linka důvěry nonstop pro osoby starší 60 let a jejich pečující. Pomáhá překonat tíživou situaci: kdy se cítíte smutně, sami nebo osaměle a potřebujete si promluvit, nevíte, jak dál – cítíte ztrátu smyslu života, zemřel vám někdo blízký, řešíte vztahy v rodině či s partnery, máte osobní obtíže jako strach, nespavost, úzkost nebo deprese.",
       "availability": "24/7",
       "free": true,
       "website": "https://www.zivot90.cz/cs/asistence/senior-telefon"
@@ -1554,19 +1728,18 @@
       "id": "poradenska-linka-pro-pecujici",
       "name": "Poradenská linka pro pečující",
       "phone": "800 915 915",
-      "description": "Bezplatná poradna pro pečující osoby od Opora Diakonie.",
-      "availability": "Po-Pá 9:00-17:00",
+      "description": "Bezplatná poradna od pondělí do pátku v době od 9 do 17 hodin pro pečující osoby, kterou poskytuje Opora Diakonie, která je součástí Diakonie ČCE.",
+      "availability": "Po-Pá",
       "free": true,
       "website": "https://www.oporadiakonie.cz"
     },
     {
-      "id": "opatruj-se",
+      "id": "www-opatruj-se",
       "name": "www.opatruj.se",
-      "description": "Online portál zaměřený na duševní zdraví. Testy úzkosti, deprese, stresu, závislosti. Krizové linky a kontakty.",
-      "website": "https://www.opatruj.se"
+      "description": "Online portál zaměřený na duševní zdraví a psychickou odolnost, provozovaný Národním ústavem pro duševní zdraví. Na stránce najdete například možnost ověřit si svůj psychický stav pomocí testů (např. test úzkosti, deprese, stresu, závislosti aj.), praktické informace a návody, jak pečovat o své duševní zdraví, najít odbornou pomoc nebo zvládat krizové situace a seznam užitečných krizových linek a kontaktů pro okamžitou pomoc.",
+      "free": false
     }
   ],
-
   "authorities": [
     {
       "id": "mestsky-urad-pribor",
@@ -1680,26 +1853,35 @@
       ]
     }
   ],
-
   "healthcare": {
     "pediatricians": [
       {
         "id": "mudr-ales-polach",
         "name": "MUDr. Aleš Polách",
         "address": "Řehoře Volného 408, 742 58 Příbor",
-        "phones": ["+420 556 725 707", "+420 604 211 915"]
-      },
-      {
-        "id": "mudr-dagmar-dolezalova",
-        "name": "MUDr. Dagmar Doležalová",
-        "address": "Řehoře Volného 408, 742 58 Příbor",
-        "phones": ["+420 556 725 707", "+420 604 211 915"]
+        "phones": [
+          "+420 556 725 707",
+          "+420 604 211 915"
+        ]
       },
       {
         "id": "mudr-sona-tuckova",
         "name": "MUDr. Soňa Tučková",
         "address": "Tyršova 195, 742 58 Příbor",
-        "phones": ["+420 778 114 004", "+420 724 673 150"]
+        "phones": [
+          "+420 778 114 004",
+          "+420 724 673 150",
+          "150"
+        ]
+      },
+      {
+        "id": "mudr-dagmar-dolezalova",
+        "name": "MUDr. Dagmar Doležalová",
+        "address": "Řehoře Volného 408, 742 58 Příbor",
+        "phones": [
+          "+420 556 725 707",
+          "+420 604 211 915"
+        ]
       }
     ],
     "generalPractitioners": [
@@ -1708,12 +1890,6 @@
         "name": "MUDr. Jaromír Lichnovský",
         "address": "Tyršova 195, 742 58 Příbor",
         "phone": "+420 556 722 926"
-      },
-      {
-        "id": "mudr-michal-bilsky",
-        "name": "MUDr. Michal Bilský",
-        "address": "Tyršova 195, 742 58 Příbor",
-        "phone": "+420 604 231 363"
       },
       {
         "id": "mudr-ivana-krkoskova",
@@ -1726,6 +1902,12 @@
         "name": "MUDr. Jan Krkoška",
         "address": "Řehoře Volného 60, 742 58 Příbor",
         "phone": "+420 556 722 082"
+      },
+      {
+        "id": "mudr-michal-bilsky",
+        "name": "MUDr. Michal Bilský",
+        "address": "Tyršova 195, 742 58 Příbor",
+        "phone": "+420 604 231 363"
       },
       {
         "id": "mudr-jana-markova",
@@ -1749,33 +1931,9 @@
           "phone": "+420 728 680 970"
         }
       ],
-      "surgery": [
-        {
-          "id": "mudr-hana-varechova",
-          "name": "MUDr. Hana Varechová",
-          "address": "Tyršova 195, 742 58 Příbor",
-          "phone": "+420 603 195 012"
-        }
-      ],
-      "cardiology": [
-        {
-          "id": "mudr-darina-krausova",
-          "name": "MUDr. Darina Krausová, MUDr. Ĺuboš Kraus",
-          "address": "Řehoře Volného 60, 742 58 Příbor",
-          "phone": "+420 556 723 600"
-        }
-      ],
-      "ophthalmology": [
-        {
-          "id": "mudr-eliska-vlcova",
-          "name": "MUDr. Eliška Vlčová",
-          "address": "Tyršova 195, 742 58 Příbor",
-          "phone": "+420 556 723 598"
-        }
-      ],
       "pulmonary": [
         {
-          "id": "mio-plicni",
+          "id": "m-i-o-spol",
           "name": "M.I.O. spol s. r. o.",
           "address": "Tyršova 196, 742 58 Příbor",
           "phone": "+420 776 637 882"
@@ -1787,6 +1945,34 @@
           "name": "MUDr. Mořic Jurečka",
           "address": "Řehoře Volného 60, 742 58 Příbor",
           "phone": "+420 721 983 983"
+        }
+      ],
+      "cardiology": [
+        {
+          "id": "mudr-darina-krausova",
+          "name": "MUDr. Darina Krausová"
+        },
+        {
+          "id": "mudr-lubos-kraus",
+          "name": "MUDr. Ĺuboš Kraus",
+          "address": "Řehoře Volného 60, 742 58 Příbor",
+          "phone": "+420 556 723 600"
+        }
+      ],
+      "surgery": [
+        {
+          "id": "mudr-hana-varechova",
+          "name": "MUDr. Hana Varechová",
+          "address": "Tyršova 195, 742 58 Příbor",
+          "phone": "+420 603 195 012"
+        }
+      ],
+      "ophthalmology": [
+        {
+          "id": "mudr-eliska-vlcova",
+          "name": "MUDr. Eliška Vlčová",
+          "address": "Tyršova 195, 742 58 Příbor",
+          "phone": "+420 556 723 598"
         }
       ],
       "rehabilitation": [
@@ -1826,8 +2012,12 @@
         "phone": "+420 606 522 992"
       },
       {
-        "id": "pmk-dent-plus",
-        "name": "PMK-DENT Plus s. r.o. - MUDr. Petr Michna",
+        "id": "pmk-dent-plus-s-r-o",
+        "name": "PMK-DENT Plus s. r.o."
+      },
+      {
+        "id": "mudr-petr-michna",
+        "name": "MUDr. Petr Michna",
         "address": "Tyršova 195, 742 58 Příbor",
         "phone": "+420 732 737 236"
       }
@@ -1835,7 +2025,11 @@
     "dentalHygiene": [
       {
         "id": "dentalka-nj",
-        "name": "Dentálka NJ - Věra Kremlová, DiS.",
+        "name": "Dentálka NJ"
+      },
+      {
+        "id": "vera-kremlova-dis",
+        "name": "Věra Kremlová, DiS.",
         "address": "Tyršova 195, 742 58 Příbor",
         "phone": "+420 722 377 457"
       }
@@ -1849,42 +2043,55 @@
         "website": "https://www.rehabka.cz"
       },
       {
-        "id": "bilska-sro",
+        "id": "moja-fyzioterapie",
+        "name": "MoJa Fyzioterapie",
+        "website": "https://www.mojafyzioterapie.cz"
+      },
+      {
+        "id": "jana-monsportova-dis",
+        "name": "Jana Monsportová, DiS.",
+        "phone": "+420 732 503 748"
+      },
+      {
+        "id": "radka-willertova",
+        "name": "Radka Willertová",
+        "phone": "+420 604 677 349"
+      },
+      {
+        "id": "bilska",
         "name": "Bílská s. r. o.",
         "address": "Tyršova 195, 742 58 Příbor",
         "phone": "+420 556 722 240",
         "website": "https://www.rehabilitacebilska.cz"
       },
       {
-        "id": "moja-fyzioterapie",
-        "name": "MoJa Fyzioterapie",
-        "address": "Vrchlického 978, 742 58 Příbor",
-        "website": "https://www.mojafyzioterapie.cz",
-        "staff": [
-          {"name": "Jana Monsportová, DiS.", "phone": "+420 732 503 748"},
-          {"name": "Radka Willertová (masáže, Jóga)", "phone": "+420 604 677 349"},
-          {"name": "Lucie Žárská, DiS.", "phone": "+420 777 619 544"},
-          {"name": "Lucie Krestová, DiS. (dětská rehabilitace)", "phone": "+420 603 443 629"}
-        ]
+        "id": "lucie-zarska-dis",
+        "name": "Lucie Žárská, DiS.",
+        "phone": "+420 777 619 544"
+      },
+      {
+        "id": "lucie-krestova-dis",
+        "name": "Lucie Krestová, DiS.",
+        "phone": "+420 603 443 629"
       }
     ],
     "opticians": [
       {
-        "id": "zornicka-optik",
+        "id": "zornicka-optik-pavla-jilkova",
         "name": "Zornička optik - Pavla Jílková",
-        "address": "nám. Sigmunda Freuda 9, 742 58 Příbor",
+        "address": "nám. Sigmunda Freuda 9, 742 58 Příbor nám.",
         "phone": "+420 605 476 837"
       },
       {
-        "id": "ocni-optika-bojkova",
-        "name": "Oční optika - Eva Bojková",
-        "address": "nám. Sigmunda Freuda 25, 742 58 Příbor",
+        "id": "ocni-optika-eva-bojkova",
+        "name": "Oční optika -Eva Bojková",
+        "address": "Sigmunda Freuda 25, 742 58 Příbor",
         "phone": "+420 731 517 292"
       }
     ],
     "pharmacies": [
       {
-        "id": "moje-lekarna-apoteka",
+        "id": "moje-lekarna-lekarna-apoteka",
         "name": "Moje Lékarna, Lékarna Apotéka",
         "address": "Řehoře Volného 60, 742 58 Příbor",
         "phone": "+420 556 722 801"
@@ -1897,13 +2104,33 @@
       }
     ]
   },
-
   "emergencyNumbers": [
-    {"name": "Tísňová linka", "phone": "112"},
-    {"name": "Policie ČR - tísňové volání", "phone": "158"},
-    {"name": "Hasičský záchranný sbor - tísňové volání", "phone": "150"},
-    {"name": "Záchranná služba - tísňové volání", "phone": "155"},
-    {"name": "Policie ČR, obvodní oddělení Příbor", "phone": "+420 974 735 751"},
-    {"name": "Městská policie Příbor", "phones": ["+420 556 725 111", "+420 721 146 146"]}
+    {
+      "name": "Policie ČR - tísňové volání",
+      "phone": "158"
+    },
+    {
+      "name": "Policie ČR, obvodní oddělení Příbor",
+      "phone": "+420 974 735 751"
+    },
+    {
+      "name": "Městská policie Příbor",
+      "phones": [
+        "+420 556 725 111",
+        "+420 721 146 146"
+      ]
+    },
+    {
+      "name": "Hasičský záchranný sbor - tísňové volání",
+      "phone": "150"
+    },
+    {
+      "name": "Záchranná služba - tísňové volání",
+      "phone": "155"
+    },
+    {
+      "name": "Tísňová linka",
+      "phone": "112"
+    }
   ]
 }
