@@ -33,10 +33,6 @@
       "repeatable": true,
       "component": "shared.contact-info"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
-    },
     "lifeSituations": {
       "type": "relation",
       "relation": "manyToMany",

@@ -30,10 +30,6 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.department"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
     }
   }
 }

@@ -56,10 +56,6 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.staff-member"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
     }
   }
 }
