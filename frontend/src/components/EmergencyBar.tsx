@@ -1,4 +1,5 @@
 import { getEmergencyNumbers } from '@/lib/strapi';
+import { getFirstPhone } from '@/lib/types';
 
 export default async function EmergencyBar() {
   const emergencyNumbers = await getEmergencyNumbers();
@@ -14,7 +15,7 @@ export default async function EmergencyBar() {
           {emergencyNumbers.slice(0, 4).map((emergency) => (
             <a
               key={emergency.id}
-              href={`tel:${emergency.phone || (emergency.phones?.[0])}`}
+              href={`tel:${getFirstPhone(emergency.phones)}`}
               className="flex items-center gap-2 hover:bg-white/10 px-3 py-1 rounded-full transition-all whitespace-nowrap group"
             >
               <span className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
@@ -32,7 +33,7 @@ export default async function EmergencyBar() {
                   />
                 </svg>
               </span>
-              <span className="font-bold">{emergency.phone || emergency.phones?.[0]}</span>
+              <span className="font-bold">{getFirstPhone(emergency.phones)}</span>
               <span className="hidden md:inline text-secondary-100 text-xs">({emergency.name})</span>
             </a>
           ))}

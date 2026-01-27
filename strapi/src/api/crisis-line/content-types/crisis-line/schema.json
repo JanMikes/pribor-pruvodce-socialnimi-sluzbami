@@ -19,8 +19,10 @@
       "type": "string",
       "required": true
     },
-    "phone": {
-      "type": "string"
+    "phones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.phone-number"
     },
     "description": {
       "type": "richtext"
@@ -44,6 +46,12 @@
     "order": {
       "type": "integer",
       "default": 0
+    },
+    "lifeSituations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::life-situation.life-situation",
+      "mappedBy": "crisisLines"
     }
   }
 }

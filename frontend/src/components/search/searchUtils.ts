@@ -10,6 +10,7 @@ import type {
   EmergencyNumber,
   healthcareCategoryLabels,
 } from '@/lib/types';
+import { getFirstPhone } from '@/lib/types';
 
 // Remove Czech diacritics for matching
 export function removeDiacritics(str: string): string {
@@ -158,12 +159,14 @@ function stripHtml(html: string | undefined | null): string {
 // Convert Provider to SearchResult
 function providerToSearchResult(provider: Provider, query: string): SearchResult | null {
   const description = stripHtml(provider.description);
+  const contact = provider.contacts?.[0];
+  const phone = getFirstPhone(contact?.phones);
   const score = calculateScore(
     query,
     provider.name,
     description,
-    provider.contact?.phone,
-    provider.contact?.address,
+    phone,
+    contact?.address,
   );
 
   if (score === 0) return null;
@@ -174,8 +177,8 @@ function providerToSearchResult(provider: Provider, query: string): SearchResult
     title: provider.name,
     description: description.slice(0, 150) + (description.length > 150 ? '...' : ''),
     href: `/poskytovatele/${provider.providerId}`,
-    phone: provider.contact?.phone,
-    address: provider.contact?.address,
+    phone,
+    address: contact?.address,
     score: score + TYPE_PRIORITY.provider,
   };
 }
@@ -190,7 +193,7 @@ function lifeSituationToSearchResult(situation: LifeSituation, query: string): S
     id: `situation-${situation.situationId}`,
     type: 'lifeSituation',
     title: situation.name,
-    subtitle: `${situation.providerRefs?.length || 0} poskytovatelů`,
+    subtitle: `${(situation.providers?.length || 0) + (situation.crisisLines?.length || 0)} poskytovatelů`,
     href: `/zivotni-situace/${situation.situationId}`,
     score: score + TYPE_PRIORITY.lifeSituation,
   };
@@ -199,11 +202,12 @@ function lifeSituationToSearchResult(situation: LifeSituation, query: string): S
 // Convert CrisisLine to SearchResult
 function crisisLineToSearchResult(line: CrisisLine, query: string): SearchResult | null {
   const description = stripHtml(line.description);
+  const phone = getFirstPhone(line.phones);
   const score = calculateScore(
     query,
     line.name,
     description,
-    line.phone,
+    phone,
     undefined,
     line.targetGroup,
   );
@@ -217,7 +221,7 @@ function crisisLineToSearchResult(line: CrisisLine, query: string): SearchResult
     subtitle: line.targetGroup,
     description: description.slice(0, 150) + (description.length > 150 ? '...' : ''),
     href: '/krizove-linky',
-    phone: line.phone,
+    phone,
     availability: line.availability,
     score: score + TYPE_PRIORITY.crisisLine,
   };
@@ -260,11 +264,12 @@ import { healthcareCategoryLabels as categoryLabels } from '@/lib/types';
 // Convert HealthcareProvider to SearchResult
 function healthcareToSearchResult(provider: HealthcareProvider, query: string): SearchResult | null {
   const categoryLabel = categoryLabels[provider.category] || provider.category;
+  const phone = getFirstPhone(provider.phones);
   const score = calculateScore(
     query,
     provider.name,
     undefined,
-    provider.phone,
+    phone,
     provider.address,
     categoryLabel,
   );
@@ -288,7 +293,7 @@ function healthcareToSearchResult(provider: HealthcareProvider, query: string): 
     title: provider.name,
     subtitle: categoryLabel,
     href: '/zdravotnictvi',
-    phone: provider.phone,
+    phone,
     address: provider.address,
     score: totalScore + TYPE_PRIORITY.healthcare,
   };
@@ -296,7 +301,7 @@ function healthcareToSearchResult(provider: HealthcareProvider, query: string): 
 
 // Convert EmergencyNumber to SearchResult
 function emergencyToSearchResult(emergency: EmergencyNumber, query: string): SearchResult | null {
-  const phone = emergency.phone || emergency.phones?.[0];
+  const phone = getFirstPhone(emergency.phones);
   const score = calculateScore(query, emergency.name, undefined, phone);
 
   if (score === 0) return null;
@@ -306,7 +311,7 @@ function emergencyToSearchResult(emergency: EmergencyNumber, query: string): Sea
     type: 'emergency',
     title: emergency.name,
     href: '/',
-    phone: phone,
+    phone,
     score: score + TYPE_PRIORITY.emergency,
   };
 }

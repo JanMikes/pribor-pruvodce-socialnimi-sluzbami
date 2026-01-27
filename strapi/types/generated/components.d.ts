@@ -10,8 +10,7 @@ export interface SharedContactInfo extends Struct.ComponentSchema {
   attributes: {
     address: Schema.Attribute.Text;
     email: Schema.Attribute.Email;
-    phone: Schema.Attribute.String;
-    phones: Schema.Attribute.JSON;
+    phones: Schema.Attribute.Component<'shared.phone-number', true>;
     website: Schema.Attribute.String;
   };
 }
@@ -45,6 +44,18 @@ export interface SharedDepartmentContact extends Struct.ComponentSchema {
     email: Schema.Attribute.Email;
     phone: Schema.Attribute.String;
     role: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedPhoneNumber extends Struct.ComponentSchema {
+  collectionName: 'components_shared_phone_numbers';
+  info: {
+    description: 'Telefonni cislo';
+    displayName: 'Telefonni cislo';
+    icon: 'phone';
+  };
+  attributes: {
+    number: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -83,6 +94,7 @@ declare module '@strapi/strapi' {
       'shared.contact-info': SharedContactInfo;
       'shared.department': SharedDepartment;
       'shared.department-contact': SharedDepartmentContact;
+      'shared.phone-number': SharedPhoneNumber;
       'shared.service': SharedService;
       'shared.staff-member': SharedStaffMember;
     }

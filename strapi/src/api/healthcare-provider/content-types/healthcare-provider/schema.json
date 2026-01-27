@@ -44,11 +44,10 @@
     "address": {
       "type": "text"
     },
-    "phone": {
-      "type": "string"
-    },
     "phones": {
-      "type": "json"
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.phone-number"
     },
     "website": {
       "type": "string"

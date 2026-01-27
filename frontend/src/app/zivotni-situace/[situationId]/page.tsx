@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getLifeSituationById, getProvidersByIds } from '@/lib/strapi';
-import type { Provider } from '@/lib/types';
+import { getLifeSituationById } from '@/lib/strapi';
+import type { Provider, CrisisLine, ContactInfo as ContactInfoType } from '@/lib/types';
+import { getAllPhones, getFirstPhone } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,12 +24,9 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-function ContactInfo({ provider }: { provider: Provider }) {
-  const contact = provider.contact;
-  if (!contact) return null;
-
+function ProviderContactInfo({ contact }: { contact: ContactInfoType }) {
   return (
-    <div className="mt-4 pt-4 border-t border-stone-100 space-y-2 text-sm">
+    <div className="space-y-2 text-sm">
       {contact.address && (
         <div className="flex items-start gap-2 text-stone-600">
           <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,13 +36,13 @@ function ContactInfo({ provider }: { provider: Provider }) {
           <span>{contact.address}</span>
         </div>
       )}
-      {(contact.phone || (contact.phones && contact.phones.length > 0)) && (
+      {contact.phones && contact.phones.length > 0 && (
         <div className="flex items-center gap-2 text-stone-600">
           <svg className="w-4 h-4 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
-          <a href={`tel:${contact.phone || contact.phones?.[0]}`} className="hover:text-primary-600 transition-colors">
-            {contact.phone || contact.phones?.join(', ')}
+          <a href={`tel:${getFirstPhone(contact.phones)}`} className="hover:text-primary-600 transition-colors">
+            {getAllPhones(contact.phones)}
           </a>
         </div>
       )}
@@ -72,6 +70,93 @@ function ContactInfo({ provider }: { provider: Provider }) {
   );
 }
 
+function ProviderCard({ provider }: { provider: Provider }) {
+  const contact = provider.contacts?.[0];
+
+  return (
+    <div className="card">
+      <Link href={`/poskytovatele/${provider.providerId}`}>
+        <h2 className="text-xl font-bold text-stone-900 hover:text-primary-600 transition-colors mb-2">
+          {provider.name}
+        </h2>
+      </Link>
+
+      {provider.description && (
+        <p className="text-stone-600 mb-4 leading-relaxed">{provider.description}</p>
+      )}
+
+      {/* Services */}
+      {provider.services && provider.services.length > 0 && (
+        <div className="mb-4">
+          <h3 className="text-sm font-semibold text-stone-700 mb-2">Služby:</h3>
+          <ul className="space-y-1">
+            {provider.services.map((service) => (
+              <li key={service.id} className="text-sm text-stone-600 flex items-start gap-2">
+                <svg className="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{service.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {contact && (
+        <div className="mt-4 pt-4 border-t border-stone-100">
+          <ProviderContactInfo contact={contact} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CrisisLineCard({ line }: { line: CrisisLine }) {
+  const phone = getFirstPhone(line.phones);
+
+  return (
+    <div className="card">
+      <h2 className="text-xl font-bold text-stone-900 mb-2">
+        {line.name}
+      </h2>
+
+      {line.description && (
+        <p className="text-stone-600 mb-4 leading-relaxed">{line.description}</p>
+      )}
+
+      <div className="flex flex-wrap gap-2 mb-4">
+        {phone && (
+          <a
+            href={`tel:${phone}`}
+            className="btn-secondary text-sm"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            {phone}
+          </a>
+        )}
+        {line.availability && (
+          <span className="badge-success">
+            <svg className="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {line.availability}
+          </span>
+        )}
+        {line.free && (
+          <span className="badge-success">
+            <svg className="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            Volání zdarma
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default async function LifeSituationDetailPage({ params }: PageProps) {
   const { situationId } = await params;
   const situation = await getLifeSituationById(situationId);
@@ -80,7 +165,9 @@ export default async function LifeSituationDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const providers = await getProvidersByIds(situation.providerRefs);
+  const providers = situation.providers || [];
+  const crisisLines = situation.crisisLines || [];
+  const totalCount = providers.length + crisisLines.length;
 
   return (
     <div className="section">
@@ -121,52 +208,41 @@ export default async function LifeSituationDetailPage({ params }: PageProps) {
                 {situation.name}
               </h1>
               <p className="text-lg text-stone-600">
-                {providers.length} poskytovatel{providers.length === 1 ? '' : providers.length < 5 ? 'é' : 'ů'} nabízí pomoc v této situaci.
+                {totalCount} poskytovatel{totalCount === 1 ? '' : totalCount < 5 ? 'é' : 'ů'} nabízí pomoc v této situaci.
               </p>
             </div>
           </div>
         </div>
 
         {/* Providers List */}
-        <div className="space-y-5">
-          {providers.map((provider) => (
-            <div
-              key={provider.id}
-              className="card"
-            >
-              <Link href={`/poskytovatele/${provider.providerId}`}>
-                <h2 className="text-xl font-bold text-stone-900 hover:text-primary-600 transition-colors mb-2">
-                  {provider.name}
-                </h2>
-              </Link>
+        {providers.length > 0 && (
+          <div className="space-y-5 mb-8">
+            {providers.map((provider) => (
+              <ProviderCard key={provider.id} provider={provider} />
+            ))}
+          </div>
+        )}
 
-              {provider.description && (
-                <p className="text-stone-600 mb-4 leading-relaxed">{provider.description}</p>
-              )}
-
-              {/* Services */}
-              {provider.services && provider.services.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-sm font-semibold text-stone-700 mb-2">Služby:</h3>
-                  <ul className="space-y-1">
-                    {provider.services.map((service) => (
-                      <li key={service.id} className="text-sm text-stone-600 flex items-start gap-2">
-                        <svg className="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span>{service.name}</span>
-                      </li>
-                    ))}
-                  </ul>
+        {/* Crisis Lines List */}
+        {crisisLines.length > 0 && (
+          <div className="space-y-5">
+            {providers.length > 0 && (
+              <h2 className="text-xl font-bold text-stone-900 flex items-center gap-3 mt-8">
+                <div className="icon-box icon-box-secondary">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
                 </div>
-              )}
+                Krizové linky
+              </h2>
+            )}
+            {crisisLines.map((line) => (
+              <CrisisLineCard key={line.id} line={line} />
+            ))}
+          </div>
+        )}
 
-              <ContactInfo provider={provider} />
-            </div>
-          ))}
-        </div>
-
-        {providers.length === 0 && (
+        {totalCount === 0 && (
           <div className="text-center py-12 card">
             <svg className="w-12 h-12 text-stone-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

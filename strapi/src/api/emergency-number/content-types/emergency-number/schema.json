@@ -16,11 +16,10 @@
       "type": "string",
       "required": true
     },
-    "phone": {
-      "type": "string"
-    },
     "phones": {
-      "type": "json"
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.phone-number"
     },
     "order": {
       "type": "integer",

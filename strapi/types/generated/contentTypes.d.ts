@@ -483,6 +483,10 @@ export interface ApiCrisisLineCrisisLine extends Struct.CollectionTypeSchema {
     description: Schema.Attribute.RichText;
     email: Schema.Attribute.Email;
     free: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    lifeSituations: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::life-situation.life-situation'
+    >;
     lineId: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -492,7 +496,7 @@ export interface ApiCrisisLineCrisisLine extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    phone: Schema.Attribute.String;
+    phones: Schema.Attribute.Component<'shared.phone-number', true>;
     publishedAt: Schema.Attribute.DateTime;
     targetGroup: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -526,8 +530,7 @@ export interface ApiEmergencyNumberEmergencyNumber
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    phone: Schema.Attribute.String;
-    phones: Schema.Attribute.JSON;
+    phones: Schema.Attribute.Component<'shared.phone-number', true>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -579,8 +582,7 @@ export interface ApiHealthcareProviderHealthcareProvider
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    phone: Schema.Attribute.String;
-    phones: Schema.Attribute.JSON;
+    phones: Schema.Attribute.Component<'shared.phone-number', true>;
     providerId: Schema.Attribute.UID & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
@@ -608,6 +610,10 @@ export interface ApiLifeSituationLifeSituation
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    crisisLines: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::crisis-line.crisis-line'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -616,7 +622,10 @@ export interface ApiLifeSituationLifeSituation
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    providerRefs: Schema.Attribute.JSON;
+    providers: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::provider.provider'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     situationId: Schema.Attribute.UID & Schema.Attribute.Required;
     slug: Schema.Attribute.UID<'name'>;
@@ -638,11 +647,15 @@ export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    contact: Schema.Attribute.Component<'shared.contact-info', false>;
+    contacts: Schema.Attribute.Component<'shared.contact-info', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.RichText;
+    lifeSituations: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::life-situation.life-situation'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

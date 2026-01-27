@@ -1,5 +1,5 @@
 import { getHealthcareProviders } from '@/lib/strapi';
-import { healthcareCategoryLabels, type HealthcareCategory } from '@/lib/types';
+import { healthcareCategoryLabels, type HealthcareCategory, getAllPhones, getFirstPhone } from '@/lib/types';
 import CategoryNavigation from './CategoryNavigation';
 
 export const dynamic = 'force-dynamic';
@@ -102,13 +102,13 @@ export default async function HealthcarePage() {
                           <span>{provider.address}</span>
                         </div>
                       )}
-                      {(provider.phone || (provider.phones && provider.phones.length > 0)) && (
+                      {provider.phones && provider.phones.length > 0 && (
                         <div className="flex items-center gap-2 text-stone-600">
                           <svg className="w-4 h-4 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                           </svg>
-                          <a href={`tel:${provider.phone || provider.phones?.[0]}`} className="hover:text-healthcare-600 transition-colors">
-                            {provider.phone || provider.phones?.join(', ')}
+                          <a href={`tel:${getFirstPhone(provider.phones)}`} className="hover:text-healthcare-600 transition-colors">
+                            {getAllPhones(provider.phones)}
                           </a>
                         </div>
                       )}

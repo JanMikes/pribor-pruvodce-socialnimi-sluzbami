@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_phone_numbers",
+  "info": {
+    "displayName": "Telefonni cislo",
+    "description": "Telefonni cislo",
+    "icon": "phone"
+  },
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -129,6 +129,18 @@ const specialtyMapping: { [key: string]: string } = {
   ent: 'ent',
 };
 
+// Convert phone/phones from JSON to repeatable phone-number components
+function toPhoneComponents(phone?: string, phones?: string[]): { number: string }[] {
+  const result: { number: string }[] = [];
+  if (phone) result.push({ number: phone });
+  if (phones) {
+    for (const p of phones) {
+      if (!result.some(r => r.number === p)) result.push({ number: p });
+    }
+  }
+  return result;
+}
+
 async function seed() {
   console.log('Starting seed process...');
 
@@ -170,8 +182,7 @@ async function seed() {
         await strapi.documents('api::emergency-number.emergency-number').create({
           data: {
             name: emergency.name,
-            phone: emergency.phone,
-            phones: emergency.phones,
+            phones: toPhoneComponents(emergency.phone, emergency.phones),
             order: i,
             publishedAt: new Date(),
           },
@@ -192,7 +203,7 @@ async function seed() {
           data: {
             lineId: line.id,
             name: line.name,
-            phone: line.phone,
+            phones: toPhoneComponents(line.phone),
             description: line.description,
             availability: line.availability,
             free: line.free ?? false,
@@ -221,8 +232,7 @@ async function seed() {
           contact: service.contact
             ? {
                 address: service.contact.address,
-                phone: service.contact.phone,
-                phones: service.contact.phones,
+                phones: toPhoneComponents(service.contact.phone, service.contact.phones),
                 email: service.contact.email,
                 website: service.contact.website,
               }
@@ -235,15 +245,14 @@ async function seed() {
             name: provider.name,
             description: provider.description,
             services: services,
-            contact: provider.contact
-              ? {
+            contacts: provider.contact
+              ? [{
                   address: provider.contact.address,
-                  phone: provider.contact.phone,
-                  phones: provider.contact.phones,
+                  phones: toPhoneComponents(provider.contact.phone, provider.contact.phones),
                   email: provider.contact.email,
                   website: provider.contact.website,
-                }
-              : undefined,
+                }]
+              : [],
             publishedAt: new Date(),
           },
         });
@@ -251,19 +260,65 @@ async function seed() {
     }
     console.log(`Seeded ${servicesData.providers.length} providers.`);
 
-    // 5. Seed Life Situations
+    // 5. Seed Life Situations (with relation lookups)
     console.log('Seeding life situations...');
+
+    // Build lookup maps: id → documentId
+    const allProviders = await strapi.documents('api::provider.provider').findMany({
+      limit: 1000,
+      populate: { services: { fields: ['serviceId'] } },
+    });
+    const providerIdToDocId = new Map<string, string>();
+    const serviceIdToProviderDocId = new Map<string, string>();
+    for (const p of allProviders) {
+      providerIdToDocId.set((p as any).providerId, p.documentId);
+      if ((p as any).services) {
+        for (const s of (p as any).services) {
+          if (s.serviceId) {
+            serviceIdToProviderDocId.set(s.serviceId, p.documentId);
+          }
+        }
+      }
+    }
+
+    const allCrisisLines = await strapi.documents('api::crisis-line.crisis-line').findMany({
+      limit: 1000,
+    });
+    const lineIdToDocId = new Map<string, string>();
+    for (const cl of allCrisisLines) {
+      if ((cl as any).lineId) {
+        lineIdToDocId.set((cl as any).lineId, cl.documentId);
+      }
+    }
+
     for (let i = 0; i < servicesData.lifeSituations.length; i++) {
       const situation = servicesData.lifeSituations[i];
       const existing = await strapi.documents('api::life-situation.life-situation').findMany({
         filters: { situationId: situation.id },
       });
       if (existing.length === 0) {
+        // Classify each providerRef
+        const providerDocIds = new Set<string>();
+        const crisisLineDocIds = new Set<string>();
+
+        for (const ref of situation.providerRefs || []) {
+          if (providerIdToDocId.has(ref)) {
+            providerDocIds.add(providerIdToDocId.get(ref)!);
+          } else if (serviceIdToProviderDocId.has(ref)) {
+            providerDocIds.add(serviceIdToProviderDocId.get(ref)!);
+          } else if (lineIdToDocId.has(ref)) {
+            crisisLineDocIds.add(lineIdToDocId.get(ref)!);
+          } else {
+            console.warn(`  Life situation "${situation.name}": unresolved ref "${ref}"`);
+          }
+        }
+
         await strapi.documents('api::life-situation.life-situation').create({
           data: {
             situationId: situation.id,
             name: situation.name,
-            providerRefs: situation.providerRefs,
+            providers: { connect: [...providerDocIds].map(id => ({ documentId: id })) },
+            crisisLines: { connect: [...crisisLineDocIds].map(id => ({ documentId: id })) },
             order: i,
             publishedAt: new Date(),
           },
@@ -333,8 +388,7 @@ async function seed() {
               name: entry.name,
               category: category,
               address: entry.address,
-              phone: entry.phone,
-              phones: entry.phones,
+              phones: toPhoneComponents(entry.phone, entry.phones),
               website: entry.website,
               staff: entry.staff?.map((s) => ({
                 name: s.name,

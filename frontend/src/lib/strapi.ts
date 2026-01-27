@@ -105,15 +105,24 @@ async function fetchStrapi<T>(endpoint: string, options: FetchOptions = {}): Pro
   return response.json();
 }
 
+// Provider populate config (reused across queries)
+const providerPopulate = {
+  services: {
+    populate: {
+      contact: {
+        populate: ['phones'],
+      },
+    },
+  },
+  contacts: {
+    populate: ['phones'],
+  },
+};
+
 // Providers
 export async function getProviders(): Promise<Provider[]> {
   const response = await fetchStrapi<StrapiResponse<Provider[]>>('/providers', {
-    populate: {
-      services: {
-        populate: ['contact'],
-      },
-      contact: '*',
-    },
+    populate: providerPopulate,
     sort: 'name:asc',
     pagination: { pageSize: 100 },
   });
@@ -123,12 +132,7 @@ export async function getProviders(): Promise<Provider[]> {
 export async function getProviderBySlug(slug: string): Promise<Provider | null> {
   const response = await fetchStrapi<StrapiResponse<Provider[]>>('/providers', {
     filters: { slug: { $eq: slug } },
-    populate: {
-      services: {
-        populate: ['contact'],
-      },
-      contact: '*',
-    },
+    populate: providerPopulate,
   });
   return response.data[0] || null;
 }
@@ -136,35 +140,18 @@ export async function getProviderBySlug(slug: string): Promise<Provider | null> 
 export async function getProviderById(providerId: string): Promise<Provider | null> {
   const response = await fetchStrapi<StrapiResponse<Provider[]>>('/providers', {
     filters: { providerId: { $eq: providerId } },
-    populate: {
-      services: {
-        populate: ['contact'],
-      },
-      contact: '*',
-    },
+    populate: providerPopulate,
   });
   return response.data[0] || null;
-}
-
-export async function getProvidersByIds(providerIds: string[]): Promise<Provider[]> {
-  if (providerIds.length === 0) return [];
-
-  const response = await fetchStrapi<StrapiResponse<Provider[]>>('/providers', {
-    filters: { providerId: { $in: providerIds } },
-    populate: {
-      services: {
-        populate: ['contact'],
-      },
-      contact: '*',
-    },
-    pagination: { pageSize: 100 },
-  });
-  return response.data;
 }
 
 // Life Situations
 export async function getLifeSituations(): Promise<LifeSituation[]> {
   const response = await fetchStrapi<StrapiResponse<LifeSituation[]>>('/life-situations', {
+    populate: {
+      providers: { fields: ['id'] },
+      crisisLines: { fields: ['id'] },
+    },
     sort: 'order:asc',
     pagination: { pageSize: 100 },
   });
@@ -174,6 +161,25 @@ export async function getLifeSituations(): Promise<LifeSituation[]> {
 export async function getLifeSituationById(situationId: string): Promise<LifeSituation | null> {
   const response = await fetchStrapi<StrapiResponse<LifeSituation[]>>('/life-situations', {
     filters: { situationId: { $eq: situationId } },
+    populate: {
+      providers: {
+        populate: {
+          services: {
+            populate: {
+              contact: {
+                populate: ['phones'],
+              },
+            },
+          },
+          contacts: {
+            populate: ['phones'],
+          },
+        },
+      },
+      crisisLines: {
+        populate: ['phones'],
+      },
+    },
   });
   return response.data[0] || null;
 }
@@ -183,18 +189,10 @@ export type LifeSituationWithCount = LifeSituation & { actualProviderCount: numb
 export async function getLifeSituationsWithProviderCounts(): Promise<LifeSituationWithCount[]> {
   const situations = await getLifeSituations();
 
-  // Get all unique provider IDs across all situations
-  const allProviderIds = [...new Set(situations.flatMap(s => s.providerRefs || []))];
-
-  // Fetch all providers in one query
-  const existingProviders = await getProvidersByIds(allProviderIds);
-  const existingProviderIds = new Set(existingProviders.map(p => p.providerId));
-
-  // Calculate actual counts and filter out situations with 0 providers
   return situations
     .map(situation => ({
       ...situation,
-      actualProviderCount: (situation.providerRefs || []).filter(id => existingProviderIds.has(id)).length
+      actualProviderCount: (situation.providers?.length || 0) + (situation.crisisLines?.length || 0),
     }))
     .filter(situation => situation.actualProviderCount > 0);
 }
@@ -202,6 +200,9 @@ export async function getLifeSituationsWithProviderCounts(): Promise<LifeSituati
 // Crisis Lines
 export async function getCrisisLines(): Promise<CrisisLine[]> {
   const response = await fetchStrapi<StrapiResponse<CrisisLine[]>>('/crisis-lines', {
+    populate: {
+      phones: '*',
+    },
     sort: 'order:asc',
     pagination: { pageSize: 100 },
   });
@@ -241,6 +242,7 @@ export async function getAuthorityById(authorityId: string): Promise<Authority |
 export async function getHealthcareProviders(): Promise<HealthcareProvider[]> {
   const response = await fetchStrapi<StrapiResponse<HealthcareProvider[]>>('/healthcare-providers', {
     populate: {
+      phones: '*',
       staff: '*',
     },
     sort: 'name:asc',
@@ -253,6 +255,7 @@ export async function getHealthcareProvidersByCategory(category: HealthcareCateg
   const response = await fetchStrapi<StrapiResponse<HealthcareProvider[]>>('/healthcare-providers', {
     filters: { category: { $eq: category } },
     populate: {
+      phones: '*',
       staff: '*',
     },
     sort: 'name:asc',
@@ -264,6 +267,9 @@ export async function getHealthcareProvidersByCategory(category: HealthcareCateg
 // Emergency Numbers
 export async function getEmergencyNumbers(): Promise<EmergencyNumber[]> {
   const response = await fetchStrapi<StrapiResponse<EmergencyNumber[]>>('/emergency-numbers', {
+    populate: {
+      phones: '*',
+    },
     sort: 'order:asc',
     pagination: { pageSize: 20 },
   });

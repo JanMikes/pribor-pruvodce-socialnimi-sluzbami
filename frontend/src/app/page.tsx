@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getLifeSituationsWithProviderCounts, getCrisisLines } from '@/lib/strapi';
+import { getFirstPhone } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
@@ -134,9 +135,9 @@ export default async function Home() {
                 {crisisLines.slice(0, 3).map((line) => (
                   <li key={line.id} className="flex items-center justify-between text-sm bg-white/60 rounded-lg px-3 py-2">
                     <span className="text-stone-700 truncate font-medium">{line.name}</span>
-                    {line.phone && (
-                      <a href={`tel:${line.phone}`} className="text-secondary-600 font-bold hover:text-secondary-700 transition-colors">
-                        {line.phone}
+                    {getFirstPhone(line.phones) && (
+                      <a href={`tel:${getFirstPhone(line.phones)}`} className="text-secondary-600 font-bold hover:text-secondary-700 transition-colors">
+                        {getFirstPhone(line.phones)}
                       </a>
                     )}
                   </li>

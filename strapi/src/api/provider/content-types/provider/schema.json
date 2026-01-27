@@ -28,14 +28,20 @@
       "repeatable": true,
       "component": "shared.service"
     },
-    "contact": {
+    "contacts": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "shared.contact-info"
     },
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "lifeSituations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::life-situation.life-situation",
+      "mappedBy": "providers"
     }
   }
 }

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProviderById } from '@/lib/strapi';
 import type { ContactInfo as ContactInfoType } from '@/lib/types';
+import { getAllPhones, getFirstPhone } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
@@ -35,13 +36,13 @@ function ContactInfo({ contact, className = '' }: { contact: ContactInfoType; cl
           <span>{contact.address}</span>
         </div>
       )}
-      {(contact.phone || (contact.phones && contact.phones.length > 0)) && (
+      {contact.phones && contact.phones.length > 0 && (
         <div className="flex items-center gap-3 text-stone-600">
           <svg className="w-5 h-5 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
-          <a href={`tel:${contact.phone || contact.phones?.[0]}`} className="hover:text-primary-600 transition-colors">
-            {contact.phone || contact.phones?.join(', ')}
+          <a href={`tel:${getFirstPhone(contact.phones)}`} className="hover:text-primary-600 transition-colors">
+            {getAllPhones(contact.phones)}
           </a>
         </div>
       )}
@@ -121,8 +122,12 @@ export default async function ProviderDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {provider.contact && (
-            <ContactInfo contact={provider.contact} />
+          {provider.contacts && provider.contacts.length > 0 && (
+            <div className="space-y-4">
+              {provider.contacts.map((contact) => (
+                <ContactInfo key={contact.id} contact={contact} />
+              ))}
+            </div>
           )}
         </div>
 
@@ -141,7 +146,6 @@ export default async function ProviderDetailPage({ params }: PageProps) {
               {provider.services.map((service) => {
                 const hasServiceContact = service.contact && (
                   service.contact.address ||
-                  service.contact.phone ||
                   service.contact.phones?.length ||
                   service.contact.email ||
                   service.contact.website

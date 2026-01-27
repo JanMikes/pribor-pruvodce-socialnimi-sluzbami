@@ -20,8 +20,17 @@
       "type": "string",
       "required": true
     },
-    "providerRefs": {
-      "type": "json"
+    "providers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::provider.provider",
+      "inversedBy": "lifeSituations"
+    },
+    "crisisLines": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::crisis-line.crisis-line",
+      "inversedBy": "lifeSituations"
     },
     "order": {
       "type": "integer",

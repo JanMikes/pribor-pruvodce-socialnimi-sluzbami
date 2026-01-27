@@ -25,12 +25,17 @@ export interface StrapiDocument {
   publishedAt: string;
 }
 
+// Phone number component
+export interface PhoneNumber {
+  id: number;
+  number: string;
+}
+
 // Shared component types
 export interface ContactInfo {
   id: number;
   address?: string;
-  phone?: string;
-  phones?: string[];
+  phones?: PhoneNumber[];
   email?: string;
   website?: string;
 }
@@ -74,21 +79,22 @@ export interface Provider extends StrapiDocument {
   name: string;
   description?: string;
   services?: Service[];
-  contact?: ContactInfo;
+  contacts?: ContactInfo[];
   slug?: string;
 }
 
 export interface LifeSituation extends StrapiDocument {
   situationId: string;
   name: string;
-  providerRefs: string[];
+  providers?: Provider[];
+  crisisLines?: CrisisLine[];
   order: number;
 }
 
 export interface CrisisLine extends StrapiDocument {
   lineId?: string;
   name: string;
-  phone?: string;
+  phones?: PhoneNumber[];
   description?: string;
   availability?: string;
   free: boolean;
@@ -128,16 +134,14 @@ export interface HealthcareProvider extends StrapiDocument {
   name: string;
   category: HealthcareCategory;
   address?: string;
-  phone?: string;
-  phones?: string[];
+  phones?: PhoneNumber[];
   website?: string;
   staff?: StaffMember[];
 }
 
 export interface EmergencyNumber extends StrapiDocument {
   name: string;
-  phone?: string;
-  phones?: string[];
+  phones?: PhoneNumber[];
   order: number;
 }
 
@@ -170,6 +174,15 @@ export const healthcareCategoryLabels: Record<HealthcareCategory, string> = {
   optician: 'Optika',
   pharmacy: 'Lékárny',
 };
+
+// Phone number helpers
+export function getFirstPhone(phones?: PhoneNumber[]): string | undefined {
+  return phones?.[0]?.number;
+}
+
+export function getAllPhones(phones?: PhoneNumber[]): string {
+  return phones?.map(p => p.number).join(', ') || '';
+}
 
 // Search types
 export interface SearchableContent {
