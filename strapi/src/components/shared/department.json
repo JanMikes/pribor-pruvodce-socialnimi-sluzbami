@@ -7,9 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "departmentId": {
-      "type": "string"
-    },
     "name": {
       "type": "string",
       "required": true

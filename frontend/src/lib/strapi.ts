@@ -2,6 +2,7 @@ import type {
   StrapiResponse,
   StrapiSingleResponse,
   Provider,
+  Service,
   LifeSituation,
   CrisisLine,
   Authority,
@@ -109,7 +110,7 @@ async function fetchStrapi<T>(endpoint: string, options: FetchOptions = {}): Pro
 const providerPopulate = {
   services: {
     populate: {
-      contact: {
+      contacts: {
         populate: ['phones'],
       },
     },
@@ -150,6 +151,7 @@ export async function getLifeSituations(): Promise<LifeSituation[]> {
   const response = await fetchStrapi<StrapiResponse<LifeSituation[]>>('/life-situations', {
     populate: {
       providers: { fields: ['id'] },
+      services: { fields: ['id'] },
       crisisLines: { fields: ['id'] },
     },
     sort: 'order:asc',
@@ -164,12 +166,15 @@ export async function getLifeSituationById(situationId: string): Promise<LifeSit
     populate: {
       providers: {
         populate: {
-          services: {
-            populate: {
-              contact: {
-                populate: ['phones'],
-              },
-            },
+          contacts: {
+            populate: ['phones'],
+          },
+        },
+      },
+      services: {
+        populate: {
+          provider: {
+            fields: ['providerId', 'name'],
           },
           contacts: {
             populate: ['phones'],
@@ -192,9 +197,25 @@ export async function getLifeSituationsWithProviderCounts(): Promise<LifeSituati
   return situations
     .map(situation => ({
       ...situation,
-      actualProviderCount: (situation.providers?.length || 0) + (situation.crisisLines?.length || 0),
+      actualProviderCount: (situation.providers?.length || 0) + (situation.services?.length || 0) + (situation.crisisLines?.length || 0),
     }))
     .filter(situation => situation.actualProviderCount > 0);
+}
+
+// Services
+export async function getServiceById(serviceId: string): Promise<Service | null> {
+  const response = await fetchStrapi<StrapiResponse<Service[]>>('/services', {
+    filters: { serviceId: { $eq: serviceId } },
+    populate: {
+      contacts: {
+        populate: ['phones'],
+      },
+      provider: {
+        fields: ['providerId', 'name'],
+      },
+    },
+  });
+  return response.data[0] || null;
 }
 
 // Crisis Lines

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLifeSituationById } from '@/lib/strapi';
-import type { Provider, CrisisLine, ContactInfo as ContactInfoType } from '@/lib/types';
+import type { Provider, Service, CrisisLine, ContactInfo as ContactInfoType } from '@/lib/types';
 import { getAllPhones, getFirstPhone } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
@@ -85,28 +85,45 @@ function ProviderCard({ provider }: { provider: Provider }) {
         <p className="text-stone-600 mb-4 leading-relaxed">{provider.description}</p>
       )}
 
-      {/* Services */}
-      {provider.services && provider.services.length > 0 && (
-        <div className="mb-4">
-          <h3 className="text-sm font-semibold text-stone-700 mb-2">Služby:</h3>
-          <ul className="space-y-1">
-            {provider.services.map((service) => (
-              <li key={service.id} className="text-sm text-stone-600 flex items-start gap-2">
-                <svg className="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span>{service.name}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
       {contact && (
         <div className="mt-4 pt-4 border-t border-stone-100">
           <ProviderContactInfo contact={contact} />
         </div>
       )}
+    </div>
+  );
+}
+
+function ServiceGroupCard({ provider, services }: { provider: { providerId: string; name: string }; services: Service[] }) {
+  return (
+    <div className="card">
+      <Link href={`/poskytovatele/${provider.providerId}`}>
+        <h2 className="text-xl font-bold text-stone-900 hover:text-primary-600 transition-colors mb-4">
+          {provider.name}
+        </h2>
+      </Link>
+
+      <div className="space-y-4">
+        {services.map((service) => {
+          const serviceContact = service.contacts?.[0];
+
+          return (
+            <div key={service.id} className="pl-4 border-l-2 border-primary-200">
+              <Link href={`/poskytovatele/${provider.providerId}/${service.serviceId}`}>
+                <h3 className="text-lg font-semibold text-stone-900 hover:text-primary-600 transition-colors mb-1">
+                  {service.name}
+                </h3>
+              </Link>
+              {service.description && (
+                <p className="text-stone-600 mb-3 leading-relaxed text-sm">{service.description}</p>
+              )}
+              {serviceContact && (
+                <ProviderContactInfo contact={serviceContact} />
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -166,8 +183,23 @@ export default async function LifeSituationDetailPage({ params }: PageProps) {
   }
 
   const providers = situation.providers || [];
+  const services = situation.services || [];
   const crisisLines = situation.crisisLines || [];
-  const totalCount = providers.length + crisisLines.length;
+
+  // Group services by their parent provider
+  const servicesByProvider = new Map<string, { provider: { providerId: string; name: string }; services: Service[] }>();
+  for (const service of services) {
+    const pid = service.provider?.providerId || 'unknown';
+    if (!servicesByProvider.has(pid)) {
+      servicesByProvider.set(pid, {
+        provider: service.provider || { providerId: 'unknown', name: 'Neznámý poskytovatel' },
+        services: [],
+      });
+    }
+    servicesByProvider.get(pid)!.services.push(service);
+  }
+
+  const totalCount = providers.length + servicesByProvider.size + crisisLines.length;
 
   return (
     <div className="section">
@@ -214,7 +246,16 @@ export default async function LifeSituationDetailPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Providers List */}
+        {/* Services grouped by provider */}
+        {servicesByProvider.size > 0 && (
+          <div className="space-y-5 mb-8">
+            {[...servicesByProvider.values()].map(({ provider, services: groupedServices }) => (
+              <ServiceGroupCard key={provider.providerId} provider={provider} services={groupedServices} />
+            ))}
+          </div>
+        )}
+
+        {/* Standalone Providers */}
         {providers.length > 0 && (
           <div className="space-y-5 mb-8">
             {providers.map((provider) => (
@@ -226,7 +267,7 @@ export default async function LifeSituationDetailPage({ params }: PageProps) {
         {/* Crisis Lines List */}
         {crisisLines.length > 0 && (
           <div className="space-y-5">
-            {providers.length > 0 && (
+            {(servicesByProvider.size > 0 || providers.length > 0) && (
               <h2 className="text-xl font-bold text-stone-900 flex items-center gap-3 mt-8">
                 <div className="icon-box icon-box-secondary">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

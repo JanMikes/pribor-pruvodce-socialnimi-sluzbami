@@ -1,18 +1,18 @@
 {
   "kind": "collectionType",
-  "collectionName": "providers",
+  "collectionName": "services",
   "info": {
-    "singularName": "provider",
-    "pluralName": "providers",
-    "displayName": "Poskytovatel",
-    "description": "Poskytovatelé sociálních služeb"
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Služba",
+    "description": "Služba poskytovatele"
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "providerId": {
+    "serviceId": {
       "type": "uid",
       "required": true
     },
@@ -23,22 +23,22 @@
     "description": {
       "type": "richtext"
     },
-    "services": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::service.service",
-      "mappedBy": "provider"
-    },
     "contacts": {
       "type": "component",
       "repeatable": true,
       "component": "shared.contact-info"
     },
+    "provider": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::provider.provider",
+      "inversedBy": "services"
+    },
     "lifeSituations": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::life-situation.life-situation",
-      "mappedBy": "providers"
+      "mappedBy": "services"
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "collectionName": "components_shared_phone_numbers",
   "info": {
-    "displayName": "Telefonni cislo",
-    "description": "Telefonni cislo",
+    "displayName": "Telefonní číslo",
+    "description": "Telefonní číslo",
     "icon": "phone"
   },
   "attributes": {

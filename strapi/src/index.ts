@@ -206,29 +206,14 @@ async function seedData(strapi: Core.Strapi) {
     });
   }
 
-  // 4. Seed Providers
+  // 4. Seed Providers (without services - those are now separate entities)
   strapi.log.info('Seeding providers...');
   for (const provider of servicesData.providers) {
-    const services = provider.services?.map((service) => ({
-      serviceId: service.id,
-      name: service.name,
-      description: service.description,
-      contact: service.contact
-        ? {
-            address: service.contact.address,
-            phones: toPhoneComponents(service.contact.phone, service.contact.phones),
-            email: service.contact.email,
-            website: service.contact.website,
-          }
-        : undefined,
-    }));
-
     await strapi.documents('api::provider.provider').create({
       data: {
         providerId: provider.id,
         name: provider.name,
         description: provider.description,
-        services: services,
         contacts: provider.contact
           ? [{
               address: provider.contact.address,
@@ -242,26 +227,50 @@ async function seedData(strapi: Core.Strapi) {
     });
   }
 
-  // 5. Seed Life Situations (with relation lookups)
-  strapi.log.info('Seeding life situations...');
+  // 5. Seed Services as separate entities linked to providers
+  strapi.log.info('Seeding services...');
 
-  // Build lookup maps: id -> documentId
+  // Build provider lookup: providerId -> documentId
   const allProviders = await strapi.documents('api::provider.provider').findMany({
     limit: 1000,
-    populate: { services: { fields: ['serviceId'] } },
   });
   const providerIdToDocId = new Map<string, string>();
-  const serviceIdToProviderDocId = new Map<string, string>();
   for (const p of allProviders) {
     providerIdToDocId.set((p as any).providerId, p.documentId);
-    if ((p as any).services) {
-      for (const s of (p as any).services) {
-        if (s.serviceId) {
-          serviceIdToProviderDocId.set(s.serviceId, p.documentId);
-        }
+  }
+
+  const serviceIdToDocId = new Map<string, string>();
+
+  for (const providerData of servicesData.providers) {
+    const providerDocId = providerIdToDocId.get(providerData.id);
+    if (!providerDocId) continue;
+
+    for (const svc of providerData.services || []) {
+      const serviceEntry = await strapi.documents('api::service.service').create({
+        data: {
+          serviceId: svc.id || `${providerData.id}-${svc.name.toLowerCase().replace(/\s+/g, '-')}`,
+          name: svc.name,
+          description: svc.description,
+          contacts: svc.contact
+            ? [{
+                address: svc.contact.address,
+                phones: toPhoneComponents(svc.contact.phone, svc.contact.phones),
+                email: svc.contact.email,
+                website: svc.contact.website,
+              }]
+            : [],
+          provider: { connect: [{ documentId: providerDocId }] } as any,
+          publishedAt: new Date(),
+        },
+      });
+      if (svc.id) {
+        serviceIdToDocId.set(svc.id, serviceEntry.documentId);
       }
     }
   }
+
+  // 6. Seed Life Situations (with relation lookups for providers, services, crisis lines)
+  strapi.log.info('Seeding life situations...');
 
   const allCrisisLines = await strapi.documents('api::crisis-line.crisis-line').findMany({
     limit: 1000,
@@ -276,15 +285,16 @@ async function seedData(strapi: Core.Strapi) {
   for (let i = 0; i < servicesData.lifeSituations.length; i++) {
     const situation = servicesData.lifeSituations[i];
 
-    // Classify each providerRef
+    // Classify each providerRef into providers, services, or crisis lines
     const providerDocIds = new Set<string>();
+    const serviceDocIds = new Set<string>();
     const crisisLineDocIds = new Set<string>();
 
     for (const ref of situation.providerRefs || []) {
       if (providerIdToDocId.has(ref)) {
         providerDocIds.add(providerIdToDocId.get(ref)!);
-      } else if (serviceIdToProviderDocId.has(ref)) {
-        providerDocIds.add(serviceIdToProviderDocId.get(ref)!);
+      } else if (serviceIdToDocId.has(ref)) {
+        serviceDocIds.add(serviceIdToDocId.get(ref)!);
       } else if (lineIdToDocId.has(ref)) {
         crisisLineDocIds.add(lineIdToDocId.get(ref)!);
       } else {
@@ -297,6 +307,7 @@ async function seedData(strapi: Core.Strapi) {
         situationId: situation.id,
         name: situation.name,
         providers: { connect: [...providerDocIds].map(id => ({ documentId: id })) } as any,
+        services: { connect: [...serviceDocIds].map(id => ({ documentId: id })) } as any,
         crisisLines: { connect: [...crisisLineDocIds].map(id => ({ documentId: id })) } as any,
         order: i,
         publishedAt: new Date(),
@@ -308,7 +319,6 @@ async function seedData(strapi: Core.Strapi) {
   strapi.log.info('Seeding authorities...');
   for (const authority of servicesData.authorities) {
     const departments = authority.departments?.map((dept) => ({
-      departmentId: dept.id,
       name: dept.name,
       address: dept.address,
       description: dept.description,
@@ -390,6 +400,7 @@ async function configurePublicPermissions(strapi: Core.Strapi) {
   // Define permissions for all content types
   const contentTypes = [
     'api::provider.provider',
+    'api::service.service',
     'api::life-situation.life-situation',
     'api::crisis-line.crisis-line',
     'api::authority.authority',

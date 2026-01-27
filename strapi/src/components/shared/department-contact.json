@@ -8,7 +8,7 @@
   "options": {},
   "attributes": {
     "role": {
-      "type": "text",
+      "type": "string",
       "required": true
     },
     "phone": {

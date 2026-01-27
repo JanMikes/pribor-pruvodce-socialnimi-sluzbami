@@ -40,12 +40,12 @@ export interface ContactInfo {
   website?: string;
 }
 
-export interface Service {
-  id: number;
-  serviceId?: string;
+export interface Service extends StrapiDocument {
+  serviceId: string;
   name: string;
   description?: string;
-  contact?: ContactInfo;
+  contacts?: ContactInfo[];
+  provider?: Provider;
 }
 
 export interface StaffMember {
@@ -64,7 +64,6 @@ export interface DepartmentContact {
 
 export interface Department {
   id: number;
-  departmentId?: string;
   name: string;
   address?: string;
   description?: string;
@@ -80,19 +79,19 @@ export interface Provider extends StrapiDocument {
   description?: string;
   services?: Service[];
   contacts?: ContactInfo[];
-  slug?: string;
 }
 
 export interface LifeSituation extends StrapiDocument {
   situationId: string;
   name: string;
   providers?: Provider[];
+  services?: Service[];
   crisisLines?: CrisisLine[];
   order: number;
 }
 
 export interface CrisisLine extends StrapiDocument {
-  lineId?: string;
+  lineId: string;
   name: string;
   phones?: PhoneNumber[];
   description?: string;

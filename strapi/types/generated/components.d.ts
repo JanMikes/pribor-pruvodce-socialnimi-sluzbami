@@ -25,7 +25,6 @@ export interface SharedDepartment extends Struct.ComponentSchema {
   attributes: {
     address: Schema.Attribute.Text;
     contacts: Schema.Attribute.Component<'shared.department-contact', true>;
-    departmentId: Schema.Attribute.String;
     description: Schema.Attribute.Text;
     email: Schema.Attribute.Email;
     name: Schema.Attribute.String & Schema.Attribute.Required;
@@ -43,34 +42,19 @@ export interface SharedDepartmentContact extends Struct.ComponentSchema {
   attributes: {
     email: Schema.Attribute.Email;
     phone: Schema.Attribute.String;
-    role: Schema.Attribute.Text & Schema.Attribute.Required;
+    role: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
 export interface SharedPhoneNumber extends Struct.ComponentSchema {
   collectionName: 'components_shared_phone_numbers';
   info: {
-    description: 'Telefonni cislo';
-    displayName: 'Telefonni cislo';
+    description: 'Telefonn\u00ED \u010D\u00EDslo';
+    displayName: 'Telefonn\u00ED \u010D\u00EDslo';
     icon: 'phone';
   };
   attributes: {
     number: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
-export interface SharedService extends Struct.ComponentSchema {
-  collectionName: 'components_shared_services';
-  info: {
-    description: 'Slu\u017Eba poskytovan\u00E1 organizac\u00ED';
-    displayName: 'Slu\u017Eba';
-    icon: 'briefcase';
-  };
-  attributes: {
-    contact: Schema.Attribute.Component<'shared.contact-info', false>;
-    description: Schema.Attribute.RichText;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    serviceId: Schema.Attribute.String;
   };
 }
 
@@ -95,7 +79,6 @@ declare module '@strapi/strapi' {
       'shared.department': SharedDepartment;
       'shared.department-contact': SharedDepartmentContact;
       'shared.phone-number': SharedPhoneNumber;
-      'shared.service': SharedService;
       'shared.staff-member': SharedStaffMember;
     }
   }

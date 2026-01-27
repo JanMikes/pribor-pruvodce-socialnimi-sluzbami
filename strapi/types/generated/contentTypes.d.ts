@@ -486,7 +486,7 @@ export interface ApiCrisisLineCrisisLine extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::life-situation.life-situation'
     >;
-    lineId: Schema.Attribute.String;
+    lineId: Schema.Attribute.UID & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -584,7 +584,6 @@ export interface ApiHealthcareProviderHealthcareProvider
     phones: Schema.Attribute.Component<'shared.phone-number', true>;
     providerId: Schema.Attribute.UID & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'name'>;
     staff: Schema.Attribute.Component<'shared.staff-member', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -626,6 +625,7 @@ export interface ApiLifeSituationLifeSituation
       'api::provider.provider'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    services: Schema.Attribute.Relation<'manyToMany', 'api::service.service'>;
     situationId: Schema.Attribute.UID & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -663,7 +663,44 @@ export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     providerId: Schema.Attribute.UID & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    services: Schema.Attribute.Component<'shared.service', true>;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiServiceService extends Struct.CollectionTypeSchema {
+  collectionName: 'services';
+  info: {
+    description: 'Slu\u017Eba poskytovatele';
+    displayName: 'Slu\u017Eba';
+    pluralName: 'services';
+    singularName: 'service';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    contacts: Schema.Attribute.Component<'shared.contact-info', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    lifeSituations: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::life-situation.life-situation'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service.service'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    provider: Schema.Attribute.Relation<'manyToOne', 'api::provider.provider'>;
+    publishedAt: Schema.Attribute.DateTime;
+    serviceId: Schema.Attribute.UID & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1220,6 +1257,7 @@ declare module '@strapi/strapi' {
       'api::healthcare-provider.healthcare-provider': ApiHealthcareProviderHealthcareProvider;
       'api::life-situation.life-situation': ApiLifeSituationLifeSituation;
       'api::provider.provider': ApiProviderProvider;
+      'api::service.service': ApiServiceService;
       'api::site-metadata.site-metadata': ApiSiteMetadataSiteMetadata;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

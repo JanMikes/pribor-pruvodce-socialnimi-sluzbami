@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "lineId": {
-      "type": "string"
+      "type": "uid",
+      "required": true
     },
     "name": {
       "type": "string",

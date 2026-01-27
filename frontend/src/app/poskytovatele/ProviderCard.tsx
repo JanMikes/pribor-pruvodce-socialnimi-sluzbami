@@ -115,6 +115,27 @@ export default function ProviderCard({ provider, letter }: { provider: Provider;
             </div>
           )}
 
+          {provider.services && provider.services.length > 0 && (
+            <div className="mb-4">
+              <h3 className="text-sm font-semibold text-stone-700 mb-2">Služby</h3>
+              <ul className="space-y-1">
+                {provider.services.map((service) => (
+                  <li key={service.id}>
+                    <Link
+                      href={`/poskytovatele/${provider.providerId}/${service.serviceId}`}
+                      className="text-sm text-primary-600 hover:text-primary-700 transition-colors inline-flex items-center gap-1.5"
+                    >
+                      <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                      {service.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <Link
             href={`/poskytovatele/${provider.providerId}`}
             className="inline-flex items-center gap-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-lg transition-colors"

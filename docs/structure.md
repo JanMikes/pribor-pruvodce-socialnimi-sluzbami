@@ -1,108 +1,144 @@
-# services.json Structure
+# Data Structure
 
-## Overview
-
-The `services.json` file contains parsed data from the Příbor social services guide PDF. It's designed as a backend data source for a website.
-
-## Top-Level Sections
+## Data Flow
 
 ```
+PDF (44 pages)
+  │  scripts/parse_pdf.py
+  ▼
+services.json (intermediate format)
+  │  strapi/src/index.ts bootstrap()
+  ▼
+Strapi CMS (PostgreSQL)
+  │  REST API /api/*
+  ▼
+Next.js Frontend
+```
+
+The PDF is parsed into `strapi/services.json` as an intermediate JSON format. On first Strapi startup, the bootstrap function in `strapi/src/index.ts` seeds this data into the CMS database, transforming it to match Strapi's schema (e.g., converting phone strings to repeatable components, resolving ID references to Strapi relations).
+
+---
+
+## Part 1: services.json (Intermediate Format)
+
+The parser output. This is what `parse_pdf.py` produces and what the Strapi seed script consumes.
+
+### Top-Level Structure
+
+```json
 {
-  "metadata": {...},
-  "lifeSituations": [...],
-  "providers": [...],
-  "crisisLines": [...],
-  "authorities": [...],
-  "healthcare": {...},
-  "emergencyNumbers": [...]
+  "metadata": { ... },
+  "lifeSituations": [ ... ],
+  "providers": [ ... ],
+  "crisisLines": [ ... ],
+  "authorities": [ ... ],
+  "healthcare": { ... },
+  "emergencyNumbers": [ ... ]
 }
 ```
 
-## Section Details
-
 ### metadata
-Document information.
+
 ```json
 {
-  "title": "string",
-  "city": "string",
-  "region": "string",
-  "publisher": "string",
-  "publishDate": "YYYY-MM",
+  "title": "Pruvodce socialnimi sluzbami a navazujicimi aktivitami",
+  "city": "Pribor",
+  "region": "Moravskoslezsky kraj",
+  "publisher": "Mesto Pribor",
+  "publishDate": "2025-11",
   "language": "cs"
 }
 ```
 
 ### lifeSituations
-Categories of life situations with references to relevant providers. Enables "What help do I need?" navigation.
+
+Categories linking user needs to provider/service/crisis-line IDs.
+
 ```json
 {
-  "id": "slug-id",
-  "name": "Display name",
-  "providerRefs": ["provider-id-1", "provider-id-2"]
+  "id": "dusevni-onemocneni",
+  "name": "Dusevni onemocneni",
+  "providerRefs": ["rut-novy-jicin", "linka-prvni-psychicke-pomoci"]
 }
 ```
 
+`providerRefs` can contain:
+- Provider IDs (e.g. `"rut-novy-jicin"`)
+- Service IDs (e.g. `"eden-novy-jicin-odlehcovaci"` - a service within a provider)
+- Crisis line IDs (e.g. `"linka-prvni-psychicke-pomoci"`)
+
 ### providers
-Social service organizations. May contain nested services with their own IDs and contacts.
+
+Social service organizations with optional nested services.
+
 ```json
 {
-  "id": "slug-id",
-  "name": "Organization name",
-  "description": "What they do",
+  "id": "charita-novy-jicin",
+  "name": "Charita Novy Jicin",
+  "description": "Multi-line description text",
   "services": [
     {
-      "id": "service-id",           // optional, for cross-referencing
-      "name": "Service name",
-      "description": "Service details",
-      "contact": {...}              // optional, service-specific contact
+      "id": "charita-novy-jicin-poradna",
+      "name": "Poradna",
+      "description": "Service description",
+      "contact": {
+        "address": "Sokolovska 9, 741 01 Novy Jicin",
+        "phone": "+420 556 701 203",
+        "email": "poradna@charita-nj.cz",
+        "website": "https://example.cz"
+      }
     }
   ],
   "contact": {
-    "address": "string",
-    "phone": "string",              // single phone
-    "phones": ["string"],           // or multiple phones
-    "email": "string",
-    "website": "https://..."
+    "address": "Main address",
+    "phone": "+420 123 456 789",
+    "phones": ["+420 123 456 789", "+420 987 654 321"],
+    "email": "info@org.cz",
+    "website": "https://org.cz"
   }
 }
 ```
 
+Contact fields use `phone` (single string) or `phones` (array) depending on how many numbers were extracted. A contact may have both if the parser found them on different lines.
+
 ### crisisLines
-Emergency and crisis hotlines.
+
 ```json
 {
-  "id": "slug-id",
-  "name": "Line name",
+  "id": "linka-bezpeci",
+  "name": "Linka bezpeci",
   "phone": "116 111",
-  "description": "Who it helps",
-  "availability": "24/7" | "Po-Pá 9:00-17:00" | etc,
-  "free": true | false,
-  "email": "string",                // optional
-  "website": "https://...",         // optional
-  "targetGroup": "15+"              // optional
+  "description": "For children and youth...",
+  "availability": "24/7",
+  "free": true,
+  "email": "pomoc@linkabezpeci.cz",
+  "website": "https://www.linkabezpeci.cz",
+  "targetGroup": "15+"
 }
 ```
 
 ### authorities
-Government offices with departments and contacts.
+
+Government offices with departments and per-role contacts.
+
 ```json
 {
-  "id": "slug-id",
-  "name": "Office name",
-  "address": "string",              // optional at top level
-  "website": "https://...",
+  "id": "mestsky-urad-pribor",
+  "name": "Mestsky urad Pribor",
+  "website": "https://www.pribor.eu",
   "departments": [
     {
-      "id": "dept-id",              // optional
-      "name": "Department name",
-      "address": "string",          // optional
-      "description": "string",      // optional
+      "id": "mestsky-urad-pribor-socialni",
+      "name": "Odbor socialnich veci",
+      "address": "Freudova 118, 742 58 Pribor",
+      "description": "Optional description",
+      "phone": "+420 556 769 111",
+      "email": "dept@example.cz",
       "contacts": [
         {
-          "role": "What they handle",
-          "phone": "string",
-          "email": "string"
+          "role": "Socialni prace, socialni poradenstvi",
+          "phone": "+420 556 455 470",
+          "email": "person@pribor-mesto.cz"
         }
       ]
     }
@@ -111,58 +147,270 @@ Government offices with departments and contacts.
 ```
 
 ### healthcare
-Healthcare providers organized by type.
+
+Grouped by specialty. Each category contains an array of entries.
+
 ```json
 {
-  "pediatricians": [...],
-  "generalPractitioners": [...],
+  "pediatricians": [ ... ],
+  "generalPractitioners": [ ... ],
   "specialists": {
-    "gynecology": [...],
-    "surgery": [...],
-    "cardiology": [...],
-    "ophthalmology": [...],
-    "pulmonary": [...],
-    "allergology": [...],
-    "rehabilitation": [...],
-    "ent": [...]
+    "gynecology": [ ... ],
+    "surgery": [ ... ],
+    "cardiology": [ ... ],
+    "ophthalmology": [ ... ],
+    "pulmonary": [ ... ],
+    "allergology": [ ... ],
+    "rehabilitation": [ ... ],
+    "ent": [ ... ]
   },
-  "dentists": [...],
-  "dentalHygiene": [...],
-  "physiotherapy": [...],
-  "opticians": [...],
-  "pharmacies": [...]
+  "dentists": [ ... ],
+  "dentalHygiene": [ ... ],
+  "physiotherapy": [ ... ],
+  "opticians": [ ... ],
+  "pharmacies": [ ... ]
 }
 ```
 
 Each healthcare entry:
+
 ```json
 {
-  "id": "slug-id",
-  "name": "Doctor/Facility name",
-  "address": "string",
-  "phone": "string",                // or "phones": [...]
-  "website": "string"               // optional
+  "id": "mudr-jan-novak",
+  "name": "MUDr. Jan Novak",
+  "address": "Jicinska 5, 742 58 Pribor",
+  "phone": "+420 556 123 456",
+  "phones": ["+420 556 123 456", "+420 556 123 457"],
+  "website": "https://www.example.cz"
 }
 ```
 
 ### emergencyNumbers
-Basic emergency contacts.
+
 ```json
 {
-  "name": "Service name",
-  "phone": "string",                // or "phones": [...]
+  "name": "Hasicsky zachranny sbor",
+  "phone": "150"
 }
 ```
 
-## ID Conventions
+Or with multiple numbers:
 
-- All IDs are slugified (lowercase, hyphens, no diacritics)
-- Provider IDs match their organization name
-- Service IDs within providers are prefixed or descriptive
-- IDs in `lifeSituations.providerRefs` can reference either provider IDs or specific service IDs
+```json
+{
+  "name": "Mestska policie Pribor",
+  "phones": ["+420 556 455 400", "+420 602 557 156"]
+}
+```
 
-## Phone Format
+### ID Conventions
 
-- Czech numbers: `+420 XXX XXX XXX`
-- Emergency numbers: short format (`112`, `155`)
+- All IDs are slugified: lowercase ASCII, hyphens, no diacritics
+- Generated by `slugify()`: transliterates diacritics, strips legal suffixes (z.s., o.p.s., etc.), replaces non-alphanumeric with hyphens
+- Service IDs are prefixed with provider ID when duplicates exist across providers
+- `providerRefs` in life situations can reference provider IDs, service IDs, or crisis line IDs
+
+### Phone Format
+
+- Czech landline/mobile: `+420 XXX XXX XXX`
+- Toll-free: `800 XXX XXX`
+- European harmonized: `116 XXX`
+- Emergency short: `112`, `150`, `155`, `158`
 - Some entries have single `phone`, others have `phones` array
+
+---
+
+## Part 2: Strapi CMS Schema (Final Structure)
+
+The Strapi database schema that the seed script populates. These are the schemas defined in `strapi/src/api/` and `strapi/src/components/`.
+
+### Content Types
+
+All collection types have `draftAndPublish: false` (no draft/publish workflow).
+
+#### Provider (`api::provider.provider`)
+
+Social service organizations.
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `providerId` | uid | yes | Slugified org name |
+| `name` | string | yes | Organization name |
+| `description` | richtext | no | What they do |
+| `services` | relation (oneToMany) | no | Links to Service, inverse of `service.provider` |
+| `contacts` | component (repeatable) | no | `shared.contact-info` |
+| `lifeSituations` | relation (manyToMany) | no | Inverse of `life-situation.providers` |
+
+#### Service (`api::service.service`)
+
+Individual services offered by providers.
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `serviceId` | uid | yes | Slugified service name |
+| `name` | string | yes | Service name |
+| `description` | richtext | no | What the service does |
+| `contacts` | component (repeatable) | no | `shared.contact-info` |
+| `provider` | relation (manyToOne) | no | Links to Provider, inverse of `provider.services` |
+| `lifeSituations` | relation (manyToMany) | no | Inverse of `life-situation.services` |
+
+#### Life Situation (`api::life-situation.life-situation`)
+
+Categories for "What help do I need?" navigation.
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `situationId` | uid | yes | Slugified category name |
+| `name` | string | yes | Category display name |
+| `providers` | relation (manyToMany) | no | Links to Provider, owning side (standalone providers) |
+| `services` | relation (manyToMany) | no | Links to Service, owning side (specific services) |
+| `crisisLines` | relation (manyToMany) | no | Links to CrisisLine, owning side |
+| `order` | integer | no | Display sort order (default 0) |
+
+The seed script resolves `providerRefs` from services.json (which can reference provider IDs, service IDs, or crisis line IDs) into three Strapi ManyToMany relations: `providers`, `services`, and `crisisLines`.
+
+#### Crisis Line (`api::crisis-line.crisis-line`)
+
+Emergency and counseling hotlines.
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `lineId` | uid | yes | Slugified line name |
+| `name` | string | yes | Line name |
+| `phones` | component (repeatable) | no | `shared.phone-number` |
+| `description` | richtext | no | Who it helps |
+| `availability` | string | no | e.g. "24/7", "Po-Pa 9:00-17:00" |
+| `free` | boolean | no | Default false |
+| `email` | email | no | |
+| `website` | string | no | |
+| `targetGroup` | string | no | e.g. "15+" |
+| `order` | integer | no | Display sort order (default 0) |
+| `lifeSituations` | relation (manyToMany) | no | Inverse of `life-situation.crisisLines` |
+
+#### Authority (`api::authority.authority`)
+
+Government offices.
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `authorityId` | uid | yes | Slugified office name |
+| `name` | string | yes | Office name |
+| `address` | text | no | Main address |
+| `website` | string | no | |
+| `departments` | component (repeatable) | no | `shared.department` |
+
+#### Healthcare Provider (`api::healthcare-provider.healthcare-provider`)
+
+Doctors, pharmacies, and other healthcare facilities.
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `providerId` | uid | yes | Slugified name |
+| `name` | string | yes | Doctor/facility name |
+| `category` | enumeration | yes | See categories below |
+| `address` | text | no | |
+| `phones` | component (repeatable) | no | `shared.phone-number` |
+| `website` | string | no | |
+| `staff` | component (repeatable) | no | `shared.staff-member` |
+
+Healthcare categories: `pediatrician`, `generalPractitioner`, `gynecology`, `surgery`, `cardiology`, `ophthalmology`, `pulmonary`, `allergology`, `rehabilitation`, `ent`, `dentist`, `dentalHygiene`, `physiotherapy`, `optician`, `pharmacy`
+
+#### Emergency Number (`api::emergency-number.emergency-number`)
+
+Basic emergency contacts (112, 155, 158, etc.).
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `name` | string | yes | Service name |
+| `phones` | component (repeatable) | no | `shared.phone-number` |
+| `order` | integer | no | Display sort order (default 0) |
+
+#### Site Metadata (`api::site-metadata.site-metadata`)
+
+Single type (not a collection). Document/site info.
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `title` | string | yes | Guide title |
+| `city` | string | yes | City name |
+| `region` | string | no | |
+| `publisher` | string | no | |
+| `publishDate` | string | no | Format "YYYY-MM" |
+| `language` | string | no | Default "cs" |
+
+### Shared Components
+
+#### Phone Number (`shared.phone-number`)
+
+Used across all content types for repeatable phone numbers.
+
+| Field | Type | Required |
+|-------|------|----------|
+| `number` | string | yes |
+
+#### Contact Info (`shared.contact-info`)
+
+Used in Provider and Service (repeatable).
+
+| Field | Type | Required |
+|-------|------|----------|
+| `address` | text | no |
+| `phones` | component (repeatable) | no |
+| `email` | email | no |
+| `website` | string | no |
+
+Phones are `shared.phone-number` components.
+
+#### Department (`shared.department`)
+
+Nested department within an Authority.
+
+| Field | Type | Required |
+|-------|------|----------|
+| `name` | string | yes |
+| `address` | text | no |
+| `description` | text | no |
+| `phone` | string | no |
+| `email` | email | no |
+| `contacts` | component (repeatable) | no |
+
+Contacts are `shared.department-contact` components.
+
+#### Department Contact (`shared.department-contact`)
+
+Contact person/role within a department.
+
+| Field | Type | Required |
+|-------|------|----------|
+| `role` | string | yes |
+| `phone` | string | no |
+| `email` | email | no |
+
+#### Staff Member (`shared.staff-member`)
+
+Staff within a healthcare provider.
+
+| Field | Type | Required |
+|-------|------|----------|
+| `name` | string | yes |
+| `phone` | string | no |
+| `specialty` | string | no |
+
+### Seed Transformation Details
+
+Key transformations the seed script (`strapi/src/index.ts`) performs when importing `services.json`:
+
+1. **Phone normalization:** `phone` (single string) and `phones` (string array) from JSON are converted to repeatable `shared.phone-number` components via `toPhoneComponents()`. Deduplicates numbers.
+
+2. **Provider contacts:** JSON `contact` (single object) is converted to `contacts` (repeatable array) in Strapi, wrapping the single contact in an array.
+
+3. **Service entities:** JSON `services` (nested under providers) are seeded as separate `api::service.service` entities linked to their parent provider via a manyToOne relation.
+
+4. **Life situation relations:** JSON `providerRefs` (array of string IDs) is resolved to three Strapi ManyToMany relations:
+   - Provider IDs → `providers` relation (standalone providers)
+   - Service IDs → `services` relation (specific services)
+   - Crisis line IDs → `crisisLines` relation
+   - Uses Strapi's `connect` syntax to create the relations
+   - Unresolved refs are logged as warnings
+
+5. **Healthcare categories:** JSON's nested structure (`healthcare.pediatricians`, `healthcare.specialists.gynecology`, etc.) is flattened into a single `healthcare-provider` collection with a `category` enum field.

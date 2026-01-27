@@ -546,7 +546,8 @@
           "contact": {
             "phone": "+420 731 028 958",
             "website": "https://czp-msk.cz",
-            "email": "obcanskaporadna@czp-msk.cz"
+            "email": "obcanskaporadna@czp-msk.cz",
+            "address": "nám. Sigmunda Freuda 19, Příbor"
           }
         },
         {
@@ -869,7 +870,8 @@
           "+420 595 538 127"
         ],
         "website": "https://hospicfm.cz",
-        "email": "k.karaffova@hospicfm.cz"
+        "email": "k.karaffova@hospicfm.cz",
+        "address": "I. J. Pešiny 3640, Frýdek-Místek"
       }
     },
     {
@@ -982,7 +984,8 @@
           "+420 596 110 883"
         ],
         "website": "https://kriceos.cz",
-        "email": "krizovecentrum@kriceos.cz"
+        "email": "krizovecentrum@kriceos.cz",
+        "address": "Ruská 94/29, Ostrava - Vítkovice"
       }
     },
     {
@@ -1029,7 +1032,7 @@
         {
           "id": "domy-s-pecovatelskou-sluzbou-pribor",
           "name": "Domy s pečovatelskou službou Příbor",
-          "description": "Domy s pečovatelskou službou v Příboře jsou určeny osobám, které mají sníženou soběstačnost z důvodu věku, chronického onemocnění nebo zdravotního postižení. Žádosti se podávají na odboru sociálních věcí Městského úřadu Příbor. Jedná se o ob- jekty na ul: Jičínská 238, Čs. armády 231 a Čs. armády 233.",
+          "description": "Domy s pečovatelskou službou v Příboře jsou určeny osobám, které mají sníženou soběstačnost z důvodu věku, chronického onemocnění nebo zdravotního postižení. Žádosti se podávají na odboru sociálních věcí Městského úřadu Příbor. Jedná se o ob-",
           "contact": {
             "phone": "+420 556 455 471",
             "website": "https://pribor.eu",
@@ -1145,7 +1148,8 @@
           "contact": {
             "phone": "+420 556 879 635",
             "website": "https://pppnj.cz",
-            "email": "detas.kopr@pppnj.cz"
+            "email": "detas.kopr@pppnj.cz",
+            "address": "Štefánikova 1163/12, Kopřivnice"
           }
         }
       ]
@@ -1744,6 +1748,7 @@
     {
       "id": "mestsky-urad-pribor",
       "name": "Městský úřad Příbor",
+      "address": "Náměstí Sigmunda Freuda 19, 742 58 Příbor",
       "website": "https://www.pribor.eu",
       "departments": [
         {
@@ -1949,14 +1954,18 @@
       ],
       "cardiology": [
         {
-          "id": "mudr-darina-krausova",
-          "name": "MUDr. Darina Krausová"
-        },
-        {
-          "id": "mudr-lubos-kraus",
-          "name": "MUDr. Ĺuboš Kraus",
+          "id": "interni-kardiologie",
+          "name": "Interní-kardiologie",
           "address": "Řehoře Volného 60, 742 58 Příbor",
-          "phone": "+420 556 723 600"
+          "staff": [
+            {
+              "name": "MUDr. Darina Krausová"
+            },
+            {
+              "name": "MUDr. Ĺuboš Kraus",
+              "phone": "+420 556 723 600"
+            }
+          ]
         }
       ],
       "surgery": [
@@ -1994,44 +2003,45 @@
     },
     "dentists": [
       {
-        "id": "mudr-michal-grodza",
-        "name": "MUDr. Michal Grodza",
+        "id": "zubni-pece-v-pribore",
+        "name": "Zubní péče v Příboře",
         "address": "Tyršova 195, 742 58 Příbor",
-        "phone": "+420 777 723 794"
-      },
-      {
-        "id": "mudr-ivana-malikova",
-        "name": "MUDr. Ivana Malíková",
-        "address": "Tyršova 195, 742 58 Příbor",
-        "phone": "+420 735 513 139"
-      },
-      {
-        "id": "mddr-michaela-novobilska",
-        "name": "MDDr. Michaela Novobilská",
-        "address": "Tyršova 195, 742 58 Příbor",
-        "phone": "+420 606 522 992"
+        "staff": [
+          {
+            "name": "MUDr. Michal Grodza",
+            "phone": "+420 777 723 794"
+          },
+          {
+            "name": "MUDr. Ivana Malíková",
+            "phone": "+420 735 513 139"
+          },
+          {
+            "name": "MDDr. Michaela Novobilská",
+            "phone": "+420 606 522 992"
+          }
+        ]
       },
       {
         "id": "pmk-dent-plus-s-r-o",
-        "name": "PMK-DENT Plus s. r.o."
-      },
-      {
-        "id": "mudr-petr-michna",
-        "name": "MUDr. Petr Michna",
-        "address": "Tyršova 195, 742 58 Příbor",
-        "phone": "+420 732 737 236"
+        "name": "PMK-DENT Plus s. r.o.",
+        "staff": [
+          {
+            "name": "MUDr. Petr Michna",
+            "phone": "+420 732 737 236"
+          }
+        ]
       }
     ],
     "dentalHygiene": [
       {
         "id": "dentalka-nj",
-        "name": "Dentálka NJ"
-      },
-      {
-        "id": "vera-kremlova-dis",
-        "name": "Věra Kremlová, DiS.",
-        "address": "Tyršova 195, 742 58 Příbor",
-        "phone": "+420 722 377 457"
+        "name": "Dentálka NJ",
+        "staff": [
+          {
+            "name": "Věra Kremlová, DiS.",
+            "phone": "+420 722 377 457"
+          }
+        ]
       }
     ],
     "physiotherapy": [
@@ -2045,12 +2055,13 @@
       {
         "id": "moja-fyzioterapie",
         "name": "MoJa Fyzioterapie",
-        "website": "https://www.mojafyzioterapie.cz"
-      },
-      {
-        "id": "jana-monsportova-dis",
-        "name": "Jana Monsportová, DiS.",
-        "phone": "+420 732 503 748"
+        "website": "https://www.mojafyzioterapie.cz",
+        "staff": [
+          {
+            "name": "Jana Monsportová, DiS.",
+            "phone": "+420 732 503 748"
+          }
+        ]
       },
       {
         "id": "radka-willertova",
@@ -2062,17 +2073,17 @@
         "name": "Bílská s. r. o.",
         "address": "Tyršova 195, 742 58 Příbor",
         "phone": "+420 556 722 240",
-        "website": "https://www.rehabilitacebilska.cz"
-      },
-      {
-        "id": "lucie-zarska-dis",
-        "name": "Lucie Žárská, DiS.",
-        "phone": "+420 777 619 544"
-      },
-      {
-        "id": "lucie-krestova-dis",
-        "name": "Lucie Krestová, DiS.",
-        "phone": "+420 603 443 629"
+        "website": "https://www.rehabilitacebilska.cz",
+        "staff": [
+          {
+            "name": "Lucie Žárská, DiS.",
+            "phone": "+420 777 619 544"
+          },
+          {
+            "name": "Lucie Krestová, DiS.",
+            "phone": "+420 603 443 629"
+          }
+        ]
       }
     ],
     "opticians": [

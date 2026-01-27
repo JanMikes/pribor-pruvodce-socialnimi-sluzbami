@@ -659,6 +659,137 @@ def parse_healthcare(pdf) -> dict:
                 i += 1
         return entries
 
+    def _is_person_name(name: str) -> bool:
+        """Check if a name looks like a person (doctor/staff) rather than a business."""
+        _PERSON_PREFIXES = ['MUDr.', 'MDDr.', 'MVDr.', 'PhDr.', 'Mgr.', 'Bc.',
+                            'RNDr.', 'Ing.', 'JUDr.', 'PharmDr.', 'Doc.', 'Prof.']
+        _PERSON_SUFFIXES = ['DiS.', 'Ph.D.', 'CSc.', 'MBA']
+        for prefix in _PERSON_PREFIXES:
+            if name.startswith(prefix + ' ') or name.startswith(prefix.lower() + ' '):
+                return True
+        for suffix in _PERSON_SUFFIXES:
+            if name.endswith(', ' + suffix) or name.endswith(' ' + suffix):
+                return True
+        return False
+
+    def _is_business_name(name: str) -> bool:
+        """Check if a name looks like a business/organization."""
+        _BIZ_SUFFIXES = ['s.r.o.', 's. r. o.', 's. r.o.', 'z.s.', 'z. s.',
+                         'a.s.', 'a. s.', 'p.o.', 'p. o.', 'o.p.s.',
+                         'o. p. s.', 'spol.']
+        name_lower = name.lower()
+        for suffix in _BIZ_SUFFIXES:
+            if suffix in name_lower:
+                return True
+        return False
+
+    def _is_facility_name(name: str) -> bool:
+        """Check if a name is a facility/business (not a person) in healthcare context."""
+        return not _is_person_name(name)
+
+    def _group_healthcare_entries(entries: list, section_name: str | None = None) -> list:
+        """Group healthcare entries by business/person names.
+
+        - Business name → becomes the provider, subsequent person names → staff
+        - Consecutive person names sharing same contact → single entry with staff
+        - Person with individual phone → staff member with own phone
+        """
+        if not entries:
+            return entries
+
+        grouped = []
+        i = 0
+        while i < len(entries):
+            entry = entries[i]
+            name = entry['name']
+
+            if _is_facility_name(name):
+                # Facility/business entry: collect subsequent person names as staff
+                biz_entry = OrderedDict(entry)
+                staff = []
+                j = i + 1
+                while j < len(entries):
+                    next_entry = entries[j]
+                    next_name = next_entry['name']
+                    if _is_facility_name(next_name):
+                        break  # New facility/business
+                    if _is_person_name(next_name):
+                        staff_member = OrderedDict()
+                        staff_member['name'] = next_name
+                        phone = next_entry.get('phone') or (next_entry.get('phones', [None])[0] if next_entry.get('phones') else None)
+                        if phone:
+                            staff_member['phone'] = phone
+                        staff.append(staff_member)
+                        j += 1
+                    else:
+                        break
+                if staff:
+                    biz_entry['staff'] = staff
+                grouped.append(biz_entry)
+                i = j
+            elif _is_person_name(name):
+                # Person entry: look ahead for more persons sharing same address
+                persons = [entry]
+                j = i + 1
+                while j < len(entries):
+                    next_entry = entries[j]
+                    if _is_facility_name(next_entry['name']):
+                        break
+                    if _is_person_name(next_entry['name']):
+                        persons.append(next_entry)
+                        j += 1
+                    else:
+                        break
+
+                if len(persons) > 1:
+                    # Check if they share an address or all lack one
+                    addresses = set()
+                    for p in persons:
+                        addresses.add(p.get('address', ''))
+                    shared_addr = len(addresses) <= 1 or ('' in addresses and len(addresses) == 2)
+
+                    if shared_addr:
+                        # Group under section name or first person
+                        group_entry = OrderedDict()
+                        group_name = section_name if section_name else persons[0]['name']
+                        group_entry['id'] = slugify(group_name)
+                        group_entry['name'] = group_name
+                        # Use the first non-empty address
+                        for p in persons:
+                            if p.get('address'):
+                                group_entry['address'] = p['address']
+                                break
+                        # Collect shared phones at group level (non-individual)
+                        # Build staff list
+                        staff = []
+                        for p in persons:
+                            sm = OrderedDict()
+                            sm['name'] = p['name']
+                            phone = p.get('phone') or (p.get('phones', [None])[0] if p.get('phones') else None)
+                            if phone:
+                                sm['phone'] = phone
+                            staff.append(sm)
+                        group_entry['staff'] = staff
+                        # Use shared website if any
+                        for p in persons:
+                            if p.get('website'):
+                                group_entry['website'] = p['website']
+                                break
+                        grouped.append(group_entry)
+                        i = j
+                        continue
+
+                # Not groupable or single person - add as-is
+                for p in persons:
+                    grouped.append(p)
+                i = j
+            else:
+                # Not a person or business - add as-is
+                grouped.append(entry)
+                i += 1
+
+        return grouped
+
     # ---- Page 37: GPs + Pediatricians (full-width headers at 14pt) ----
     sections37 = _get_sections_fullwidth(37, header_min_size=14.0)
 
@@ -666,13 +797,14 @@ def parse_healthcare(pdf) -> dict:
     healthcare['generalPractitioners'] = []
 
     for header, entries in sections37:
+        grouped = _group_healthcare_entries(entries, header)
         if header and 'pro děti' in header.lower():
-            healthcare['pediatricians'].extend(entries)
+            healthcare['pediatricians'].extend(grouped)
         elif header and ('praktick' in header.lower() or 'dospěl' in header.lower()
                          or 'ambulance' in header.lower()):
-            healthcare['generalPractitioners'].extend(entries)
-        elif entries:
-            healthcare['generalPractitioners'].extend(entries)
+            healthcare['generalPractitioners'].extend(grouped)
+        elif grouped:
+            healthcare['generalPractitioners'].extend(grouped)
 
     # ---- Page 38: Specialists (per-column headers at 12pt) ----
     sections38 = _get_sections_per_column(38, header_min_size=12.0)
@@ -699,10 +831,11 @@ def parse_healthcare(pdf) -> dict:
                 matched = code
                 break
         if matched and entries:
+            grouped = _group_healthcare_entries(entries, header)
             if matched in specialists:
-                specialists[matched].extend(entries)
+                specialists[matched].extend(grouped)
             else:
-                specialists[matched] = entries
+                specialists[matched] = grouped
 
     healthcare['specialists'] = specialists
 
@@ -714,14 +847,15 @@ def parse_healthcare(pdf) -> dict:
     ent = []
 
     for header, entries in sections39:
+        grouped = _group_healthcare_entries(entries, header)
         if not header or 'zub' in header.lower() or 'stomatol' in header.lower():
-            dentists.extend(entries)
+            dentists.extend(grouped)
         elif 'dentální' in header.lower() or 'hygie' in header.lower():
-            dental_hygiene.extend(entries)
+            dental_hygiene.extend(grouped)
         elif 'ušní' in header.lower() or 'nosní' in header.lower() or 'krční' in header.lower():
-            ent.extend(entries)
+            ent.extend(grouped)
         else:
-            dentists.extend(entries)
+            dentists.extend(grouped)
 
     healthcare['dentists'] = dentists
     healthcare['dentalHygiene'] = dental_hygiene
@@ -736,14 +870,15 @@ def parse_healthcare(pdf) -> dict:
     pharmacies = []
 
     for header, entries in sections40:
+        grouped = _group_healthcare_entries(entries, header)
         if not header or 'rehabilita' in header.lower() or 'fyziotera' in header.lower():
-            physiotherapy.extend(entries)
+            physiotherapy.extend(grouped)
         elif 'optik' in header.lower() or 'oční' in header.lower():
-            opticians.extend(entries)
+            opticians.extend(grouped)
         elif 'lékárn' in header.lower():
-            pharmacies.extend(entries)
+            pharmacies.extend(grouped)
         else:
-            physiotherapy.extend(entries)
+            physiotherapy.extend(grouped)
 
     healthcare['physiotherapy'] = physiotherapy
     healthcare['opticians'] = opticians
@@ -775,6 +910,7 @@ def parse_authorities(pdf) -> list:
     mu_pribor = OrderedDict()
     mu_pribor['id'] = 'mestsky-urad-pribor'
     mu_pribor['name'] = 'Městský úřad Příbor'
+    mu_pribor['address'] = 'Náměstí Sigmunda Freuda 19, 742 58 Příbor'
     mu_pribor['website'] = 'https://www.pribor.eu'
     mu_pribor['departments'] = []
 
@@ -1186,6 +1322,12 @@ def _split_description_and_contact(text: str) -> tuple:
         has_email = bool(extract_email(line))
         has_website = bool(extract_website(line))
         has_address = bool(re.search(r'\d{3}\s*\d{2}\s+\w', line))
+        # Secondary: "Street Name Number, City" without postal code
+        if not has_address:
+            has_address = bool(re.search(
+                r'[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][a-záčďéěíňóřšťúůýž]+\s+\d+(/\d+)?,\s+',
+                line
+            ))
 
         if has_phone or has_email or has_website or has_address:
             contact_start = i

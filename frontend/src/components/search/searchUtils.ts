@@ -193,7 +193,7 @@ function lifeSituationToSearchResult(situation: LifeSituation, query: string): S
     id: `situation-${situation.situationId}`,
     type: 'lifeSituation',
     title: situation.name,
-    subtitle: `${(situation.providers?.length || 0) + (situation.crisisLines?.length || 0)} poskytovatelů`,
+    subtitle: `${(situation.providers?.length || 0) + (situation.services?.length || 0) + (situation.crisisLines?.length || 0)} poskytovatelů`,
     href: `/zivotni-situace/${situation.situationId}`,
     score: score + TYPE_PRIORITY.lifeSituation,
   };

@@ -26,6 +26,12 @@
       "target": "api::provider.provider",
       "inversedBy": "lifeSituations"
     },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "inversedBy": "lifeSituations"
+    },
     "crisisLines": {
       "type": "relation",
       "relation": "manyToMany",

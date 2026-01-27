@@ -1,26 +1,26 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProviderById } from '@/lib/strapi';
+import { getServiceById } from '@/lib/strapi';
 import type { ContactInfo as ContactInfoType } from '@/lib/types';
 import { getAllPhones, getFirstPhone } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
 interface PageProps {
-  params: Promise<{ providerId: string }>;
+  params: Promise<{ providerId: string; serviceId: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { providerId } = await params;
-  const provider = await getProviderById(providerId);
+  const { serviceId } = await params;
+  const service = await getServiceById(serviceId);
 
-  if (!provider) {
-    return { title: 'Poskytovatel nenalezen | Průvodce sociálními službami Příbor' };
+  if (!service) {
+    return { title: 'Služba nenalezena | Průvodce sociálními službami Příbor' };
   }
 
   return {
-    title: `${provider.name} | Průvodce sociálními službami Příbor`,
-    description: provider.description || `Informace o poskytovateli ${provider.name}`,
+    title: `${service.name} | Průvodce sociálními službami Příbor`,
+    description: service.description || `Informace o službě ${service.name}`,
   };
 }
 
@@ -70,13 +70,16 @@ function ContactInfo({ contact, className = '' }: { contact: ContactInfoType; cl
   );
 }
 
-export default async function ProviderDetailPage({ params }: PageProps) {
-  const { providerId } = await params;
-  const provider = await getProviderById(providerId);
+export default async function ServiceDetailPage({ params }: PageProps) {
+  const { providerId, serviceId } = await params;
+  const service = await getServiceById(serviceId);
 
-  if (!provider) {
+  if (!service) {
     notFound();
   }
+
+  const providerName = service.provider?.name || 'Poskytovatel';
+  const providerSlug = service.provider?.providerId || providerId;
 
   return (
     <div className="section">
@@ -100,7 +103,17 @@ export default async function ProviderDetailPage({ params }: PageProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </li>
-            <li className="text-stone-900 font-medium truncate">{provider.name}</li>
+            <li>
+              <Link href={`/poskytovatele/${providerSlug}`} className="hover:text-primary-600 transition-colors">
+                {providerName}
+              </Link>
+            </li>
+            <li>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </li>
+            <li className="text-stone-900 font-medium truncate">{service.name}</li>
           </ol>
         </nav>
 
@@ -109,74 +122,43 @@ export default async function ProviderDetailPage({ params }: PageProps) {
           <div className="flex items-start gap-4 mb-6">
             <div className="icon-box icon-box-lg">
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               </svg>
             </div>
             <div>
+              <p className="text-sm text-stone-500 mb-1">
+                <Link href={`/poskytovatele/${providerSlug}`} className="hover:text-primary-600 transition-colors">
+                  {providerName}
+                </Link>
+              </p>
               <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 mb-2">
-                {provider.name}
+                {service.name}
               </h1>
-              {provider.description && (
-                <p className="text-lg text-stone-600 leading-relaxed">{provider.description}</p>
+              {service.description && (
+                <p className="text-lg text-stone-600 leading-relaxed">{service.description}</p>
               )}
             </div>
           </div>
 
-          {provider.contacts && provider.contacts.length > 0 && (
+          {service.contacts && service.contacts.length > 0 && (
             <div className="space-y-4">
-              {provider.contacts.map((contact) => (
+              {service.contacts.map((contact) => (
                 <ContactInfo key={contact.id} contact={contact} />
               ))}
             </div>
           )}
         </div>
 
-        {/* Services */}
-        {provider.services && provider.services.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-xl font-bold text-stone-900 mb-6 flex items-center gap-3">
-              <div className="icon-box">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-              </div>
-              Služby
-            </h2>
-            <div className="space-y-5">
-              {provider.services.map((service) => {
-                const serviceContact = service.contacts?.[0];
-                const hasServiceContact = serviceContact && (
-                  serviceContact.address ||
-                  serviceContact.phones?.length ||
-                  serviceContact.email ||
-                  serviceContact.website
-                );
-
-                return (
-                  <div
-                    key={service.id}
-                    className="card"
-                  >
-                    <Link href={`/poskytovatele/${provider.providerId}/${service.serviceId}`}>
-                      <h3 className="text-lg font-bold text-stone-900 hover:text-primary-600 transition-colors mb-2">
-                        {service.name}
-                      </h3>
-                    </Link>
-                    {service.description && (
-                      <p className="text-stone-600 mb-4 leading-relaxed">{service.description}</p>
-                    )}
-                    {hasServiceContact && (
-                      <div className="pt-4 border-t border-stone-100">
-                        <h4 className="text-sm font-semibold text-stone-700 mb-3">Kontakt na službu:</h4>
-                        <ContactInfo contact={serviceContact!} />
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
+        {/* Back to provider link */}
+        <Link
+          href={`/poskytovatele/${providerSlug}`}
+          className="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Zpět na {providerName}
+        </Link>
       </div>
     </div>
   );
