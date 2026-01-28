@@ -79,7 +79,7 @@ export default function ProviderCard({ provider, letter, isOpen, onToggle }: { p
               </h2>
               {provider.services && provider.services.length > 0 && (
                 <span className="text-xs text-stone-600 bg-stone-100 px-2 py-0.5 rounded">
-                  {provider.services.length} služb{provider.services.length === 1 ? 'a' : provider.services.length < 5 ? 'y' : ''}
+                  {provider.services.length} služ{provider.services.length === 1 ? 'ba' : provider.services.length < 5 ? 'by' : 'eb'}
                 </span>
               )}
             </div>
