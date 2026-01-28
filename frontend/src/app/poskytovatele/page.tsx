@@ -1,5 +1,5 @@
 import { getProviders } from '@/lib/strapi';
-import ProviderCard from './ProviderCard';
+import ProviderList from './ProviderList';
 import LetterNavigation from './LetterNavigation';
 
 export const dynamic = 'force-dynamic';
@@ -49,11 +49,7 @@ export default async function ProvidersPage() {
         <LetterNavigation letters={Array.from(seenLetters)} />
 
         {/* Providers List */}
-        <div className="space-y-4">
-          {providersWithLetters.map(({ provider, letter }) => (
-            <ProviderCard key={provider.id} provider={provider} letter={letter} />
-          ))}
-        </div>
+        <ProviderList providersWithLetters={providersWithLetters} />
       </div>
     </div>
   );

@@ -77,12 +77,12 @@ export default async function Home() {
               <Link
                 key={situation.id}
                 href={`/zivotni-situace/${situation.situationId}`}
-                className="group card-interactive"
+                className="group card-interactive flex items-center"
               >
                 <div className="flex items-center gap-4">
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-stone-800 group-hover:text-primary-700 transition-colors">
-                      {situation.name} <span className="text-stone-400 font-normal">({situation.actualProviderCount})</span>
+                    <h3 className="text-lg font-bold text-stone-900 group-hover:text-primary-700 transition-colors">
+                      {situation.name}{'\u00a0'}<span className="text-stone-400 font-normal">({situation.actualProviderCount})</span>
                     </h3>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors flex-shrink-0">

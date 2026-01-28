@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
 import type { Provider, ContactInfo as ContactInfoType } from '@/lib/types';
 import { getAllPhones, getFirstPhone } from '@/lib/types';
@@ -51,8 +48,7 @@ function ContactInfo({ contact }: { contact: ContactInfoType }) {
   );
 }
 
-export default function ProviderCard({ provider, letter }: { provider: Provider; letter: string | null }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function ProviderCard({ provider, letter, isOpen, onToggle }: { provider: Provider; letter: string | null; isOpen: boolean; onToggle: () => void }) {
 
   const contact = provider.contacts?.[0];
   const hasContact = contact && (
@@ -65,7 +61,7 @@ export default function ProviderCard({ provider, letter }: { provider: Provider;
   return (
     <div id={letter ? `letter-${letter}` : undefined} className="card scroll-mt-24">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={onToggle}
         className="w-full text-left"
       >
         <div className="flex items-center gap-4">
@@ -103,7 +99,7 @@ export default function ProviderCard({ provider, letter }: { provider: Provider;
 
       {isOpen && (
         <>
-          <div className="mt-4 pt-4 border-t border-stone-100 ml-16">
+          <div className="mt-4 pt-4 pb-2 border-t border-stone-100 ml-16">
             {provider.description && (
               <p className="text-sm text-stone-600 mb-4">
                 {provider.description}
