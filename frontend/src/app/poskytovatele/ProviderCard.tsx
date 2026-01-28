@@ -87,11 +87,6 @@ export default function ProviderCard({ provider, letter }: { provider: Provider;
                 </span>
               )}
             </div>
-            {provider.description && (
-              <p className="text-sm text-stone-600 line-clamp-2 mt-1">
-                {provider.description}
-              </p>
-            )}
           </div>
           <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${isOpen ? 'bg-primary-100' : 'bg-primary-50'}`}>
             <svg
@@ -108,6 +103,12 @@ export default function ProviderCard({ provider, letter }: { provider: Provider;
 
       {isOpen && (
         <div className="mt-4 pt-4 border-t border-stone-100 ml-16">
+          {provider.description && (
+            <p className="text-sm text-stone-600 mb-4">
+              {provider.description}
+            </p>
+          )}
+
           {hasContact && (
             <div className="mb-4">
               <h3 className="text-sm font-semibold text-stone-700 mb-2">Kontakt</h3>
@@ -138,7 +139,7 @@ export default function ProviderCard({ provider, letter }: { provider: Provider;
 
           <Link
             href={`/poskytovatele/${provider.providerId}`}
-            className="inline-flex items-center gap-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-lg transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary-600 border border-primary-600 hover:bg-primary-50 px-4 py-2 rounded-lg transition-colors"
           >
             Zobrazit detail a všechny služby
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
