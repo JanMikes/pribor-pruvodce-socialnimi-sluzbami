@@ -154,7 +154,7 @@ export async function getLifeSituations(): Promise<LifeSituation[]> {
       services: { fields: ['id'] },
       crisisLines: { fields: ['id'] },
     },
-    sort: 'order:asc',
+    sort: 'name:asc',
     pagination: { pageSize: 100 },
   });
   return response.data;
