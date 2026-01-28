@@ -34,7 +34,7 @@ export default async function Home() {
                   Průvodce sociálními službami a navazujícími aktivitami
               </h1>
               <p className="text-lg sm:text-xl text-primary-100 max-w-2xl mb-10 leading-relaxed">
-                  ve městě příbor a jeho přilehlém okolí pro pomoc a podporu v různých životních situacích.
+                  ve městě Příbor a jeho přilehlém okolí pro pomoc a podporu v různých životních situacích.
               </p>
             </div>
 
