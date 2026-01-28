@@ -22,7 +22,6 @@ const categoryOrder: HealthcareCategory[] = [
   'allergology',
   'rehabilitation',
   'ent',
-  'physiotherapy',
   'optician',
   'pharmacy',
 ];
@@ -30,9 +29,9 @@ const categoryOrder: HealthcareCategory[] = [
 export default async function HealthcarePage() {
   const providers = await getHealthcareProviders();
 
-  // Group providers by category
+  // Group providers by category (merge physiotherapy into rehabilitation)
   const groupedProviders = providers.reduce((acc, provider) => {
-    const category = provider.category;
+    const category = provider.category === 'physiotherapy' ? 'rehabilitation' : provider.category;
     if (!acc[category]) {
       acc[category] = [];
     }
@@ -86,60 +85,75 @@ export default async function HealthcarePage() {
                 {groupedProviders[category].map((provider) => (
                   <div
                     key={provider.id}
-                    className="card"
+                    className="card p-0 overflow-hidden"
                   >
-                    <h3 className="font-bold text-stone-900 mb-3">
-                      {provider.name}
-                    </h3>
+                    {/* Provider Header */}
+                    <div className="bg-healthcare-50 px-5 py-4 border-b border-healthcare-100">
+                      <h3 className="font-bold text-stone-900">
+                        {provider.name}
+                      </h3>
+                    </div>
 
-                    <div className="space-y-2 text-sm">
-                      {provider.address && (
-                        <div className="flex items-start gap-2 text-stone-600">
-                          <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          <span>{provider.address}</span>
-                        </div>
-                      )}
-                      {provider.phones && provider.phones.length > 0 && (
-                        <div className="flex items-center gap-2 text-stone-600">
-                          <svg className="w-4 h-4 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                          </svg>
-                          <a href={`tel:${getFirstPhone(provider.phones)}`} className="hover:text-healthcare-600 transition-colors">
-                            {getAllPhones(provider.phones)}
-                          </a>
-                        </div>
-                      )}
-                      {provider.website && (
-                        <div className="flex items-center gap-2 text-stone-600">
-                          <svg className="w-4 h-4 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                          <a href={provider.website} target="_blank" rel="noopener noreferrer" className="hover:text-healthcare-600 truncate transition-colors">
-                            Web
-                          </a>
+                    {/* Provider Details */}
+                    <div className="px-5 py-4">
+                      <div className="space-y-2 text-sm">
+                        {provider.address && (
+                          <div className="flex items-start gap-2 text-stone-600">
+                            <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>{provider.address}</span>
+                          </div>
+                        )}
+                        {provider.phones && provider.phones.length > 0 && (
+                          <div className="flex items-center gap-2 text-stone-600">
+                            <svg className="w-4 h-4 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <a href={`tel:${getFirstPhone(provider.phones)}`} className="hover:text-healthcare-600 transition-colors">
+                              {getAllPhones(provider.phones)}
+                            </a>
+                          </div>
+                        )}
+                        {provider.website && (
+                          <div className="flex items-center gap-2 text-stone-600">
+                            <svg className="w-4 h-4 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                            <a href={provider.website} target="_blank" rel="noopener noreferrer" className="hover:text-healthcare-600 truncate transition-colors">
+                              {provider.website.replace(/^https?:\/\//, '')}
+                            </a>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Staff */}
+                      {provider.staff && provider.staff.length > 0 && (
+                        <div className={provider.address || (provider.phones && provider.phones.length > 0) || provider.website ? 'mt-4 pt-4 border-t border-stone-100' : ''}>
+                          <ul className="space-y-2">
+                            {provider.staff.map((person, idx) => (
+                              <li key={idx} className="text-sm">
+                                <div className="font-medium text-stone-700">
+                                  {person.name}
+                                  {person.specialty && (
+                                    <span className="font-normal text-stone-500"> — {person.specialty}</span>
+                                  )}
+                                </div>
+                                {person.phone && (
+                                  <div className="flex items-center gap-1.5 mt-0.5 text-stone-500">
+                                    <svg className="w-3.5 h-3.5 flex-shrink-0 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                    <a href={`tel:${person.phone}`} className="hover:text-healthcare-600 transition-colors">{person.phone}</a>
+                                  </div>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )}
                     </div>
-
-                    {/* Staff */}
-                    {provider.staff && provider.staff.length > 0 && (
-                      <div className="mt-4 pt-4 border-t border-stone-100">
-                        <h4 className="text-xs font-semibold text-stone-500 uppercase mb-2">Lékaři</h4>
-                        <ul className="space-y-1">
-                          {provider.staff.map((person, idx) => (
-                            <li key={idx} className="text-sm text-stone-700">
-                              {person.name}
-                              {person.specialty && (
-                                <span className="text-stone-500"> - {person.specialty}</span>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
