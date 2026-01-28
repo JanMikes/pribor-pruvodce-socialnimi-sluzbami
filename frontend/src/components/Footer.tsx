@@ -9,9 +9,9 @@ const navigation = {
     { name: 'Úřady', href: '/urady' },
   ],
   emergency: [
-    { name: 'Tísňová linka', phone: '112' },
-    { name: 'Záchranná služba', phone: '155' },
-    { name: 'Policie', phone: '158' },
+    { name: 'Policie ČR (oddělení Příbor)', phone: '+420 974 735 751' },
+    { name: 'Městská policie Příbor', phone: '+420 556 725 111' },
+    { name: 'Městská policie Příbor', phone: '+420 721 146 146' },
   ],
 };
 
@@ -85,12 +85,12 @@ export default function Footer() {
 
           {/* Emergency */}
           <div>
-            <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wide">Tísňová čísla</h3>
+            <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wide">Důležitá čísla</h3>
             <ul className="space-y-3">
               {navigation.emergency.map((item) => (
-                <li key={item.name}>
+                <li key={item.phone}>
                   <a
-                    href={`tel:${item.phone}`}
+                    href={`tel:${item.phone.replace(/\s/g, '')}`}
                     className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 group hover:bg-white/20 transition-all border border-white/10"
                   >
                     <div className="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center group-hover:bg-red-500/30 transition-colors">

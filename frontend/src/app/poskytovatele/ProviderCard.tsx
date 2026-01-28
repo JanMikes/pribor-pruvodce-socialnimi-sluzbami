@@ -43,7 +43,7 @@ function ContactInfo({ contact }: { contact: ContactInfoType }) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
           <a href={contact.website} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary-600 transition-colors">
-            {contact.website}
+            {contact.website.replace(/^https?:\/\//, '')}
           </a>
         </div>
       )}
@@ -142,12 +142,9 @@ export default function ProviderCard({ provider, letter }: { provider: Provider;
           <div className="mt-4 -mx-6 -mb-6 px-6 py-4 bg-primary-50 rounded-b-2xl flex justify-end">
             <Link
               href={`/poskytovatele/${provider.providerId}`}
-              className="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors inline-flex items-center gap-1.5"
+              className="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
             >
-              Zobrazit detail
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              Zobrazit detail a všechny služby &gt;
             </Link>
           </div>
         </>

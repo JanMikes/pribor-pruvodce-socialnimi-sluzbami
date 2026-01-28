@@ -62,7 +62,7 @@ function ProviderContactInfo({ contact }: { contact: ContactInfoType }) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
           <a href={contact.website} target="_blank" rel="noopener noreferrer" className="hover:text-primary-600 transition-colors">
-            {contact.website}
+            {contact.website.replace(/^https?:\/\//, '')}
           </a>
         </div>
       )}
@@ -74,52 +74,64 @@ function ProviderCard({ provider }: { provider: Provider }) {
   const contact = provider.contacts?.[0];
 
   return (
-    <div className="card">
-      <Link href={`/poskytovatele/${provider.providerId}`}>
-        <h2 className="text-xl font-bold text-stone-900 hover:text-primary-600 transition-colors mb-2">
-          {provider.name}
-        </h2>
-      </Link>
+    <div className="card !p-0 overflow-hidden">
+      <div className="bg-gradient-to-r from-primary-50 to-primary-100/50 px-6 py-4 border-b border-primary-100">
+        <Link href={`/poskytovatele/${provider.providerId}`}>
+          <h2 className="text-xl font-bold text-stone-900 hover:text-primary-600 transition-colors">
+            {provider.name}
+          </h2>
+        </Link>
+      </div>
 
-      {provider.description && (
-        <p className="text-stone-600 mb-4 leading-relaxed">{provider.description}</p>
-      )}
+      <div className="px-6 py-5">
+        {provider.description && (
+          <p className="text-stone-600 mb-4 leading-relaxed">{provider.description}</p>
+        )}
 
-      {contact && (
-        <div className="mt-4 pt-4 border-t border-stone-100">
-          <ProviderContactInfo contact={contact} />
-        </div>
-      )}
+        {contact && (
+          <div className={provider.description ? 'mt-4 pt-4 border-t border-stone-100' : ''}>
+            <ProviderContactInfo contact={contact} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
 
 function ServiceGroupCard({ provider, services }: { provider: { providerId: string; name: string }; services: Service[] }) {
   return (
-    <div className="card">
-      <Link href={`/poskytovatele/${provider.providerId}`}>
-        <h2 className="text-xl font-bold text-stone-900 hover:text-primary-600 transition-colors mb-4">
-          {provider.name}
-        </h2>
-      </Link>
+    <div className="card !p-0 overflow-hidden">
+      <div className="bg-gradient-to-r from-primary-50 to-primary-100/50 px-6 py-4 border-b border-primary-100">
+        <Link href={`/poskytovatele/${provider.providerId}`}>
+          <h2 className="text-xl font-bold text-stone-900 hover:text-primary-600 transition-colors">
+            {provider.name}
+          </h2>
+        </Link>
+      </div>
 
-      <div className="space-y-4">
-        {services.map((service) => {
+      <div className="px-6 py-5">
+        {services.map((service, index) => {
           const serviceContact = service.contacts?.[0];
+          const hasMultiple = services.length > 1;
 
           return (
-            <div key={service.id} className="pl-4 border-l-2 border-primary-200">
-              <Link href={`/poskytovatele/${provider.providerId}/${service.serviceId}`}>
-                <h3 className="text-lg font-semibold text-stone-900 hover:text-primary-600 transition-colors mb-1">
-                  {service.name}
-                </h3>
-              </Link>
-              {service.description && (
-                <p className="text-stone-600 mb-3 leading-relaxed text-sm">{service.description}</p>
+            <div key={service.id}>
+              {hasMultiple && index > 0 && (
+                <hr className="my-6 border-stone-200" />
               )}
-              {serviceContact && (
-                <ProviderContactInfo contact={serviceContact} />
-              )}
+              <div className="pl-4 border-l-2 border-l-primary-200">
+                <Link href={`/poskytovatele/${provider.providerId}/${service.serviceId}`}>
+                  <h3 className="text-lg font-semibold text-stone-900 hover:text-primary-600 transition-colors mb-1">
+                    {service.name}
+                  </h3>
+                </Link>
+                {service.description && (
+                  <p className="text-stone-600 mb-3 leading-relaxed text-sm">{service.description}</p>
+                )}
+                {serviceContact && (
+                  <ProviderContactInfo contact={serviceContact} />
+                )}
+              </div>
             </div>
           );
         })}

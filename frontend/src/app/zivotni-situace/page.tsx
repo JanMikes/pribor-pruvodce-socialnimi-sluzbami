@@ -31,16 +31,13 @@ export default async function LifeSituationsPage() {
 
         {/* Situations Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {lifeSituations.map((situation, index) => (
+          {lifeSituations.map((situation) => (
             <Link
               key={situation.id}
               href={`/zivotni-situace/${situation.situationId}`}
               className="group card-interactive"
             >
               <div className="flex items-center gap-4">
-                <div className="icon-box group-hover:scale-110 group-hover:shadow-glow-primary">
-                  <span className="text-lg font-bold">{index + 1}</span>
-                </div>
                 <div className="flex-1 min-w-0">
                   <h2 className="text-lg font-bold text-stone-900 group-hover:text-primary-700 transition-colors">
                     {situation.name} <span className="text-stone-400 font-normal">({situation.actualProviderCount})</span>

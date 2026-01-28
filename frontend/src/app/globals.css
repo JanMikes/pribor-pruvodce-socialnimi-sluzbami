@@ -24,7 +24,7 @@
   }
 
   .card-secondary {
-    @apply card bg-gradient-to-br from-secondary-50 to-surface border-secondary-100;
+    @apply card bg-secondary-50 border-secondary-100;
   }
 
   .card-success {
@@ -36,11 +36,11 @@
   }
 
   .card-healthcare {
-    @apply card bg-gradient-to-br from-healthcare-50 to-surface border-healthcare-100;
+    @apply card bg-healthcare-50 border-healthcare-100;
   }
 
   .card-authority {
-    @apply card bg-gradient-to-br from-authority-50 to-surface border-authority-100;
+    @apply card bg-authority-50 border-authority-100;
   }
 
   /* Icon containers */
@@ -52,7 +52,7 @@
   }
 
   .icon-box-secondary {
-    @apply bg-gradient-to-br from-secondary-100 to-secondary-50 text-secondary-600;
+    @apply bg-gradient-to-br from-secondary-200 to-secondary-100 text-secondary-700;
   }
 
   .icon-box-success {
@@ -64,11 +64,11 @@
   }
 
   .icon-box-healthcare {
-    @apply bg-gradient-to-br from-healthcare-100 to-healthcare-50 text-healthcare-600;
+    @apply bg-gradient-to-br from-healthcare-200 to-healthcare-100 text-healthcare-700;
   }
 
   .icon-box-authority {
-    @apply bg-gradient-to-br from-authority-100 to-authority-50 text-authority-600;
+    @apply bg-gradient-to-br from-authority-200 to-authority-100 text-authority-700;
   }
 
   .icon-box-lg {
