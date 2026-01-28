@@ -53,8 +53,8 @@ export default async function Home() {
         </div>
 
         {/* Bottom wave decoration */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg className="w-full h-12 sm:h-16" viewBox="0 0 1440 54" fill="none" preserveAspectRatio="none">
+        <div className="absolute -bottom-px left-0 right-0">
+          <svg className="block w-full h-12 sm:h-16" viewBox="0 0 1440 54" fill="none" preserveAspectRatio="none">
             <path d="M0 22L60 16.7C120 11 240 1.00001 360 0.700012C480 0.300012 600 10 720 16.7C840 23 960 27 1080 25.3C1200 23 1320 17 1380 13.7L1440 11V54H1380C1320 54 1200 54 1080 54C960 54 840 54 720 54C600 54 480 54 360 54C240 54 120 54 60 54H0V22Z" fill="#faf9f7"/>
           </svg>
         </div>
