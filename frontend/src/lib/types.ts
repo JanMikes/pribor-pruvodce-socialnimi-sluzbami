@@ -174,6 +174,11 @@ export const healthcareCategoryLabels: Record<HealthcareCategory, string> = {
   pharmacy: 'Lékárny',
 };
 
+// URL helpers
+export function ensureProtocol(url: string): string {
+  return url.includes('://') ? url : `https://${url}`;
+}
+
 // Phone number helpers
 export function getFirstPhone(phones?: PhoneNumber[]): string | undefined {
   return phones?.[0]?.number;

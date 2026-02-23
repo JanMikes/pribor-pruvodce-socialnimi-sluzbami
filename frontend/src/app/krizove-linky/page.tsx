@@ -1,5 +1,5 @@
 import { getCrisisLines } from '@/lib/strapi';
-import { getFirstPhone } from '@/lib/types';
+import { getFirstPhone, ensureProtocol } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
@@ -117,7 +117,7 @@ export default async function CrisisLinesPage() {
                           )}
                           {line.website && (
                             <a
-                              href={line.website}
+                              href={ensureProtocol(line.website)}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center text-stone-600 hover:text-primary-600 transition-colors"
