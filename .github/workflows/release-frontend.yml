@@ -1,0 +1,48 @@
+# Release (frontend) — build the Next.js image and deploy to lily via the shared
+# reusable workflow (TheDevs-cz/ci). Replaces the old build + appleboy/ssh-action
+# deploy to spare.srv: the box now PULLS, and this repo holds no SSH key — only a
+# per-app HMAC secret whose worst-case leak is "re-trigger this one app's deploy".
+#
+# ── ONE HOOK, THREE WORKFLOWS ───────────────────────────────────────────────
+# This monorepo builds THREE images. All three release-*.yml callers pass the
+# SAME `app: pribor-pruvodce`, because on lily the three land in ONE compose
+# project sharing one Postgres and one uploads volume (D55). The path filters are
+# what keep the builds independent: touching frontend/ rebuilds ONLY this image.
+#
+# Deploy tag is the house default `main` (NOT deploy_sha): each caller pushes its
+# own image's :main and triggers the shared hook, and /srv/pribor-pruvodce/
+# compose.yaml pins all three images to ${IMAGE_TAG:-main} — so a deploy always
+# picks up the current :main of each, and only the rebuilt one differs. Two
+# components in one push => two triggers, serialized by _deploy.yml's concurrency
+# group and the box's global flock.
+#
+# await_deploy is false: this app has no commit-status token in the box's
+# /srv/deploy/checks.env, and await is fail-closed (it would time out red).
+# Deploy result lives in Grafana/Loki (app="deploy") and `journalctl -u
+# lily-deploy-runner` on the box.
+
+name: Release frontend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/release-frontend.yml'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  ship:
+    uses: TheDevs-cz/ci/.github/workflows/_ship.yml@v1
+    secrets:
+      # Passed EXPLICITLY: `secrets: inherit` cannot cross repo owners.
+      DEPLOY_WEBHOOK_SECRET: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}
+    with:
+      app: pribor-pruvodce                       # hook id == /srv/<app> == compose project
+      image: ghcr.io/janmikes/pribor-pruvodce    # image name != repo name -> explicit
+      context: ./frontend
+      deploy_host: lily.srv.thedevs.cz
+      await_deploy: false

@@ -1,0 +1,50 @@
+# Release (nginx) — build the uploads-CDN image and deploy to lily via the shared
+# reusable workflow (TheDevs-cz/ci). Replaces the old build + appleboy/ssh-action
+# deploy to spare.srv: the box now PULLS, and this repo holds no SSH key — only a
+# per-app HMAC secret whose worst-case leak is "re-trigger this one app's deploy".
+#
+# ── ONE HOOK, THREE WORKFLOWS ───────────────────────────────────────────────
+# This monorepo builds THREE images. All three release-*.yml callers pass the
+# SAME `app: pribor-pruvodce`, because on lily the three land in ONE compose
+# project sharing one Postgres and one uploads volume (D55). The path filters are
+# what keep the builds independent: touching nginx/ rebuilds ONLY this image.
+#
+# This image serves cdn.socialnisluzbypribor.cz from the SHARED uploads volume
+# that strapi writes (mounted :ro here). NOTE for anyone editing nginx/Dockerfile:
+# its baked-in HEALTHCHECK probes `localhost`, which resolves to IPv6 [::1] while
+# nginx binds IPv4 only — the container would sit unhealthy forever and Traefik
+# would silently drop it (404 + default cert, not 503). lily's compose.yaml
+# OVERRIDES that probe to 127.0.0.1; don't rely on the image's own (D42/D55).
+#
+# Deploy tag is the house default `main` (NOT deploy_sha): each caller pushes its
+# own image's :main and triggers the shared hook, and /srv/pribor-pruvodce/
+# compose.yaml pins all three images to ${IMAGE_TAG:-main}.
+#
+# await_deploy is false: this app has no commit-status token in the box's
+# /srv/deploy/checks.env, and await is fail-closed (it would time out red).
+
+name: Release nginx
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'nginx/**'
+      - '.github/workflows/release-nginx.yml'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  ship:
+    uses: TheDevs-cz/ci/.github/workflows/_ship.yml@v1
+    secrets:
+      # Passed EXPLICITLY: `secrets: inherit` cannot cross repo owners.
+      DEPLOY_WEBHOOK_SECRET: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}
+    with:
+      app: pribor-pruvodce                             # hook id == /srv/<app> == compose project
+      image: ghcr.io/janmikes/pribor-pruvodce-nginx    # image name != repo name -> explicit
+      context: ./nginx
+      deploy_host: lily.srv.thedevs.cz
+      await_deploy: false
